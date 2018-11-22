@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4AE4F69611247EF36EF55309 /* Pods_HouseBuddy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8596F7D91C4EAD293992B3B9 /* Pods_HouseBuddy.framework */; };
 		A945BBA421A7095D00A4E39B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A945BBA321A7095D00A4E39B /* AppDelegate.swift */; };
 		A945BBA621A7095D00A4E39B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A945BBA521A7095D00A4E39B /* ViewController.swift */; };
 		A945BBA921A7095D00A4E39B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A945BBA721A7095D00A4E39B /* Main.storyboard */; };
@@ -15,6 +16,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		6EDE2D62A15B3990DB5AB051 /* Pods-HouseBuddy.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HouseBuddy.release.xcconfig"; path = "Pods/Target Support Files/Pods-HouseBuddy/Pods-HouseBuddy.release.xcconfig"; sourceTree = "<group>"; };
+		8596F7D91C4EAD293992B3B9 /* Pods_HouseBuddy.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HouseBuddy.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A945BBA021A7095D00A4E39B /* HouseBuddy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HouseBuddy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A945BBA321A7095D00A4E39B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A945BBA521A7095D00A4E39B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -22,6 +25,7 @@
 		A945BBAA21A7095D00A4E39B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A945BBAD21A7095D00A4E39B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A945BBAF21A7095D00A4E39B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A99EC1F4D7AAD8B1A013CF56 /* Pods-HouseBuddy.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HouseBuddy.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HouseBuddy/Pods-HouseBuddy.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,19 +33,42 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4AE4F69611247EF36EF55309 /* Pods_HouseBuddy.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3B22A24F49F91737498F797A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				8596F7D91C4EAD293992B3B9 /* Pods_HouseBuddy.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		9F430C37F818FD00525CFB57 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				A99EC1F4D7AAD8B1A013CF56 /* Pods-HouseBuddy.debug.xcconfig */,
+				6EDE2D62A15B3990DB5AB051 /* Pods-HouseBuddy.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		A945BB9721A7095D00A4E39B = {
 			isa = PBXGroup;
 			children = (
 				A945BBA221A7095D00A4E39B /* HouseBuddy */,
 				A945BBA121A7095D00A4E39B /* Products */,
+				9F430C37F818FD00525CFB57 /* Pods */,
+				3B22A24F49F91737498F797A /* Frameworks */,
 			);
+			indentWidth = 2;
 			sourceTree = "<group>";
+			tabWidth = 2;
+			usesTabs = 1;
 		};
 		A945BBA121A7095D00A4E39B /* Products */ = {
 			isa = PBXGroup;
@@ -79,6 +106,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = A945BBB221A7095D00A4E39B /* Build configuration list for PBXNativeTarget "HouseBuddy" */;
 			buildPhases = (
+				CAB739DCCBF8A260551E67B7 /* [CP] Check Pods Manifest.lock */,
 				A945BB9C21A7095D00A4E39B /* Sources */,
 				A945BB9D21A7095D00A4E39B /* Frameworks */,
 				A945BB9E21A7095D00A4E39B /* Resources */,
@@ -137,6 +165,31 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		CAB739DCCBF8A260551E67B7 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-HouseBuddy-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		A945BB9C21A7095D00A4E39B /* Sources */ = {
@@ -286,6 +339,7 @@
 		};
 		A945BBB321A7095D00A4E39B /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A99EC1F4D7AAD8B1A013CF56 /* Pods-HouseBuddy.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -304,6 +358,7 @@
 		};
 		A945BBB421A7095D00A4E39B /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6EDE2D62A15B3990DB5AB051 /* Pods-HouseBuddy.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;

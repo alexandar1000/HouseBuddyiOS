@@ -8,8 +8,10 @@
 
 import UIKit
 import FirebaseAuth
+import Firebase
+import GoogleSignIn
 
-class StartViewController: UIViewController {
+class StartViewController: UIViewController, GIDSignInUIDelegate {
 
     //MARK: Fields
     @IBOutlet weak var logInBtn: UIButton!
@@ -20,6 +22,10 @@ class StartViewController: UIViewController {
 			  if Auth.auth().currentUser != nil {
 			  	self.performSegue(withIdentifier: "alreadyLoggedIn", sender: nil)
 			  }
+			GIDSignIn.sharedInstance().uiDelegate = self
+			GIDSignIn.sharedInstance().signIn()
+			// TODO(developer) Configure the sign-in button look/feel
+			// ...
     }
 	
 		// MARK: - Navigation

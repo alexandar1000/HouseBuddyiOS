@@ -7,5 +7,6 @@ target 'HouseBuddy' do
 
   # Pods for HouseBuddy
   pod 'Firebase/Core'
+  pod ‘Firebase/Auth’
 
 end

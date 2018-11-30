@@ -19,7 +19,17 @@ class ViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
-
 }
 
+// Closes the keyboard when pressed anywhere. If deleting the class, move the following code to another class
+extension UIViewController {
+	func hideKeyboardWhenTappedAround() {
+		let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIViewController.dismissKeyboard))
+		tap.cancelsTouchesInView = false
+		view.addGestureRecognizer(tap)
+	}
+	
+	@objc func dismissKeyboard() {
+		view.endEditing(true)
+	}
+}

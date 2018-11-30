@@ -14,6 +14,10 @@
 		A945BBAB21A7095D00A4E39B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A945BBAA21A7095D00A4E39B /* Assets.xcassets */; };
 		A945BBAE21A7095D00A4E39B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A945BBAC21A7095D00A4E39B /* LaunchScreen.storyboard */; };
 		A945BBB721A71F2C00A4E39B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A945BBB621A71F2C00A4E39B /* GoogleService-Info.plist */; };
+		A95D601721B16B1A003244DF /* StartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A95D601621B16B1A003244DF /* StartViewController.swift */; };
+		A95D601921B16B3C003244DF /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A95D601821B16B3C003244DF /* LogInViewController.swift */; };
+		A95D601B21B16B58003244DF /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A95D601A21B16B58003244DF /* SignUpViewController.swift */; };
+		A95D601D21B16B6C003244DF /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A95D601C21B16B6C003244DF /* HomeViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,6 +31,10 @@
 		A945BBAD21A7095D00A4E39B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A945BBAF21A7095D00A4E39B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A945BBB621A71F2C00A4E39B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		A95D601621B16B1A003244DF /* StartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartViewController.swift; sourceTree = "<group>"; };
+		A95D601821B16B3C003244DF /* LogInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
+		A95D601A21B16B58003244DF /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		A95D601C21B16B6C003244DF /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		A99EC1F4D7AAD8B1A013CF56 /* Pods-HouseBuddy.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HouseBuddy.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HouseBuddy/Pods-HouseBuddy.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -85,6 +93,7 @@
 			children = (
 				A945BBA521A7095D00A4E39B /* ViewController.swift */,
 				A945BBA721A7095D00A4E39B /* Main.storyboard */,
+				A95D602021B178AF003244DF /* Authentication */,
 				A945BBB521A70B6D00A4E39B /* SupportingFiles */,
 				A945BBAF21A7095D00A4E39B /* Info.plist */,
 				A945BBB621A71F2C00A4E39B /* GoogleService-Info.plist */,
@@ -100,6 +109,17 @@
 				A945BBAC21A7095D00A4E39B /* LaunchScreen.storyboard */,
 			);
 			path = SupportingFiles;
+			sourceTree = "<group>";
+		};
+		A95D602021B178AF003244DF /* Authentication */ = {
+			isa = PBXGroup;
+			children = (
+				A95D601621B16B1A003244DF /* StartViewController.swift */,
+				A95D601821B16B3C003244DF /* LogInViewController.swift */,
+				A95D601A21B16B58003244DF /* SignUpViewController.swift */,
+				A95D601C21B16B6C003244DF /* HomeViewController.swift */,
+			);
+			path = Authentication;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -199,6 +219,7 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-HouseBuddy/Pods-HouseBuddy-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
@@ -206,6 +227,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
@@ -221,8 +243,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A95D601B21B16B58003244DF /* SignUpViewController.swift in Sources */,
+				A95D601921B16B3C003244DF /* LogInViewController.swift in Sources */,
 				A945BBA621A7095D00A4E39B /* ViewController.swift in Sources */,
 				A945BBA421A7095D00A4E39B /* AppDelegate.swift in Sources */,
+				A95D601721B16B1A003244DF /* StartViewController.swift in Sources */,
+				A95D601D21B16B6C003244DF /* HomeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

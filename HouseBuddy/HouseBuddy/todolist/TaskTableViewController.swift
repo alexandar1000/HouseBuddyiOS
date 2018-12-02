@@ -10,21 +10,21 @@ import UIKit
 
 class TaskTableViewController: UITableViewController {
 
-		//MARK: Properties
-	
-		private var taskList = [Task]()
+	//MARK: Properties
+
+	private var taskList = [Task]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
 			
-				// Load dummy data
-				initDummyData()
+		// Load dummy data
+		initDummyData()
     }
 
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-				return 1;
+		return 1;
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -32,15 +32,15 @@ class TaskTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-				// Table view cells are reused and should be dequeued using a cell identifier.
-				let cellIdentifier = "TaskTableViewCell"
-				guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? TaskTableViewCell else {
-						fatalError("The dequeued cell is not an instance of TaskTableViewCell.")
-				}
+		// Table view cells are reused and should be dequeued using a cell identifier.
+		let cellIdentifier = "TaskTableViewCell"
+		guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? TaskTableViewCell else {
+				fatalError("The dequeued cell is not an instance of TaskTableViewCell.")
+		}
 
-				// Fetches the appropriate task for the data source layout.
-				let task = taskList[indexPath.row]
-				cell.taskNameLabel.text = task.taskName
+		// Fetches the appropriate task for the data source layout.
+		let task = taskList[indexPath.row]
+		cell.taskNameLabel.text = task.taskName
 
         return cell
     }

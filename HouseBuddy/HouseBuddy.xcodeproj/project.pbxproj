@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		4AE4F69611247EF36EF55309 /* Pods_HouseBuddy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8596F7D91C4EAD293992B3B9 /* Pods_HouseBuddy.framework */; };
+		56962CC321B4314700E17880 /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56962CC221B4314700E17880 /* Task.swift */; };
+		56962CC521B43F2000E17880 /* TaskTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56962CC421B43F2000E17880 /* TaskTableViewCell.swift */; };
+		56962CC721B441C000E17880 /* TaskTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56962CC621B441C000E17880 /* TaskTableViewController.swift */; };
 		A945BBA421A7095D00A4E39B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A945BBA321A7095D00A4E39B /* AppDelegate.swift */; };
 		A945BBA621A7095D00A4E39B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A945BBA521A7095D00A4E39B /* ViewController.swift */; };
 		A945BBA921A7095D00A4E39B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A945BBA721A7095D00A4E39B /* Main.storyboard */; };
@@ -21,6 +24,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		56962CC221B4314700E17880 /* Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
+		56962CC421B43F2000E17880 /* TaskTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskTableViewCell.swift; sourceTree = "<group>"; };
+		56962CC621B441C000E17880 /* TaskTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskTableViewController.swift; sourceTree = "<group>"; };
 		6EDE2D62A15B3990DB5AB051 /* Pods-HouseBuddy.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HouseBuddy.release.xcconfig"; path = "Pods/Target Support Files/Pods-HouseBuddy/Pods-HouseBuddy.release.xcconfig"; sourceTree = "<group>"; };
 		8596F7D91C4EAD293992B3B9 /* Pods_HouseBuddy.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HouseBuddy.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A945BBA021A7095D00A4E39B /* HouseBuddy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HouseBuddy.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -58,6 +64,16 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		56962CC121B4312000E17880 /* todolist */ = {
+			isa = PBXGroup;
+			children = (
+				56962CC221B4314700E17880 /* Task.swift */,
+				56962CC421B43F2000E17880 /* TaskTableViewCell.swift */,
+				56962CC621B441C000E17880 /* TaskTableViewController.swift */,
+			);
+			path = todolist;
+			sourceTree = "<group>";
+		};
 		9F430C37F818FD00525CFB57 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -75,9 +91,9 @@
 				9F430C37F818FD00525CFB57 /* Pods */,
 				3B22A24F49F91737498F797A /* Frameworks */,
 			);
-			indentWidth = 2;
+			indentWidth = 4;
 			sourceTree = "<group>";
-			tabWidth = 2;
+			tabWidth = 4;
 			usesTabs = 1;
 		};
 		A945BBA121A7095D00A4E39B /* Products */ = {
@@ -91,6 +107,7 @@
 		A945BBA221A7095D00A4E39B /* HouseBuddy */ = {
 			isa = PBXGroup;
 			children = (
+				56962CC121B4312000E17880 /* todolist */,
 				A945BBA521A7095D00A4E39B /* ViewController.swift */,
 				A945BBA721A7095D00A4E39B /* Main.storyboard */,
 				A95D602021B178AF003244DF /* Authentication */,
@@ -243,11 +260,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				56962CC521B43F2000E17880 /* TaskTableViewCell.swift in Sources */,
 				A95D601B21B16B58003244DF /* SignUpViewController.swift in Sources */,
 				A95D601921B16B3C003244DF /* LogInViewController.swift in Sources */,
 				A945BBA621A7095D00A4E39B /* ViewController.swift in Sources */,
 				A945BBA421A7095D00A4E39B /* AppDelegate.swift in Sources */,
 				A95D601721B16B1A003244DF /* StartViewController.swift in Sources */,
+				56962CC721B441C000E17880 /* TaskTableViewController.swift in Sources */,
+				56962CC321B4314700E17880 /* Task.swift in Sources */,
 				A95D601D21B16B6C003244DF /* HomeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

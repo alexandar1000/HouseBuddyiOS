@@ -298,22 +298,39 @@
             </objects>
             <point key="canvasLocation" x="2510" y="-21"/>
         </scene>
-        <!--Table View Controller-->
+        <!--Task Table View Controller-->
         <scene sceneID="iQx-BH-lTC">
             <objects>
-                <tableViewController id="YpZ-80-Iar" sceneMemberID="viewController">
+                <tableViewController id="YpZ-80-Iar" customClass="TaskTableViewController" customModule="HouseBuddy" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="XkQ-S1-FUw">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="Cn0-vB-Lk6">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="TaskTableViewCell" id="Cn0-vB-Lk6" customClass="TaskTableViewCell" customModule="HouseBuddy" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Cn0-vB-Lk6" id="bgB-hW-6LR">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dkW-X3-NjL">
+                                            <rect key="frame" x="16" y="11.5" width="343" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="dkW-X3-NjL" firstAttribute="centerX" secondItem="bgB-hW-6LR" secondAttribute="centerX" id="TNy-bq-DWZ"/>
+                                        <constraint firstItem="dkW-X3-NjL" firstAttribute="centerY" secondItem="bgB-hW-6LR" secondAttribute="centerY" id="nGc-1I-fFD"/>
+                                        <constraint firstItem="dkW-X3-NjL" firstAttribute="leading" secondItem="bgB-hW-6LR" secondAttribute="leadingMargin" id="sK4-ge-LUl"/>
+                                        <constraint firstItem="dkW-X3-NjL" firstAttribute="centerY" secondItem="bgB-hW-6LR" secondAttribute="centerY" id="veS-zG-Qu4"/>
+                                    </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="taskNameLabel" destination="dkW-X3-NjL" id="v21-E0-R9U"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>

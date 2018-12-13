@@ -22,8 +22,10 @@ class StartViewController: UIViewController, GIDSignInUIDelegate {
 			  if Auth.auth().currentUser != nil {
 			  	self.performSegue(withIdentifier: "alreadyLoggedIn", sender: nil)
 			  }
+			
+			//Defining the Google Login Button
 			GIDSignIn.sharedInstance().uiDelegate = self
-			GIDSignIn.sharedInstance().signIn()
+						
 			// TODO(developer) Configure the sign-in button look/feel
 			// ...
     }

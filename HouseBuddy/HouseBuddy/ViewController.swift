@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController{
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -18,6 +18,7 @@ class ViewController: UIViewController {
 		super.didReceiveMemoryWarning()
 	}
 }
+
 
 // Closes the keyboard when pressed anywhere. If deleting the class, move the following code to another class
 extension UIViewController {

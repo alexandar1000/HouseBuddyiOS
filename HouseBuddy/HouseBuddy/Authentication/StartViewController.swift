@@ -8,18 +8,31 @@
 
 import UIKit
 import FirebaseAuth
+import Firebase
+import GoogleSignIn
+import FBSDKCoreKit
+import FBSDKLoginKit
 
-class StartViewController: UIViewController {
+class StartViewController: UIViewController, GIDSignInUIDelegate{
+	
+	
 
     //MARK: Fields
     @IBOutlet weak var logInBtn: UIButton!
     @IBOutlet weak var signUpBtn: UIButton!
+    @IBOutlet weak var facebookLogInButton: FBSDKLoginButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 			  if Auth.auth().currentUser != nil {
 			  	self.performSegue(withIdentifier: "alreadyLoggedIn", sender: nil)
 			  }
+			
+			//Defining the Google Login Button
+			GIDSignIn.sharedInstance().uiDelegate = self
+					
+			// TODO(developer) Configure the sign-in button look/feel
+			// ...
     }
 	
 		// MARK: - Navigation

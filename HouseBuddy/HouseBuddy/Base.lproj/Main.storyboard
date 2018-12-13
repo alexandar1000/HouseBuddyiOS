@@ -60,7 +60,7 @@
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SyZ-H7-F1e" customClass="GIDSignInButton">
-                                <rect key="frame" x="70" y="484" width="235" height="30"/>
+                                <rect key="frame" x="70" y="480" width="235" height="34"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Crp-bh-Ctg">
@@ -75,10 +75,10 @@
                         <constraints>
                             <constraint firstItem="Crp-bh-Ctg" firstAttribute="top" secondItem="PSI-pZ-9R3" secondAttribute="top" constant="340" id="2zd-tI-aiO"/>
                             <constraint firstItem="SJB-yI-JGL" firstAttribute="top" secondItem="Crp-bh-Ctg" secondAttribute="bottom" constant="8" id="42z-Wq-D8l"/>
+                            <constraint firstItem="PSI-pZ-9R3" firstAttribute="bottom" secondItem="SyZ-H7-F1e" secondAttribute="bottom" constant="153" id="75n-s0-MjD"/>
                             <constraint firstItem="SJB-yI-JGL" firstAttribute="leading" secondItem="PSI-pZ-9R3" secondAttribute="leading" constant="70" id="DSv-g5-j3P"/>
                             <constraint firstItem="PSI-pZ-9R3" firstAttribute="trailing" secondItem="SyZ-H7-F1e" secondAttribute="trailing" constant="70" id="JPe-Jp-Oqp"/>
-                            <constraint firstItem="PSI-pZ-9R3" firstAttribute="bottom" secondItem="SyZ-H7-F1e" secondAttribute="bottom" constant="153" id="OM4-sZ-h0p"/>
-                            <constraint firstItem="SyZ-H7-F1e" firstAttribute="top" secondItem="SJB-yI-JGL" secondAttribute="bottom" constant="12" id="S4v-1j-tyj"/>
+                            <constraint firstItem="SyZ-H7-F1e" firstAttribute="top" secondItem="SJB-yI-JGL" secondAttribute="bottom" constant="8" id="S4v-1j-tyj"/>
                             <constraint firstItem="PSI-pZ-9R3" firstAttribute="trailing" secondItem="Crp-bh-Ctg" secondAttribute="trailing" constant="70" id="WfH-er-IDf"/>
                             <constraint firstItem="SyZ-H7-F1e" firstAttribute="leading" secondItem="PSI-pZ-9R3" secondAttribute="leading" constant="70" id="Xot-oX-vCB"/>
                             <constraint firstItem="Crp-bh-Ctg" firstAttribute="leading" secondItem="PSI-pZ-9R3" secondAttribute="leading" constant="70" id="YjL-QX-xNF"/>
@@ -317,6 +317,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="aKv-is-LY0"/>
+        <segue reference="npG-B3-hep"/>
     </inferredMetricsTieBreakers>
 </document>

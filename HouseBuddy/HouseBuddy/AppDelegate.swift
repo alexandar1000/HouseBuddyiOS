@@ -17,7 +17,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
 	var currentUser: User?
 
 
-	func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+	func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
 		// Override point for customization after application launch.
 		FirebaseApp.configure()
 		
@@ -27,10 +27,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
 	}	
 	
 	@available(iOS 9.0, *)
-	func application(_ application: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any])
+	func application(_ application: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any])
 		-> Bool {
 			return GIDSignIn.sharedInstance().handle(url,
-																							 sourceApplication:options[UIApplicationOpenURLOptionsKey.sourceApplication] as? String,
+																							 sourceApplication:options[UIApplication.OpenURLOptionsKey.sourceApplication] as? String,
 																							 annotation: [:])
 	}
 	
@@ -43,7 +43,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
 	func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error?) {
 		// ...
 		if let error = error {
-			// ...
+			print("Error occurred \(error.localizedDescription)")
 			return
 		}
 		
@@ -53,7 +53,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
 		// ...
 		Auth.auth().signInAndRetrieveData(with: credential) { (authResult, error) in
 			if let error = error {
-				// ...
+				print("Error occurred \(error.localizedDescription)")
 				return
 			}
 			self.currentUser = Auth.auth().currentUser
@@ -95,6 +95,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
+}
 
+// Closes the keyboard when pressed anywhere. If deleting the class, move the following code to another class
+extension UIViewController {
+	func hideKeyboardWhenTappedAround() {
+		let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIViewController.dismissKeyboard))
+		tap.cancelsTouchesInView = false
+		view.addGestureRecognizer(tap)
+	}
+	
+	@objc func dismissKeyboard() {
+		view.endEditing(true)
+	}
 }
 

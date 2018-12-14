@@ -8,13 +8,13 @@
 
 import UIKit
 import FirebaseFirestore
+import FirebaseAuth
 
 class TaskTableViewController: UITableViewController {
 
 	//MARK: Properties
 
 	private var taskList: [Task] = []
-	private var documents: [DocumentSnapshot] = []
 	
 	fileprivate var query: Query? {
 		didSet {
@@ -35,28 +35,53 @@ class TaskTableViewController: UITableViewController {
 		guard let query = query else { return }
 		stopObserving()
 		
-		listener = query.addSnapshotListener { [unowned self] (snapshot, error) in
-			// TODO: add listener to data in order to update taskList
+		listener = query.addSnapshotListener { (querySnapshot, error) in
+			guard let documents = querySnapshot?.documents else {
+				print("Error fetching documents: \(error!)")
+				return
+			}
+			
+			self.taskList.removeAll()
+			for document in documents {
+				self.taskList.append(Task(taskId: document.documentID, taskName: document.get("taskName") as! String,
+										  taskDesc: document.get("taskDesc") as! String, isCompleted: document.get("completed") as! Bool))
+			}
 			self.tableView.reloadData()
 		}
 	}
 	
-	fileprivate func baseQuery() -> Query {
+	fileprivate func baseQuery() {
 		let firestore: Firestore = Firestore.firestore()
-		// TODO: add todolist reference based on household id
-		return firestore.collection("")
-	}
-	
-	override func viewWillAppear(_ animated: Bool) {
-		super.viewWillAppear(animated)
-		observeQuery()
+		
+		// TODO: This part should be moved to future HouseHoldManager class
+		let settings = firestore.settings
+		settings.areTimestampsInSnapshotsEnabled = true
+		firestore.settings = settings
+		
+		// TODO: Retrieving household id should be moved to HouseHoldManager class where it's put in the device storage..
+		if let user = Auth.auth().currentUser {
+			let userId = user.uid
+			let userRef = firestore.collection(FireStoreConstants.CollectionPathUsers).document(userId)
+			
+			userRef.getDocument { (document, error) in
+				if let document = document, document.exists {
+					let householdRef = document.get(FireStoreConstants.FieldHousehold) as! DocumentReference
+					// Set query to the todo list collection reference
+					self.query = householdRef.collection(FireStoreConstants.CollectionPathToDoList)
+					
+					self.observeQuery()
+				} else {
+					print("Document does not exist")
+				}
+			}
+		} else {
+			print("No user signed in.")
+		}
 	}
 
     override func viewDidLoad() {
 		super.viewDidLoad()
-		
-		query = baseQuery()
-		// initDummyData()
+		baseQuery()
     }
 	
 	override func viewWillDisappear(_ animated: Bool) {
@@ -91,14 +116,6 @@ class TaskTableViewController: UITableViewController {
 
         return cell
     }
-	
-	func initDummyData() {
-		taskList.append(Task(taskId: nil, taskName: "Pizza", taskDesc: nil, isCompleted: nil))
-		taskList.append(Task(taskId: nil, taskName: "Test", taskDesc: nil, isCompleted: nil))
-		taskList.append(Task(taskId: nil, taskName: "Test1", taskDesc: nil, isCompleted: nil))
-		taskList.append(Task(taskId: nil, taskName: "Test2", taskDesc: nil, isCompleted: nil))
-		taskList.append(Task(taskId: nil, taskName: "Test3", taskDesc: nil, isCompleted: nil))
-	}
 
     /*
     // Override to support conditional editing of the table view.

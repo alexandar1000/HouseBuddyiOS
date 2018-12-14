@@ -55,8 +55,8 @@ class TaskTableViewController: UITableViewController {
     override func viewDidLoad() {
 		super.viewDidLoad()
 		
-		query = baseQuery()
-		// initDummyData()
+//		query = baseQuery()
+		 initDummyData()
     }
 	
 	override func viewWillDisappear(_ animated: Bool) {

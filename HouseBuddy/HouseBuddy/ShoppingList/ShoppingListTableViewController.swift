@@ -18,7 +18,6 @@ class ShoppingListTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
 
     // MARK: - Table view data source
@@ -50,6 +49,16 @@ class ShoppingListTableViewController: UITableViewController {
 		return cell
     }
 
+	//MARK: Actions
+	
+	@IBAction func unwindToShoppingList(sender: UIStoryboardSegue) {
+		if let sourceViewController = sender.source as? EditShoppingItemViewController, let shopItem = sourceViewController.shoppingItem {
+			// Add a new shoppingItem.
+			let newIndexPath = IndexPath(row: shoppingItems.count, section: 0)
+			shoppingItems.append(shopItem)
+			tableView.insertRows(at: [newIndexPath], with: .automatic)
+		}
+	}
     /*
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {

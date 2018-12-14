@@ -36,19 +36,28 @@
                                     <action selector="logInAction:" destination="l41-zl-Dyu" eventType="touchUpInside" id="WYK-fO-b7r"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="HouseBuddy" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LgC-tV-ypA">
+                                <rect key="frame" x="16" y="185" width="343" height="58"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="48"/>
+                                <color key="textColor" red="0.0" green="0.21708443320000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="LgC-tV-ypA" firstAttribute="top" secondItem="PSI-pZ-9R3" secondAttribute="top" constant="121" id="1zb-6t-1Nv"/>
                             <constraint firstItem="Crp-bh-Ctg" firstAttribute="top" secondItem="PSI-pZ-9R3" secondAttribute="top" constant="340" id="2zd-tI-aiO"/>
                             <constraint firstItem="SJB-yI-JGL" firstAttribute="top" secondItem="Crp-bh-Ctg" secondAttribute="bottom" constant="8" id="42z-Wq-D8l"/>
                             <constraint firstItem="PSI-pZ-9R3" firstAttribute="bottom" secondItem="SyZ-H7-F1e" secondAttribute="bottom" constant="153" id="75n-s0-MjD"/>
                             <constraint firstItem="SJB-yI-JGL" firstAttribute="leading" secondItem="PSI-pZ-9R3" secondAttribute="leading" constant="70" id="DSv-g5-j3P"/>
+                            <constraint firstItem="LgC-tV-ypA" firstAttribute="centerX" secondItem="Crp-bh-Ctg" secondAttribute="centerX" id="IsG-2f-kd2"/>
                             <constraint firstItem="PSI-pZ-9R3" firstAttribute="trailing" secondItem="SyZ-H7-F1e" secondAttribute="trailing" constant="70" id="JPe-Jp-Oqp"/>
                             <constraint firstItem="SyZ-H7-F1e" firstAttribute="top" secondItem="SJB-yI-JGL" secondAttribute="bottom" constant="8" id="S4v-1j-tyj"/>
                             <constraint firstItem="PSI-pZ-9R3" firstAttribute="trailing" secondItem="Crp-bh-Ctg" secondAttribute="trailing" constant="70" id="WfH-er-IDf"/>
                             <constraint firstItem="SyZ-H7-F1e" firstAttribute="leading" secondItem="PSI-pZ-9R3" secondAttribute="leading" constant="70" id="Xot-oX-vCB"/>
                             <constraint firstItem="Crp-bh-Ctg" firstAttribute="leading" secondItem="PSI-pZ-9R3" secondAttribute="leading" constant="70" id="YjL-QX-xNF"/>
                             <constraint firstItem="PSI-pZ-9R3" firstAttribute="trailing" secondItem="SJB-yI-JGL" secondAttribute="trailing" constant="70" id="xbO-Kn-gTE"/>
+                            <constraint firstItem="LgC-tV-ypA" firstAttribute="leading" secondItem="mEG-Z3-nb3" secondAttribute="leadingMargin" id="zfW-BK-gME"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="PSI-pZ-9R3"/>
                     </view>
@@ -65,7 +74,7 @@
             </objects>
             <point key="canvasLocation" x="341.60000000000002" y="-21.139430284857571"/>
         </scene>
-        <!--Login View Controller-->
+        <!--Log In-->
         <scene sceneID="fec-F2-VXb">
             <objects>
                 <viewController id="Her-wD-yvP" customClass="LoginViewController" customModule="HouseBuddy" customModuleProvider="target" sceneMemberID="viewController">
@@ -123,6 +132,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="yYc-To-CY6"/>
                     </view>
+                    <navigationItem key="navigationItem" title="Log In" id="vEL-iT-RhD"/>
                     <connections>
                         <outlet property="emailTF" destination="Gs8-hJ-boF" id="vzD-5p-hc9"/>
                         <outlet property="logInBtn" destination="9dy-L6-MQE" id="VsI-sV-suP"/>
@@ -134,7 +144,7 @@
             </objects>
             <point key="canvasLocation" x="1412" y="-545"/>
         </scene>
-        <!--Sign Up View Controller-->
+        <!--Sign Up-->
         <scene sceneID="8bF-Ww-P07">
             <objects>
                 <viewController id="Kxn-H9-ofk" customClass="SignUpViewController" customModule="HouseBuddy" customModuleProvider="target" sceneMemberID="viewController">
@@ -209,6 +219,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="uQ4-7h-YkX"/>
                     </view>
+                    <navigationItem key="navigationItem" title="Sign Up" id="zbo-Y0-lUS"/>
                     <connections>
                         <outlet property="emailTF" destination="gKy-yB-1eB" id="pYK-Lv-kwo"/>
                         <outlet property="passwordConfirmTF" destination="VHf-Ub-eWf" id="Egs-nB-4LD"/>
@@ -275,6 +286,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="gpD-FF-OIp"/>
                     </view>
+                    <navigationItem key="navigationItem" id="oT1-uZ-32Q"/>
                     <connections>
                         <outlet property="signOutBtn" destination="jL5-O7-ICF" id="5M5-cZ-ltg"/>
                         <outlet property="userNameLbl" destination="hdK-ci-tbc" id="oc0-Tn-fCV"/>
@@ -284,7 +296,7 @@
             </objects>
             <point key="canvasLocation" x="2509.5999999999999" y="-21.139430284857571"/>
         </scene>
-        <!--Shopping List Table View Controller-->
+        <!--Shopping List-->
         <scene sceneID="Ah9-TH-p4J">
             <objects>
                 <tableViewController id="e03-p0-S7j" customClass="ShoppingListTableViewController" customModule="HouseBuddy" customModuleProvider="target" sceneMemberID="viewController">
@@ -334,12 +346,47 @@
                             <outlet property="delegate" destination="e03-p0-S7j" id="PId-zl-Gd0"/>
                         </connections>
                     </tableView>
+                    <navigationItem key="navigationItem" title="Shopping List" id="O1A-9g-v50">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="fEc-nN-5NO">
+                            <connections>
+                                <segue destination="4f8-lW-wxa" kind="show" id="Ayc-Np-4w4"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zbE-Ne-Vik" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3576.8000000000002" y="550.97451274362822"/>
         </scene>
-        <!--Task Table View Controller-->
+        <!--Title-->
+        <scene sceneID="TF6-Zh-uj4">
+            <objects>
+                <viewController id="4f8-lW-wxa" customClass="EditShoppingItemViewController" customModule="HouseBuddy" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="EdL-Po-Awn">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="Bvg-mD-7zB"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Title" id="yP7-pB-GBp">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="ng8-4a-ArY"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="fe7-k4-3nX">
+                            <connections>
+                                <segue destination="0O6-zc-dyY" kind="unwind" unwindAction="unwindToShoppingListWithSender:" id="y3e-ts-bC3"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="cancelButton" destination="ng8-4a-ArY" id="f6F-Pm-tHI"/>
+                        <outlet property="doneButton" destination="fe7-k4-3nX" id="s3Q-f5-sLT"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xZx-O1-2Hx" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="0O6-zc-dyY" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="4775" y="551"/>
+        </scene>
+        <!--To Do List-->
         <scene sceneID="iQx-BH-lTC">
             <objects>
                 <tableViewController id="YpZ-80-Iar" customClass="TaskTableViewController" customModule="HouseBuddy" customModuleProvider="target" sceneMemberID="viewController">
@@ -379,6 +426,7 @@
                             <outlet property="delegate" destination="YpZ-80-Iar" id="arW-dQ-LAN"/>
                         </connections>
                     </tableView>
+                    <navigationItem key="navigationItem" title="To Do List" id="vII-0D-XWO"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mUx-rN-9JW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -404,6 +452,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="npG-B3-hep"/>
+        <segue reference="aKv-is-LY0"/>
     </inferredMetricsTieBreakers>
 </document>

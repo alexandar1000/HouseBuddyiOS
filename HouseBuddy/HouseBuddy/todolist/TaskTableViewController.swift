@@ -7,19 +7,66 @@
 //
 
 import UIKit
+import FirebaseFirestore
 
 class TaskTableViewController: UITableViewController {
 
 	//MARK: Properties
 
-	private var taskList = [Task]()
+	private var taskList: [Task] = []
+	private var documents: [DocumentSnapshot] = []
+	
+	fileprivate var query: Query? {
+		didSet {
+			if let listener = listener {
+				listener.remove()
+				observeQuery()
+			}
+		}
+	}
+	
+	private var listener: ListenerRegistration?
+	
+	fileprivate func stopObserving() {
+		listener?.remove()
+	}
+	
+	fileprivate func observeQuery() {
+		guard let query = query else { return }
+		stopObserving()
+		
+		listener = query.addSnapshotListener { [unowned self] (snapshot, error) in
+			// TODO: add listener to data in order to update taskList
+			self.tableView.reloadData()
+		}
+	}
+	
+	fileprivate func baseQuery() -> Query {
+		let firestore: Firestore = Firestore.firestore()
+		// TODO: add todolist reference based on household id
+		return firestore.collection("")
+	}
+	
+	override func viewWillAppear(_ animated: Bool) {
+		super.viewWillAppear(animated)
+		observeQuery()
+	}
 
     override func viewDidLoad() {
-        super.viewDidLoad()
-			
-		// Load dummy data
-		initDummyData()
+		super.viewDidLoad()
+		
+		query = baseQuery()
+		// initDummyData()
     }
+	
+	override func viewWillDisappear(_ animated: Bool) {
+		super.viewWillDisappear(animated)
+		stopObserving()
+	}
+	
+	deinit {
+		listener?.remove()
+	}
 
     // MARK: - Table view data source
 

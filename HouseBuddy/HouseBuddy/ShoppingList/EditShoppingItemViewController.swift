@@ -31,6 +31,10 @@ class EditShoppingItemViewController: UIViewController, UITextFieldDelegate {
 		}
 	}
 	
+	@IBAction func cancelEdditingItem(_ sender: Any) {
+		navigationController?.popViewController(animated: true)
+	}
+	
 	
     // MARK: - Navigation
 	

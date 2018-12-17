@@ -328,6 +328,7 @@
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="nameLabel" destination="0bN-OL-fjr" id="aR9-UW-faq"/>
+                                    <segue destination="4f8-lW-wxa" kind="show" identifier="editShoppingItemSegue" id="M0p-dK-2BB"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -339,7 +340,7 @@
                     <navigationItem key="navigationItem" title="Shopping List" id="O1A-9g-v50">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="fEc-nN-5NO">
                             <connections>
-                                <segue destination="4f8-lW-wxa" kind="show" id="Ayc-Np-4w4"/>
+                                <segue destination="4f8-lW-wxa" kind="show" identifier="addNewShoppingItemSegue" id="Ayc-Np-4w4"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -383,7 +384,11 @@
                         <viewLayoutGuide key="safeArea" id="Bvg-mD-7zB"/>
                     </view>
                     <navigationItem key="navigationItem" title="New Shopping Item" id="yP7-pB-GBp">
-                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="ng8-4a-ArY"/>
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="ae7-YP-AUn">
+                            <connections>
+                                <action selector="cancelEdditingItem:" destination="4f8-lW-wxa" id="gt1-3E-CNa"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="done" id="fe7-k4-3nX">
                             <connections>
                                 <action selector="doneButtonTapped:" destination="4f8-lW-wxa" id="fAl-qo-Fi1"/>
@@ -391,7 +396,6 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="cancelButton" destination="ng8-4a-ArY" id="f6F-Pm-tHI"/>
                         <outlet property="doneButton" destination="fe7-k4-3nX" id="s3Q-f5-sLT"/>
                         <outlet property="itemName" destination="jVW-vN-ceL" id="n7I-Bm-wl8"/>
                         <segue destination="0O6-zc-dyY" kind="unwind" identifier="unwindToShoppingListSegue" unwindAction="unwindToShoppingListWithSender:" id="qS1-u8-NXI"/>
@@ -468,6 +472,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
+        <segue reference="M0p-dK-2BB"/>
         <segue reference="aKv-is-LY0"/>
     </inferredMetricsTieBreakers>
 </document>

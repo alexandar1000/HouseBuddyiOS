@@ -12,10 +12,12 @@ import FirebaseAuth
 
 class TaskTableViewController: UITableViewController {
 
-	//MARK: Properties
+    //MARK: Properties
 
 	private var taskList = [Task]()
+	var clickedTask = Task()
 	
+	// Reference to the to_do_list collection
 	fileprivate var query: Query? {
 		didSet {
 			// Query is set, we are ready to attach a listener to it
@@ -27,6 +29,8 @@ class TaskTableViewController: UITableViewController {
 	let dispatchQueue = DispatchQueue(label: "Retrieving Tasks from FireStore")
 	
 	private var listener: ListenerRegistration?
+	
+	// MARK: Private methods
 	
 	fileprivate func stopObserving() {
 		listener?.remove()
@@ -49,7 +53,7 @@ class TaskTableViewController: UITableViewController {
 			self.taskList.removeAll()
 			for document in documents {
 				self.taskList.append(Task(taskId: document.documentID, taskName: document.get("taskName") as! String,
-										  taskDesc: document.get("taskDesc") as? String, isCompleted: document.get("completed") as? Bool))
+										  taskDesc: document.get("taskDesc") as? String, isCompleted: document.get("completed") as! Bool))
 			}
 			
 			// taskList is initialized, stop loading animation and reload the table's data
@@ -86,6 +90,27 @@ class TaskTableViewController: UITableViewController {
 		}
 	}
 	
+	fileprivate func addTask(task: Task) {
+		// Add a new document with a generated id.
+		var ref: DocumentReference? = nil
+		if let todoListRef = query as? CollectionReference {
+			ref = todoListRef.addDocument(data: [
+				"taskName": task.taskName,
+				"taskDesc": task.taskDesc ?? "",
+				"completed": task.isCompleted
+			]) { err in
+				if let err = err {
+					print("Error adding document: \(err)")
+				} else {
+					// Set auto generated FireStore id as task id
+					task.taskId = ref!.documentID
+				}
+			}
+		}
+	}
+	
+	// MARK: LifeCycle methods
+	
 	override func loadView() {
 		super.loadView()
 		
@@ -110,12 +135,11 @@ class TaskTableViewController: UITableViewController {
 	
 	override func viewWillDisappear(_ animated: Bool) {
 		super.viewWillDisappear(animated)
-		// Detach listener when it's no longer needed
-		stopObserving()
 	}
 	
 	deinit {
-		listener?.remove()
+		// Detach listener when it's no longer needed
+		stopObserving()
 	}
 
     // MARK: - Table view data source
@@ -141,5 +165,36 @@ class TaskTableViewController: UITableViewController {
 
         return cell
     }
+	
+	override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+		clickedTask = taskList[indexPath.row]
+		
+		// Segue to the show task view controller
+		performSegue(withIdentifier: "showTask", sender: self)
+	}
+	
+	// MARK: Actions
+	
+	@IBAction func unwindToMealList(sender: UIStoryboardSegue) {
+		if let sourceViewController = sender.source as? AddTaskViewController, let task = sourceViewController.task {
+			
+			// Add a new task
+			addTask(task: task)
+			/*let newIndexPath = IndexPath(row: taskList.count, section: 0)
+			taskList.append(task)
+			tableView.insertRows(at: [newIndexPath], with: .automatic)*/
+		}
+	}
+	
+	// MARK: Navigation
+	
+	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+		if segue.identifier == "showTask" {
+			if let showTaskViewController = segue.destination as? ShowTaskViewController {
+				// Set the task in the show task view controller
+				showTaskViewController.task = clickedTask
+			}
+		}
+	}
 
 }

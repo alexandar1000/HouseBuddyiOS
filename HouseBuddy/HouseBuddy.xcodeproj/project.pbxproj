@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		4AE4F69611247EF36EF55309 /* Pods_HouseBuddy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8596F7D91C4EAD293992B3B9 /* Pods_HouseBuddy.framework */; };
+		5692DACD21C7E168005A1A9E /* ShowTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5692DACC21C7E168005A1A9E /* ShowTaskViewController.swift */; };
+		5692DACF21C7EF8C005A1A9E /* AddTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5692DACE21C7EF8C005A1A9E /* AddTaskViewController.swift */; };
 		56962CC321B4314700E17880 /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56962CC221B4314700E17880 /* Task.swift */; };
 		56962CC521B43F2000E17880 /* TaskTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56962CC421B43F2000E17880 /* TaskTableViewCell.swift */; };
 		56962CC721B441C000E17880 /* TaskTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56962CC621B441C000E17880 /* TaskTableViewController.swift */; };
@@ -25,6 +27,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5692DACC21C7E168005A1A9E /* ShowTaskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowTaskViewController.swift; sourceTree = "<group>"; };
+		5692DACE21C7EF8C005A1A9E /* AddTaskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTaskViewController.swift; sourceTree = "<group>"; };
 		56962CC221B4314700E17880 /* Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
 		56962CC421B43F2000E17880 /* TaskTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskTableViewCell.swift; sourceTree = "<group>"; };
 		56962CC621B441C000E17880 /* TaskTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskTableViewController.swift; sourceTree = "<group>"; };
@@ -72,6 +76,8 @@
 				56962CC221B4314700E17880 /* Task.swift */,
 				56962CC421B43F2000E17880 /* TaskTableViewCell.swift */,
 				56962CC621B441C000E17880 /* TaskTableViewController.swift */,
+				5692DACE21C7EF8C005A1A9E /* AddTaskViewController.swift */,
+				5692DACC21C7E168005A1A9E /* ShowTaskViewController.swift */,
 			);
 			path = Todolist;
 			sourceTree = "<group>";
@@ -309,6 +315,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				56962CC521B43F2000E17880 /* TaskTableViewCell.swift in Sources */,
+				5692DACF21C7EF8C005A1A9E /* AddTaskViewController.swift in Sources */,
 				A95D601B21B16B58003244DF /* SignUpViewController.swift in Sources */,
 				A95D601921B16B3C003244DF /* LogInViewController.swift in Sources */,
 				A945BBA621A7095D00A4E39B /* ViewController.swift in Sources */,
@@ -316,6 +323,7 @@
 				A95D601721B16B1A003244DF /* StartViewController.swift in Sources */,
 				56962CC721B441C000E17880 /* TaskTableViewController.swift in Sources */,
 				56F1426121C3F453001E909A /* FireStoreConstants.swift in Sources */,
+				5692DACD21C7E168005A1A9E /* ShowTaskViewController.swift in Sources */,
 				56962CC321B4314700E17880 /* Task.swift in Sources */,
 				A95D601D21B16B6C003244DF /* HomeViewController.swift in Sources */,
 			);

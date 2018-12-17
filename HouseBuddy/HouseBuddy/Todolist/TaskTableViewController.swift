@@ -14,16 +14,17 @@ class TaskTableViewController: UITableViewController {
 
 	//MARK: Properties
 
-	private var taskList: [Task] = []
+	private var taskList = [Task]()
 	
 	fileprivate var query: Query? {
 		didSet {
-			if let listener = listener {
-				listener.remove()
-				observeQuery()
-			}
+			// Query is set, we are ready to attach a listener to it
+			observeQuery()
 		}
 	}
+	
+	var activityIndicatorView: UIActivityIndicatorView!
+	let dispatchQueue = DispatchQueue(label: "Retrieving Tasks from FireStore")
 	
 	private var listener: ListenerRegistration?
 	
@@ -32,7 +33,10 @@ class TaskTableViewController: UITableViewController {
 	}
 	
 	fileprivate func observeQuery() {
+		// Make sure that query is actually set (not nil)
 		guard let query = query else { return }
+		
+		// Detach listener before attaching a new one
 		stopObserving()
 		
 		listener = query.addSnapshotListener { (querySnapshot, error) in
@@ -41,11 +45,16 @@ class TaskTableViewController: UITableViewController {
 				return
 			}
 			
+			// Clear taskList and set it to it's new state
 			self.taskList.removeAll()
 			for document in documents {
 				self.taskList.append(Task(taskId: document.documentID, taskName: document.get("taskName") as! String,
-										  taskDesc: document.get("taskDesc") as! String, isCompleted: document.get("completed") as! Bool))
+										  taskDesc: document.get("taskDesc") as? String, isCompleted: document.get("completed") as? Bool))
 			}
+			
+			// taskList is initialized, stop loading animation and reload the table's data
+			self.activityIndicatorView.stopAnimating()
+			self.tableView.separatorStyle = .singleLine
 			self.tableView.reloadData()
 		}
 	}
@@ -68,8 +77,6 @@ class TaskTableViewController: UITableViewController {
 					let householdRef = document.get(FireStoreConstants.FieldHousehold) as! DocumentReference
 					// Set query to the todo list collection reference
 					self.query = householdRef.collection(FireStoreConstants.CollectionPathToDoList)
-					
-					self.observeQuery()
 				} else {
 					print("Document does not exist")
 				}
@@ -78,14 +85,32 @@ class TaskTableViewController: UITableViewController {
 			print("No user signed in.")
 		}
 	}
-
-    override func viewDidLoad() {
-		super.viewDidLoad()
-		baseQuery()
-    }
+	
+	override func loadView() {
+		super.loadView()
+		
+		// Initialize the table's background view to the loading indicator
+		activityIndicatorView = UIActivityIndicatorView(activityIndicatorStyle: .gray)
+		tableView.backgroundView = activityIndicatorView
+	}
+	
+	override func viewWillAppear(_ animated: Bool) {
+		super.viewWillAppear(animated)
+		
+		// Start loading animation and call baseQuery on a seperate thread
+		if (taskList.isEmpty) {
+			activityIndicatorView.startAnimating()
+			tableView.separatorStyle = .none
+			
+			dispatchQueue.async {
+				self.baseQuery()
+			}
+		}
+	}
 	
 	override func viewWillDisappear(_ animated: Bool) {
 		super.viewWillDisappear(animated)
+		// Detach listener when it's no longer needed
 		stopObserving()
 	}
 	
@@ -107,7 +132,7 @@ class TaskTableViewController: UITableViewController {
 		// Table view cells are reused and should be dequeued using a cell identifier.
 		let cellIdentifier = "TaskTableViewCell"
 		guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? TaskTableViewCell else {
-				fatalError("The dequeued cell is not an instance of TaskTableViewCell.")
+			fatalError("The dequeued cell is not an instance of TaskTableViewCell.")
 		}
 
 		// Fetches the appropriate task for the data source layout.
@@ -116,50 +141,5 @@ class TaskTableViewController: UITableViewController {
 
         return cell
     }
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

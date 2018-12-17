@@ -10,9 +10,9 @@ import UIKit
 
 class ShoppingListTableViewController: UITableViewController {
 	
-	var shoppingItems: Array<ShoppingItem> = [ShoppingItem(name: "Food", price: 10.2, bought: true),
-											  ShoppingItem(name: "Drinks", price: 3.5, bought: false),
-											  ShoppingItem(name: "Cake", price: 7.9, bought: false)]
+	var shoppingItems: Array<ShoppingItem> = [ShoppingItem(name: "Food"),
+											  ShoppingItem(name: "Drinks"),
+											  ShoppingItem(name: "Cake")]
 
 	
     override func viewDidLoad() {
@@ -41,10 +41,8 @@ class ShoppingListTableViewController: UITableViewController {
 		}
 		
 		let name = shoppingItems[indexPath.row].name
-		let price = shoppingItems[indexPath.row].price
 		
 		cell.nameLabel.text = name
-		cell.priceLabel.text = String(format:"%.2f", price)
 		
 		return cell
     }

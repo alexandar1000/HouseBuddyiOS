@@ -10,17 +10,18 @@ import UIKit
 
 class EditShoppingItemViewController: UIViewController, UITextFieldDelegate {
 
-	@IBOutlet weak var cancelButton: UIBarButtonItem!
+	// MARK - Outlets
 	@IBOutlet weak var doneButton: UIBarButtonItem!
     @IBOutlet weak var itemName: UITextField!
 	
+	// MARK: - Field Setup
 	var shoppingItem:ShoppingItem? = nil
 	
+	// MARK: - View Handling
 	override func viewDidLoad() {
         super.viewDidLoad()
 
 		self.itemName.delegate = self
-        // Do any additional setup after loading the view
 		
 		// Set up the ShoppingItem if editing an existing ShoppingItem
 		if let shoppingItem = shoppingItem {
@@ -28,7 +29,8 @@ class EditShoppingItemViewController: UIViewController, UITextFieldDelegate {
 			itemName.text = shoppingItem.name
 		}
     }
-    
+	
+	//MARK: - Actions
 	@IBAction func doneButtonTapped(_ sender: Any) {
 		if let name = itemName.text, !name.isEmpty {
 			performSegue(withIdentifier: "unwindToShoppingListSegue", sender: self)
@@ -48,7 +50,7 @@ class EditShoppingItemViewController: UIViewController, UITextFieldDelegate {
 	
     // MARK: - Navigation
 	
-	// In a storyboard-based application, you will often want to do a little preparation before navigation
+	// Prepare for segue
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         super.prepare(for: segue, sender: sender)
 		
@@ -61,7 +63,7 @@ class EditShoppingItemViewController: UIViewController, UITextFieldDelegate {
 		shoppingItem = ShoppingItem(name: name)
     }
 	
-	
+	// MARK: - Input Handling
 	func showErrorEmptyField() {
 		let alert = UIAlertController(title: "Error", message: "Please Enter Item Name", preferredStyle: .alert)
 		

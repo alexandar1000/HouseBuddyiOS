@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import os.log
 
 class ShoppingListTableViewController: UITableViewController {
 	
@@ -17,7 +18,6 @@ class ShoppingListTableViewController: UITableViewController {
 	
     override func viewDidLoad() {
         super.viewDidLoad()
-
     }
 
     // MARK: - Table view data source
@@ -51,10 +51,17 @@ class ShoppingListTableViewController: UITableViewController {
 	
 	@IBAction func unwindToShoppingList(sender: UIStoryboardSegue) {
 		if let sourceViewController = sender.source as? EditShoppingItemViewController, let shopItem = sourceViewController.shoppingItem {
-			// Add a new shoppingItem.
-			let newIndexPath = IndexPath(row: shoppingItems.count, section: 0)
-			shoppingItems.append(shopItem)
-			tableView.insertRows(at: [newIndexPath], with: .automatic)
+			
+			if let selectedIndexPath = tableView.indexPathForSelectedRow {
+				// Update an existing meal.
+				shoppingItems[selectedIndexPath.row] = shopItem
+				tableView.reloadRows(at: [selectedIndexPath], with: .none)
+			} else {
+				// Add a new shoppingItem.
+				let newIndexPath = IndexPath(row: shoppingItems.count, section: 0)
+				shoppingItems.append(shopItem)
+				tableView.insertRows(at: [newIndexPath], with: .automatic)
+			}
 		}
 	}
     /*
@@ -65,17 +72,16 @@ class ShoppingListTableViewController: UITableViewController {
     }
     */
 
-    /*
     // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+	override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             // Delete the row from the data source
+			shoppingItems.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
         } else if editingStyle == .insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
         }    
     }
-    */
 
     /*
     // Override to support rearranging the table view.
@@ -91,15 +97,48 @@ class ShoppingListTableViewController: UITableViewController {
         return true
     }
     */
+	
+	//MARK: Navigation Bar
+	
+	override func viewWillAppear(_ animated: Bool) {
+		self.navigationController?.setNavigationBarHidden(false, animated: animated)
+		super.viewWillAppear(animated)
+	}
+	
+	override func viewWillDisappear(_ animated: Bool) {
+		self.navigationController?.setNavigationBarHidden(false, animated: animated)
+		super.viewWillDisappear(animated)
+	}
 
-    /*
+	
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
+		super.prepare(for: segue, sender: sender)
+		
+		switch (segue.identifier ?? "") {
+		case "addNewShoppingItemSegue":
+			os_log("Adding a new shopping item.", log: OSLog.default, type: .debug)
+		case "editShoppingItemSegue":
+			guard let editShoppingItemViewController = segue.destination as? EditShoppingItemViewController else {
+				fatalError("Unexpected destination: \(segue.destination)")
+			}
+			
+			guard let selectedShoppingItemCell = sender as? ShoppingListTableViewCell else {
+				fatalError("Unexpected sender: \(sender ?? "Undeclared sender")")
+			}
+			
+			guard let indexPath = tableView.indexPath(for: selectedShoppingItemCell) else {
+				fatalError("The selected cell is not being displayed by the table")
+			}
+			
+			let selectedMeal = shoppingItems[indexPath.row]
+			editShoppingItemViewController.shoppingItem = selectedMeal
+		
+		default:
+			fatalError("Unexpected Segue Identifier; \(segue.identifier ?? "No segue defined")")
+		}
+	}
 
 }

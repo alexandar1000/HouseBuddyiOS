@@ -20,7 +20,13 @@ class EditShoppingItemViewController: UIViewController, UITextFieldDelegate {
         super.viewDidLoad()
 
 		self.itemName.delegate = self
-        // Do any additional setup after loading the view.
+        // Do any additional setup after loading the view
+		
+		// Set up the ShoppingItem if editing an existing ShoppingItem
+		if let shoppingItem = shoppingItem {
+			navigationItem.title = "Edit Shopping Item"
+			itemName.text = shoppingItem.name
+		}
     }
     
 	@IBAction func doneButtonTapped(_ sender: Any) {
@@ -32,7 +38,11 @@ class EditShoppingItemViewController: UIViewController, UITextFieldDelegate {
 	}
 	
 	@IBAction func cancelEdditingItem(_ sender: Any) {
-		navigationController?.popViewController(animated: true)
+		if let navigationController = navigationController {
+			navigationController.popViewController(animated: true)
+		} else {
+			fatalError("The EditShoppingItemViewController is not inside a navigation controller.")
+		}
 	}
 	
 	

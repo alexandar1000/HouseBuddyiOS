@@ -356,7 +356,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zbE-Ne-Vik" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3576.8000000000002" y="550.97451274362822"/>
+            <point key="canvasLocation" x="2510" y="752"/>
         </scene>
         <!--Title-->
         <scene sceneID="TF6-Zh-uj4">
@@ -384,11 +384,8 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xZx-O1-2Hx" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="0O6-zc-dyY" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="4775" y="551"/>
+            <point key="canvasLocation" x="2510" y="1549"/>
         </scene>
-<<<<<<< HEAD
-        <!--To Do List-->
-=======
         <!--Add Task-->
         <scene sceneID="ona-Ut-o45">
             <objects>
@@ -441,7 +438,6 @@
             <point key="canvasLocation" x="3799" y="752"/>
         </scene>
         <!--Todo List-->
->>>>>>> todolist
         <scene sceneID="iQx-BH-lTC">
             <objects>
                 <tableViewController id="YpZ-80-Iar" customClass="TaskTableViewController" customModule="HouseBuddy" customModuleProvider="target" sceneMemberID="viewController">
@@ -481,9 +477,6 @@
                             <outlet property="delegate" destination="YpZ-80-Iar" id="arW-dQ-LAN"/>
                         </connections>
                     </tableView>
-<<<<<<< HEAD
-                    <navigationItem key="navigationItem" title="To Do List" id="vII-0D-XWO"/>
-=======
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="Todo List" id="g5O-e7-WTc">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="O24-j6-iYJ">
@@ -497,11 +490,10 @@
                     <connections>
                         <segue destination="Wy4-JA-hbn" kind="show" identifier="showTask" id="Qwi-N4-brw"/>
                     </connections>
->>>>>>> todolist
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mUx-rN-9JW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3578" y="-546"/>
+            <point key="canvasLocation" x="3302" y="-21"/>
         </scene>
         <!--Task Name-->
         <scene sceneID="47P-7U-Vfe">
@@ -563,11 +555,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-<<<<<<< HEAD
-        <segue reference="aKv-is-LY0"/>
-=======
-        <segue reference="19x-lM-fuA"/>
+        <segue reference="lwq-pr-HIf"/>
         <segue reference="l35-ge-nbf"/>
->>>>>>> todolist
     </inferredMetricsTieBreakers>
 </document>

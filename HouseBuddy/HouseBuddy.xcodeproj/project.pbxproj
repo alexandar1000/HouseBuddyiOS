@@ -8,13 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		4AE4F69611247EF36EF55309 /* Pods_HouseBuddy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8596F7D91C4EAD293992B3B9 /* Pods_HouseBuddy.framework */; };
+		5684910F21E65BC4005C80E2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5684910E21E65BC4005C80E2 /* AppDelegate.swift */; };
 		5692DACD21C7E168005A1A9E /* ShowTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5692DACC21C7E168005A1A9E /* ShowTaskViewController.swift */; };
 		5692DACF21C7EF8C005A1A9E /* AddTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5692DACE21C7EF8C005A1A9E /* AddTaskViewController.swift */; };
 		56962CC321B4314700E17880 /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56962CC221B4314700E17880 /* Task.swift */; };
 		56962CC521B43F2000E17880 /* TaskTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56962CC421B43F2000E17880 /* TaskTableViewCell.swift */; };
 		56962CC721B441C000E17880 /* TaskTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56962CC621B441C000E17880 /* TaskTableViewController.swift */; };
 		56F1426121C3F453001E909A /* FireStoreConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56F1426021C3F453001E909A /* FireStoreConstants.swift */; };
-		A945BBA421A7095D00A4E39B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A945BBA321A7095D00A4E39B /* AppDelegate.swift */; };
 		A945BBA921A7095D00A4E39B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A945BBA721A7095D00A4E39B /* Main.storyboard */; };
 		A945BBAB21A7095D00A4E39B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A945BBAA21A7095D00A4E39B /* Assets.xcassets */; };
 		A945BBAE21A7095D00A4E39B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A945BBAC21A7095D00A4E39B /* LaunchScreen.storyboard */; };
@@ -30,6 +30,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5684910E21E65BC4005C80E2 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5692DACC21C7E168005A1A9E /* ShowTaskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowTaskViewController.swift; sourceTree = "<group>"; };
 		5692DACE21C7EF8C005A1A9E /* AddTaskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTaskViewController.swift; sourceTree = "<group>"; };
 		56962CC221B4314700E17880 /* Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
@@ -39,7 +40,6 @@
 		6EDE2D62A15B3990DB5AB051 /* Pods-HouseBuddy.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HouseBuddy.release.xcconfig"; path = "Pods/Target Support Files/Pods-HouseBuddy/Pods-HouseBuddy.release.xcconfig"; sourceTree = "<group>"; };
 		8596F7D91C4EAD293992B3B9 /* Pods_HouseBuddy.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HouseBuddy.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A945BBA021A7095D00A4E39B /* HouseBuddy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HouseBuddy.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		A945BBA321A7095D00A4E39B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A945BBA821A7095D00A4E39B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		A945BBAA21A7095D00A4E39B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A945BBAD21A7095D00A4E39B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -74,6 +74,13 @@
 				8596F7D91C4EAD293992B3B9 /* Pods_HouseBuddy.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		5684910D21E658FA005C80E2 /* Recovered References */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "Recovered References";
 			sourceTree = "<group>";
 		};
 		56962CC121B4312000E17880 /* Todolist */ = {
@@ -112,6 +119,7 @@
 				A945BBA121A7095D00A4E39B /* Products */,
 				9F430C37F818FD00525CFB57 /* Pods */,
 				3B22A24F49F91737498F797A /* Frameworks */,
+				5684910D21E658FA005C80E2 /* Recovered References */,
 			);
 			indentWidth = 4;
 			sourceTree = "<group>";
@@ -129,12 +137,11 @@
 		A945BBA221A7095D00A4E39B /* HouseBuddy */ = {
 			isa = PBXGroup;
 			children = (
+				5684910E21E65BC4005C80E2 /* AppDelegate.swift */,
 				56F1425F21C3ECC4001E909A /* HouseholdManager */,
-				56962CC121B4312000E17880 /* Todolist */,
-				A945BBA521A7095D00A4E39B /* ViewController.swift */,
 				A945BBA721A7095D00A4E39B /* Main.storyboard */,
 				A95D602021B178AF003244DF /* Authentication */,
-				56962CC121B4312000E17880 /* ToDoList */,
+				56962CC121B4312000E17880 /* Todolist */,
 				A949AD7321C403C0009EC68F /* ShoppingList */,
 				A945BBB521A70B6D00A4E39B /* SupportingFiles */,
 				A945BBAF21A7095D00A4E39B /* Info.plist */,
@@ -336,10 +343,10 @@
 				56962CC521B43F2000E17880 /* TaskTableViewCell.swift in Sources */,
 				A949AD7921C40FCA009EC68F /* ShoppingListTableViewCell.swift in Sources */,
 				5692DACF21C7EF8C005A1A9E /* AddTaskViewController.swift in Sources */,
+				5684910F21E65BC4005C80E2 /* AppDelegate.swift in Sources */,
 				A95D601B21B16B58003244DF /* SignUpViewController.swift in Sources */,
 				A949AD7B21C42CEF009EC68F /* EditShoppingItemViewController.swift in Sources */,
 				A95D601921B16B3C003244DF /* LogInViewController.swift in Sources */,
-				A945BBA421A7095D00A4E39B /* AppDelegate.swift in Sources */,
 				A95D601721B16B1A003244DF /* StartViewController.swift in Sources */,
 				A949AD7721C40A68009EC68F /* ShoppingListTableViewController.swift in Sources */,
 				56962CC721B441C000E17880 /* TaskTableViewController.swift in Sources */,

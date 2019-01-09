@@ -12,11 +12,14 @@
 		56962CC521B43F2000E17880 /* TaskTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56962CC421B43F2000E17880 /* TaskTableViewCell.swift */; };
 		56962CC721B441C000E17880 /* TaskTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56962CC621B441C000E17880 /* TaskTableViewController.swift */; };
 		A945BBA421A7095D00A4E39B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A945BBA321A7095D00A4E39B /* AppDelegate.swift */; };
-		A945BBA621A7095D00A4E39B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A945BBA521A7095D00A4E39B /* ViewController.swift */; };
 		A945BBA921A7095D00A4E39B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A945BBA721A7095D00A4E39B /* Main.storyboard */; };
 		A945BBAB21A7095D00A4E39B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A945BBAA21A7095D00A4E39B /* Assets.xcassets */; };
 		A945BBAE21A7095D00A4E39B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A945BBAC21A7095D00A4E39B /* LaunchScreen.storyboard */; };
 		A945BBB721A71F2C00A4E39B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A945BBB621A71F2C00A4E39B /* GoogleService-Info.plist */; };
+		A949AD7521C403F2009EC68F /* ShoppingItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = A949AD7421C403F2009EC68F /* ShoppingItem.swift */; };
+		A949AD7721C40A68009EC68F /* ShoppingListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A949AD7621C40A68009EC68F /* ShoppingListTableViewController.swift */; };
+		A949AD7921C40FCA009EC68F /* ShoppingListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A949AD7821C40FCA009EC68F /* ShoppingListTableViewCell.swift */; };
+		A949AD7B21C42CEF009EC68F /* EditShoppingItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A949AD7A21C42CEF009EC68F /* EditShoppingItemViewController.swift */; };
 		A95D601721B16B1A003244DF /* StartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A95D601621B16B1A003244DF /* StartViewController.swift */; };
 		A95D601921B16B3C003244DF /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A95D601821B16B3C003244DF /* LogInViewController.swift */; };
 		A95D601B21B16B58003244DF /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A95D601A21B16B58003244DF /* SignUpViewController.swift */; };
@@ -31,12 +34,15 @@
 		8596F7D91C4EAD293992B3B9 /* Pods_HouseBuddy.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HouseBuddy.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A945BBA021A7095D00A4E39B /* HouseBuddy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HouseBuddy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A945BBA321A7095D00A4E39B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		A945BBA521A7095D00A4E39B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		A945BBA821A7095D00A4E39B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		A945BBAA21A7095D00A4E39B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A945BBAD21A7095D00A4E39B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A945BBAF21A7095D00A4E39B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A945BBB621A71F2C00A4E39B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		A949AD7421C403F2009EC68F /* ShoppingItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingItem.swift; sourceTree = "<group>"; };
+		A949AD7621C40A68009EC68F /* ShoppingListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingListTableViewController.swift; sourceTree = "<group>"; };
+		A949AD7821C40FCA009EC68F /* ShoppingListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingListTableViewCell.swift; sourceTree = "<group>"; };
+		A949AD7A21C42CEF009EC68F /* EditShoppingItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditShoppingItemViewController.swift; sourceTree = "<group>"; };
 		A95D601621B16B1A003244DF /* StartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartViewController.swift; sourceTree = "<group>"; };
 		A95D601821B16B3C003244DF /* LogInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
 		A95D601A21B16B58003244DF /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
@@ -64,14 +70,14 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		56962CC121B4312000E17880 /* todolist */ = {
+		56962CC121B4312000E17880 /* ToDoList */ = {
 			isa = PBXGroup;
 			children = (
 				56962CC221B4314700E17880 /* Task.swift */,
 				56962CC421B43F2000E17880 /* TaskTableViewCell.swift */,
 				56962CC621B441C000E17880 /* TaskTableViewController.swift */,
 			);
-			path = todolist;
+			path = ToDoList;
 			sourceTree = "<group>";
 		};
 		9F430C37F818FD00525CFB57 /* Pods */ = {
@@ -107,10 +113,11 @@
 		A945BBA221A7095D00A4E39B /* HouseBuddy */ = {
 			isa = PBXGroup;
 			children = (
-				56962CC121B4312000E17880 /* todolist */,
-				A945BBA521A7095D00A4E39B /* ViewController.swift */,
+				A945BBA321A7095D00A4E39B /* AppDelegate.swift */,
 				A945BBA721A7095D00A4E39B /* Main.storyboard */,
 				A95D602021B178AF003244DF /* Authentication */,
+				56962CC121B4312000E17880 /* ToDoList */,
+				A949AD7321C403C0009EC68F /* ShoppingList */,
 				A945BBB521A70B6D00A4E39B /* SupportingFiles */,
 				A945BBAF21A7095D00A4E39B /* Info.plist */,
 				A945BBB621A71F2C00A4E39B /* GoogleService-Info.plist */,
@@ -121,11 +128,21 @@
 		A945BBB521A70B6D00A4E39B /* SupportingFiles */ = {
 			isa = PBXGroup;
 			children = (
-				A945BBA321A7095D00A4E39B /* AppDelegate.swift */,
 				A945BBAA21A7095D00A4E39B /* Assets.xcassets */,
 				A945BBAC21A7095D00A4E39B /* LaunchScreen.storyboard */,
 			);
 			path = SupportingFiles;
+			sourceTree = "<group>";
+		};
+		A949AD7321C403C0009EC68F /* ShoppingList */ = {
+			isa = PBXGroup;
+			children = (
+				A949AD7421C403F2009EC68F /* ShoppingItem.swift */,
+				A949AD7621C40A68009EC68F /* ShoppingListTableViewController.swift */,
+				A949AD7821C40FCA009EC68F /* ShoppingListTableViewCell.swift */,
+				A949AD7A21C42CEF009EC68F /* EditShoppingItemViewController.swift */,
+			);
+			path = ShoppingList;
 			sourceTree = "<group>";
 		};
 		A95D602021B178AF003244DF /* Authentication */ = {
@@ -174,6 +191,7 @@
 				TargetAttributes = {
 					A945BB9F21A7095D00A4E39B = {
 						CreatedOnToolsVersion = 9.3;
+						LastSwiftMigration = 1010;
 					};
 				};
 			};
@@ -219,12 +237,14 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-HouseBuddy/Pods-HouseBuddy-resources.sh",
+				"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseFirestore/gRPCCertificates-Firestore.bundle",
 				"${PODS_ROOT}/GoogleSignIn/Resources/GoogleSignIn.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputFileListPaths = (
 			);
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/gRPCCertificates-Firestore.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleSignIn.bundle",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -259,18 +279,28 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-HouseBuddy/Pods-HouseBuddy-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/BoringSSL/openssl.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
+				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
+				"${BUILT_PRODUCTS_DIR}/gRPC-C++/grpcpp.framework",
+				"${BUILT_PRODUCTS_DIR}/gRPC-Core/grpc.framework",
+				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 			);
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/openssl.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/grpcpp.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/grpc.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -286,13 +316,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				56962CC521B43F2000E17880 /* TaskTableViewCell.swift in Sources */,
+				A949AD7921C40FCA009EC68F /* ShoppingListTableViewCell.swift in Sources */,
 				A95D601B21B16B58003244DF /* SignUpViewController.swift in Sources */,
+				A949AD7B21C42CEF009EC68F /* EditShoppingItemViewController.swift in Sources */,
 				A95D601921B16B3C003244DF /* LogInViewController.swift in Sources */,
-				A945BBA621A7095D00A4E39B /* ViewController.swift in Sources */,
 				A945BBA421A7095D00A4E39B /* AppDelegate.swift in Sources */,
 				A95D601721B16B1A003244DF /* StartViewController.swift in Sources */,
+				A949AD7721C40A68009EC68F /* ShoppingListTableViewController.swift in Sources */,
 				56962CC721B441C000E17880 /* TaskTableViewController.swift in Sources */,
 				56962CC321B4314700E17880 /* Task.swift in Sources */,
+				A949AD7521C403F2009EC68F /* ShoppingItem.swift in Sources */,
 				A95D601D21B16B6C003244DF /* HomeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -447,7 +480,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.rug.albert.HouseBuddy;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -466,7 +499,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.rug.albert.HouseBuddy;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;

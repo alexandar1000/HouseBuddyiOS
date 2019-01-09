@@ -7,7 +7,8 @@ target 'HouseBuddy' do
 
   # Pods for HouseBuddy
   pod 'Firebase/Core'
-  pod ‘Firebase/Auth’
-  pod ‘GoogleSignIn’
+  pod 'Firebase/Firestore'
+  pod 'Firebase/Auth'
+  pod 'GoogleSignIn'
   
 end

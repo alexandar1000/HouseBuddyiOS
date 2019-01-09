@@ -12,7 +12,7 @@ class Task: NSObject {
 	
 	var taskId: String? = nil
 	var taskName: String
-	var taskDesc: String?
+	var taskDesc: String? = nil
 	var isCompleted = false
 
 	override init() {

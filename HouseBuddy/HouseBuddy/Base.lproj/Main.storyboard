@@ -339,14 +339,10 @@
                         <viewLayoutGuide key="safeArea" id="Tdm-rg-jVc"/>
                     </view>
                     <navigationItem key="navigationItem" title="Add Task" id="mA7-PA-CDr">
-                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="0PR-5A-mIT">
-                            <connections>
-                                <action selector="cancel:" destination="pKO-Bh-A5L" id="f8d-Cg-lFM"/>
-                            </connections>
-                        </barButtonItem>
+                        <barButtonItem key="backBarButtonItem" title="Cancel" id="Evp-ZW-Zce"/>
                         <barButtonItem key="rightBarButtonItem" systemItem="save" id="w98-4Y-cnF">
                             <connections>
-                                <segue destination="fZs-oL-UYu" kind="unwind" unwindAction="unwindToMealListWithSender:" id="1WO-0d-eUa"/>
+                                <segue destination="fZs-oL-UYu" kind="unwind" unwindAction="unwindFromAddTaskWithSender:" id="nHh-YD-Dbj"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -359,7 +355,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Mwo-pB-3if" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="fZs-oL-UYu" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="5103.1999999999998" y="750.67466266866575"/>
+            <point key="canvasLocation" x="3799" y="752"/>
         </scene>
         <!--Todo List-->
         <scene sceneID="iQx-BH-lTC">
@@ -406,7 +402,7 @@
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="O24-j6-iYJ">
                             <connections>
                                 <action selector="addNewTask:" destination="YpZ-80-Iar" id="mIr-13-y3r"/>
-                                <segue destination="I7f-kC-01K" kind="presentation" id="mCa-cp-kQs"/>
+                                <segue destination="pKO-Bh-A5L" kind="show" identifier="addTask" id="lwq-pr-HIf"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -442,7 +438,14 @@
                         <viewLayoutGuide key="safeArea" id="91X-oG-xV9"/>
                     </view>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" title="Task Name" id="Pgk-GV-UGv"/>
+                    <navigationItem key="navigationItem" title="Task Name" id="Pgk-GV-UGv">
+                        <barButtonItem key="rightBarButtonItem" systemItem="edit" id="Qn4-fm-C9N">
+                            <connections>
+                                <action selector="editTask:" destination="Wy4-JA-hbn" id="NI3-9w-u9i"/>
+                                <segue destination="pKO-Bh-A5L" kind="show" identifier="editTask" id="19x-lM-fuA"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="taskDescLabel" destination="Ocb-M6-X8l" id="RIn-t9-5YA"/>
@@ -470,26 +473,9 @@
             </objects>
             <point key="canvasLocation" x="-700" y="-21.139430284857571"/>
         </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="ytf-rx-f0c">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="I7f-kC-01K" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="uNt-0V-iR7">
-                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="pKO-Bh-A5L" kind="relationship" relationship="rootViewController" id="0rk-Sv-88K"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="2Eq-f1-soa" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="4164" y="750.67466266866575"/>
-        </scene>
     </scenes>
     <inferredMetricsTieBreakers>
+        <segue reference="19x-lM-fuA"/>
         <segue reference="l35-ge-nbf"/>
     </inferredMetricsTieBreakers>
 </document>

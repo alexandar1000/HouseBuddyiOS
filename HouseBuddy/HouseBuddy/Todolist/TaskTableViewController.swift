@@ -9,6 +9,7 @@
 import UIKit
 import FirebaseFirestore
 import FirebaseAuth
+import os.log
 
 class TaskTableViewController: UITableViewController {
 
@@ -100,7 +101,8 @@ class TaskTableViewController: UITableViewController {
 				"completed": task.isCompleted
 			]) { err in
 				if let err = err {
-					print("Error adding document: \(err)")
+					os_log("Error adding document", log: OSLog.default, type: .debug)
+					print(err);
 				} else {
 					// Set auto generated FireStore id as task id
 					task.taskId = ref!.documentID
@@ -173,11 +175,27 @@ class TaskTableViewController: UITableViewController {
 		performSegue(withIdentifier: "showTask", sender: self)
 	}
 	
+	override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+		if editingStyle == UITableViewCell.EditingStyle.delete {
+			// Delete task by deleteing document with the task id
+			clickedTask = taskList[indexPath.row]
+			if let todoListRef = query as? CollectionReference {
+				if let documentId = clickedTask.taskId {
+					todoListRef.document(documentId).delete() { err in
+						if let err = err {
+							os_log("Error deleting document", log: OSLog.default, type: .debug)
+							print(err)
+						}
+					}
+				}
+			}
+		}
+	}
+	
 	// MARK: Actions
 	
-	@IBAction func unwindToMealList(sender: UIStoryboardSegue) {
+	@IBAction func unwindFromAddTask(sender: UIStoryboardSegue) {
 		if let sourceViewController = sender.source as? AddTaskViewController, let task = sourceViewController.task {
-			
 			// Add a new task
 			addTask(task: task)
 			/*let newIndexPath = IndexPath(row: taskList.count, section: 0)
@@ -189,11 +207,19 @@ class TaskTableViewController: UITableViewController {
 	// MARK: Navigation
 	
 	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-		if segue.identifier == "showTask" {
+		switch(segue.identifier ?? "") {
+		case "showTask":
 			if let showTaskViewController = segue.destination as? ShowTaskViewController {
 				// Set the task in the show task view controller
 				showTaskViewController.task = clickedTask
 			}
+		case "addTask":
+			// Change back button text to "Cancel"
+			let backItem = UIBarButtonItem()
+			backItem.title = "Cancel"
+			navigationItem.backBarButtonItem = backItem
+		default:
+			fatalError("Unexpected Segue Identifier; \(segue.identifier as String?)")
 		}
 	}
 

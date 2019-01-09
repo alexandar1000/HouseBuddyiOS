@@ -10,14 +10,20 @@ import UIKit
 
 class AddTaskViewController: UIViewController, UITextFieldDelegate {
 	
-    @IBOutlet weak var nameTextField: UITextField!
-    @IBOutlet weak var descTextField: UITextField!
-    @IBOutlet weak var saveButton: UIBarButtonItem!
+    @IBOutlet private weak var nameTextField: UITextField!
+    @IBOutlet private weak var descTextField: UITextField!
+    @IBOutlet private weak var saveButton: UIBarButtonItem!
     
     var task: Task?
 
     override func viewDidLoad() {
         super.viewDidLoad()
+		
+		// Task is passed by previous view, set text in text fields to task properties
+		if task != nil {
+			nameTextField.text = task?.taskName
+			descTextField.text = task?.taskDesc
+		}
 		
 		// Handle the text field’s user input through delegate callbacks
         nameTextField.delegate = self
@@ -30,6 +36,10 @@ class AddTaskViewController: UIViewController, UITextFieldDelegate {
     //MARK: UITextFieldDelegate
 	
 	func textFieldDidBeginEditing(_ textField: UITextField) {
+		// Select all text in the textfield
+		textField.becomeFirstResponder()
+		textField.selectAll(nil)
+		
 		// Disable the Save button while editing.
 		saveButton.isEnabled = false
 	}
@@ -75,7 +85,7 @@ class AddTaskViewController: UIViewController, UITextFieldDelegate {
 		let desc = descTextField.text
         
         // Set the task to be passed to TaskTableViewController after the unwind segue.
-        task = Task(taskName: name, taskDesc: desc)
+		task = Task(taskId: task?.taskId, taskName: name, taskDesc: desc, isCompleted: task?.isCompleted ?? false)
     }
 
     @IBAction func cancel(_ sender: UIBarButtonItem) {

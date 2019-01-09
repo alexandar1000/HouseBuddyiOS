@@ -8,9 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		4AE4F69611247EF36EF55309 /* Pods_HouseBuddy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8596F7D91C4EAD293992B3B9 /* Pods_HouseBuddy.framework */; };
+		5692DACD21C7E168005A1A9E /* ShowTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5692DACC21C7E168005A1A9E /* ShowTaskViewController.swift */; };
+		5692DACF21C7EF8C005A1A9E /* AddTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5692DACE21C7EF8C005A1A9E /* AddTaskViewController.swift */; };
 		56962CC321B4314700E17880 /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56962CC221B4314700E17880 /* Task.swift */; };
 		56962CC521B43F2000E17880 /* TaskTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56962CC421B43F2000E17880 /* TaskTableViewCell.swift */; };
 		56962CC721B441C000E17880 /* TaskTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56962CC621B441C000E17880 /* TaskTableViewController.swift */; };
+		56F1426121C3F453001E909A /* FireStoreConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56F1426021C3F453001E909A /* FireStoreConstants.swift */; };
 		A945BBA421A7095D00A4E39B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A945BBA321A7095D00A4E39B /* AppDelegate.swift */; };
 		A945BBA921A7095D00A4E39B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A945BBA721A7095D00A4E39B /* Main.storyboard */; };
 		A945BBAB21A7095D00A4E39B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A945BBAA21A7095D00A4E39B /* Assets.xcassets */; };
@@ -27,9 +30,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5692DACC21C7E168005A1A9E /* ShowTaskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowTaskViewController.swift; sourceTree = "<group>"; };
+		5692DACE21C7EF8C005A1A9E /* AddTaskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTaskViewController.swift; sourceTree = "<group>"; };
 		56962CC221B4314700E17880 /* Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
 		56962CC421B43F2000E17880 /* TaskTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskTableViewCell.swift; sourceTree = "<group>"; };
 		56962CC621B441C000E17880 /* TaskTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskTableViewController.swift; sourceTree = "<group>"; };
+		56F1426021C3F453001E909A /* FireStoreConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FireStoreConstants.swift; sourceTree = "<group>"; };
 		6EDE2D62A15B3990DB5AB051 /* Pods-HouseBuddy.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HouseBuddy.release.xcconfig"; path = "Pods/Target Support Files/Pods-HouseBuddy/Pods-HouseBuddy.release.xcconfig"; sourceTree = "<group>"; };
 		8596F7D91C4EAD293992B3B9 /* Pods_HouseBuddy.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HouseBuddy.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A945BBA021A7095D00A4E39B /* HouseBuddy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HouseBuddy.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -70,14 +76,24 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		56962CC121B4312000E17880 /* ToDoList */ = {
+		56962CC121B4312000E17880 /* Todolist */ = {
 			isa = PBXGroup;
 			children = (
 				56962CC221B4314700E17880 /* Task.swift */,
 				56962CC421B43F2000E17880 /* TaskTableViewCell.swift */,
 				56962CC621B441C000E17880 /* TaskTableViewController.swift */,
+				5692DACE21C7EF8C005A1A9E /* AddTaskViewController.swift */,
+				5692DACC21C7E168005A1A9E /* ShowTaskViewController.swift */,
 			);
-			path = ToDoList;
+			path = Todolist;
+			sourceTree = "<group>";
+		};
+		56F1425F21C3ECC4001E909A /* HouseholdManager */ = {
+			isa = PBXGroup;
+			children = (
+				A95D601C21B16B6C003244DF /* HomeViewController.swift */,
+			);
+			path = HouseholdManager;
 			sourceTree = "<group>";
 		};
 		9F430C37F818FD00525CFB57 /* Pods */ = {
@@ -113,7 +129,9 @@
 		A945BBA221A7095D00A4E39B /* HouseBuddy */ = {
 			isa = PBXGroup;
 			children = (
-				A945BBA321A7095D00A4E39B /* AppDelegate.swift */,
+				56F1425F21C3ECC4001E909A /* HouseholdManager */,
+				56962CC121B4312000E17880 /* Todolist */,
+				A945BBA521A7095D00A4E39B /* ViewController.swift */,
 				A945BBA721A7095D00A4E39B /* Main.storyboard */,
 				A95D602021B178AF003244DF /* Authentication */,
 				56962CC121B4312000E17880 /* ToDoList */,
@@ -130,6 +148,7 @@
 			children = (
 				A945BBAA21A7095D00A4E39B /* Assets.xcassets */,
 				A945BBAC21A7095D00A4E39B /* LaunchScreen.storyboard */,
+				56F1426021C3F453001E909A /* FireStoreConstants.swift */,
 			);
 			path = SupportingFiles;
 			sourceTree = "<group>";
@@ -151,7 +170,6 @@
 				A95D601621B16B1A003244DF /* StartViewController.swift */,
 				A95D601821B16B3C003244DF /* LogInViewController.swift */,
 				A95D601A21B16B58003244DF /* SignUpViewController.swift */,
-				A95D601C21B16B6C003244DF /* HomeViewController.swift */,
 			);
 			path = Authentication;
 			sourceTree = "<group>";
@@ -317,6 +335,7 @@
 			files = (
 				56962CC521B43F2000E17880 /* TaskTableViewCell.swift in Sources */,
 				A949AD7921C40FCA009EC68F /* ShoppingListTableViewCell.swift in Sources */,
+				5692DACF21C7EF8C005A1A9E /* AddTaskViewController.swift in Sources */,
 				A95D601B21B16B58003244DF /* SignUpViewController.swift in Sources */,
 				A949AD7B21C42CEF009EC68F /* EditShoppingItemViewController.swift in Sources */,
 				A95D601921B16B3C003244DF /* LogInViewController.swift in Sources */,
@@ -324,6 +343,8 @@
 				A95D601721B16B1A003244DF /* StartViewController.swift in Sources */,
 				A949AD7721C40A68009EC68F /* ShoppingListTableViewController.swift in Sources */,
 				56962CC721B441C000E17880 /* TaskTableViewController.swift in Sources */,
+				56F1426121C3F453001E909A /* FireStoreConstants.swift in Sources */,
+				5692DACD21C7E168005A1A9E /* ShowTaskViewController.swift in Sources */,
 				56962CC321B4314700E17880 /* Task.swift in Sources */,
 				A949AD7521C403F2009EC68F /* ShoppingItem.swift in Sources */,
 				A95D601D21B16B6C003244DF /* HomeViewController.swift in Sources */,

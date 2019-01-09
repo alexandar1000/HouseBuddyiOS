@@ -386,7 +386,62 @@
             </objects>
             <point key="canvasLocation" x="4775" y="551"/>
         </scene>
+<<<<<<< HEAD
         <!--To Do List-->
+=======
+        <!--Add Task-->
+        <scene sceneID="ona-Ut-o45">
+            <objects>
+                <viewController id="pKO-Bh-A5L" customClass="AddTaskViewController" customModule="HouseBuddy" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="bhS-qg-gDo">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter task name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="LYc-lB-Ejo">
+                                <rect key="frame" x="16" y="80" width="343" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" returnKeyType="done"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter task description" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="h9h-xA-u4t">
+                                <rect key="frame" x="16" y="126" width="343" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" returnKeyType="done"/>
+                            </textField>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Tdm-rg-jVc" firstAttribute="trailing" secondItem="LYc-lB-Ejo" secondAttribute="trailing" constant="16" id="3BQ-W0-qjy"/>
+                            <constraint firstItem="LYc-lB-Ejo" firstAttribute="leading" secondItem="Tdm-rg-jVc" secondAttribute="leading" constant="16" id="Glp-Sl-WMg"/>
+                            <constraint firstItem="h9h-xA-u4t" firstAttribute="leading" secondItem="Tdm-rg-jVc" secondAttribute="leading" constant="16" id="Kxf-Oe-z7y"/>
+                            <constraint firstItem="h9h-xA-u4t" firstAttribute="top" secondItem="LYc-lB-Ejo" secondAttribute="bottom" constant="16" id="ShK-fG-rpQ"/>
+                            <constraint firstItem="Tdm-rg-jVc" firstAttribute="trailing" secondItem="h9h-xA-u4t" secondAttribute="trailing" constant="16" id="nWz-OB-fo2"/>
+                            <constraint firstItem="LYc-lB-Ejo" firstAttribute="top" secondItem="Tdm-rg-jVc" secondAttribute="top" constant="16" id="o7w-Ww-B2x"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Tdm-rg-jVc"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Add Task" id="mA7-PA-CDr">
+                        <barButtonItem key="backBarButtonItem" title="Cancel" id="Evp-ZW-Zce"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="w98-4Y-cnF">
+                            <connections>
+                                <segue destination="fZs-oL-UYu" kind="unwind" unwindAction="unwindFromAddTaskWithSender:" id="nHh-YD-Dbj"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="descTextField" destination="h9h-xA-u4t" id="3dW-Sd-G46"/>
+                        <outlet property="nameTextField" destination="LYc-lB-Ejo" id="Hmq-Pu-VUj"/>
+                        <outlet property="saveButton" destination="w98-4Y-cnF" id="D37-dL-I9C"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Mwo-pB-3if" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="fZs-oL-UYu" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="3799" y="752"/>
+        </scene>
+        <!--Todo List-->
+>>>>>>> todolist
         <scene sceneID="iQx-BH-lTC">
             <objects>
                 <tableViewController id="YpZ-80-Iar" customClass="TaskTableViewController" customModule="HouseBuddy" customModuleProvider="target" sceneMemberID="viewController">
@@ -426,11 +481,67 @@
                             <outlet property="delegate" destination="YpZ-80-Iar" id="arW-dQ-LAN"/>
                         </connections>
                     </tableView>
+<<<<<<< HEAD
                     <navigationItem key="navigationItem" title="To Do List" id="vII-0D-XWO"/>
+=======
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" title="Todo List" id="g5O-e7-WTc">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="O24-j6-iYJ">
+                            <connections>
+                                <action selector="addNewTask:" destination="YpZ-80-Iar" id="mIr-13-y3r"/>
+                                <segue destination="pKO-Bh-A5L" kind="show" identifier="addTask" id="lwq-pr-HIf"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <segue destination="Wy4-JA-hbn" kind="show" identifier="showTask" id="Qwi-N4-brw"/>
+                    </connections>
+>>>>>>> todolist
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mUx-rN-9JW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3578" y="-546"/>
+        </scene>
+        <!--Task Name-->
+        <scene sceneID="47P-7U-Vfe">
+            <objects>
+                <viewController id="Wy4-JA-hbn" customClass="ShowTaskViewController" customModule="HouseBuddy" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="80z-ew-Pbl">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Task has no description." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ocb-M6-X8l">
+                                <rect key="frame" x="16" y="80" width="185" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Ocb-M6-X8l" firstAttribute="leading" secondItem="91X-oG-xV9" secondAttribute="leading" constant="16" id="Rvp-we-Min"/>
+                            <constraint firstItem="Ocb-M6-X8l" firstAttribute="top" secondItem="91X-oG-xV9" secondAttribute="top" constant="16" id="nel-Vd-kIS"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="91X-oG-xV9"/>
+                    </view>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" title="Task Name" id="Pgk-GV-UGv">
+                        <barButtonItem key="rightBarButtonItem" systemItem="edit" id="Qn4-fm-C9N">
+                            <connections>
+                                <action selector="editTask:" destination="Wy4-JA-hbn" id="NI3-9w-u9i"/>
+                                <segue destination="pKO-Bh-A5L" kind="show" identifier="editTask" id="19x-lM-fuA"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="taskDescLabel" destination="Ocb-M6-X8l" id="RIn-t9-5YA"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5iQ-KA-jq0" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4194" y="-17"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="x51-Ge-Xhy">
@@ -452,6 +563,11 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
+<<<<<<< HEAD
         <segue reference="aKv-is-LY0"/>
+=======
+        <segue reference="19x-lM-fuA"/>
+        <segue reference="l35-ge-nbf"/>
+>>>>>>> todolist
     </inferredMetricsTieBreakers>
 </document>

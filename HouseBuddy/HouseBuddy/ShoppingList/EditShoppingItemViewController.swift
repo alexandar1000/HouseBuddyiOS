@@ -8,34 +8,73 @@
 
 import UIKit
 
-class EditShoppingItemViewController: UIViewController {
+class EditShoppingItemViewController: UIViewController, UITextFieldDelegate {
 
-	@IBOutlet weak var cancelButton: UIBarButtonItem!
+	// MARK - Outlets
 	@IBOutlet weak var doneButton: UIBarButtonItem!
+    @IBOutlet weak var itemName: UITextField!
 	
+	// MARK: - Field Setup
 	var shoppingItem:ShoppingItem? = nil
 	
+	// MARK: - View Handling
 	override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+		self.itemName.delegate = self
+		
+		// Set up the ShoppingItem if editing an existing ShoppingItem
+		if let shoppingItem = shoppingItem {
+			navigationItem.title = "Edit Shopping Item"
+			itemName.text = shoppingItem.name
+		}
     }
-    
-
+	
+	//MARK: - Actions
+	@IBAction func doneButtonTapped(_ sender: Any) {
+		if let name = itemName.text, !name.isEmpty {
+			performSegue(withIdentifier: "unwindToShoppingListSegue", sender: self)
+		} else {
+			showErrorEmptyField()
+		}
+	}
+	
+	@IBAction func cancelEdditingItem(_ sender: Any) {
+		if let navigationController = navigationController {
+			navigationController.popViewController(animated: true)
+		} else {
+			fatalError("The EditShoppingItemViewController is not inside a navigation controller.")
+		}
+	}
+	
 	
     // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
+	
+	// Prepare for segue
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         super.prepare(for: segue, sender: sender)
 		
-		// Configure the destination view controller only when the save button is pressed.
-		guard let button = sender as? UIBarButtonItem, button === doneButton else {
-			print("The save button was not pressed, cancelling")
+		//Make sure the textField exists (although implied)
+		guard let name = itemName.text else {
 			return
 		}
-		//UPDATE THIS TO ACTUALLY RETURN PROPER DATA
-		shoppingItem = ShoppingItem(name: "Test Item", price: 7.01, bought: true)
+		
+		//Update the item with he newest data (just before updating the list)
+		shoppingItem = ShoppingItem(name: name)
     }
+	
+	// MARK: - Input Handling
+	func showErrorEmptyField() {
+		let alert = UIAlertController(title: "Error", message: "Please Enter Item Name", preferredStyle: .alert)
+		
+		let cancelAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+		alert.addAction(cancelAction)
+		
+		present(alert, animated: true)
+	}
 
+	func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+		self.view.endEditing(true)
+		return false
+	}
 }

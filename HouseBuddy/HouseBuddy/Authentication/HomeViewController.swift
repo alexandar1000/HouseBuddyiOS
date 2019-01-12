@@ -19,7 +19,6 @@ class HomeViewController: UIViewController {
 
   override func viewDidLoad() {
     super.viewDidLoad()
-	self.navigationItem.setHidesBackButton(true, animated:true);
     }
     
     @IBAction func logOutAction(_ sender: Any) {
@@ -35,4 +34,14 @@ class HomeViewController: UIViewController {
       let initial = storyboard.instantiateInitialViewController()
       UIApplication.shared.keyWindow?.rootViewController = initial
     }
+	
+	override func viewWillAppear(_ animated: Bool) {
+		super.viewWillAppear(animated)
+		self.navigationController?.setNavigationBarHidden(true, animated: animated)
+	}
+	
+	override func viewWillDisappear(_ animated: Bool) {
+		super.viewWillDisappear(animated)
+		self.navigationController?.setNavigationBarHidden(false, animated: animated)
+	}
 }

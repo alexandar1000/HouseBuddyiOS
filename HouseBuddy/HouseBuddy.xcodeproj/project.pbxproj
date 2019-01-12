@@ -27,6 +27,7 @@
 		A95D601921B16B3C003244DF /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A95D601821B16B3C003244DF /* LogInViewController.swift */; };
 		A95D601B21B16B58003244DF /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A95D601A21B16B58003244DF /* SignUpViewController.swift */; };
 		A95D601D21B16B6C003244DF /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A95D601C21B16B6C003244DF /* HomeViewController.swift */; };
+		A9BCE6B921C95B1C00F92F67 /* ExpenseEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9BCE6B821C95B1C00F92F67 /* ExpenseEntry.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -54,6 +55,7 @@
 		A95D601A21B16B58003244DF /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		A95D601C21B16B6C003244DF /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		A99EC1F4D7AAD8B1A013CF56 /* Pods-HouseBuddy.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HouseBuddy.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HouseBuddy/Pods-HouseBuddy.debug.xcconfig"; sourceTree = "<group>"; };
+		A9BCE6B821C95B1C00F92F67 /* ExpenseEntry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExpenseEntry.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -143,6 +145,7 @@
 				A95D602021B178AF003244DF /* Authentication */,
 				56962CC121B4312000E17880 /* Todolist */,
 				A949AD7321C403C0009EC68F /* ShoppingList */,
+				A9BCE6B721C95B1C00F92F67 /* ExpenseTracker */,
 				A945BBB521A70B6D00A4E39B /* SupportingFiles */,
 				A945BBAF21A7095D00A4E39B /* Info.plist */,
 				A945BBB621A71F2C00A4E39B /* GoogleService-Info.plist */,
@@ -180,6 +183,15 @@
 			);
 			path = Authentication;
 			sourceTree = "<group>";
+		};
+		A9BCE6B721C95B1C00F92F67 /* ExpenseTracker */ = {
+			isa = PBXGroup;
+			children = (
+				A9BCE6B821C95B1C00F92F67 /* ExpenseEntry.swift */,
+			);
+			name = ExpenseTracker;
+			path = HouseBuddy/ExpenseTracker;
+			sourceTree = SOURCE_ROOT;
 		};
 /* End PBXGroup section */
 
@@ -346,6 +358,7 @@
 				5684910F21E65BC4005C80E2 /* AppDelegate.swift in Sources */,
 				A95D601B21B16B58003244DF /* SignUpViewController.swift in Sources */,
 				A949AD7B21C42CEF009EC68F /* EditShoppingItemViewController.swift in Sources */,
+				A9BCE6B921C95B1C00F92F67 /* ExpenseEntry.swift in Sources */,
 				A95D601921B16B3C003244DF /* LogInViewController.swift in Sources */,
 				A95D601721B16B1A003244DF /* StartViewController.swift in Sources */,
 				A949AD7721C40A68009EC68F /* ShoppingListTableViewController.swift in Sources */,

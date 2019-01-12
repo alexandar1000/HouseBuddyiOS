@@ -29,15 +29,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
 	@available(iOS 9.0, *)
 	func application(_ application: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any])
 		-> Bool {
-			return GIDSignIn.sharedInstance().handle(url,
-																							 sourceApplication:options[UIApplication.OpenURLOptionsKey.sourceApplication] as? String,
-																							 annotation: [:])
+			return GIDSignIn.sharedInstance().handle(url, sourceApplication:options[UIApplication.OpenURLOptionsKey.sourceApplication] as? String, annotation: [:])
 	}
 	
 	func application(_ application: UIApplication, open url: URL, sourceApplication: String?, annotation: Any) -> Bool {
-		return GIDSignIn.sharedInstance().handle(url,
-																						 sourceApplication: sourceApplication,
-																						 annotation: annotation)
+		return GIDSignIn.sharedInstance().handle(url, sourceApplication: sourceApplication, annotation: annotation)
 	}
 	
 	func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error?) {
@@ -47,26 +43,38 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
 			return
 		}
 		
-		guard let authentication = user.authentication else { return }
-		let credential = GoogleAuthProvider.credential(withIDToken: authentication.idToken,
-																									 accessToken: authentication.accessToken)
+		guard let authentication = user.authentication else {
+			return
+		}
+		let credential = GoogleAuthProvider.credential(withIDToken: authentication.idToken, accessToken: authentication.accessToken)
 		// ...
 		Auth.auth().signInAndRetrieveData(with: credential) { (authResult, error) in
 			if let error = error {
 				print("Error occurred \(error.localizedDescription)")
 				return
 			}
+			
 			self.currentUser = Auth.auth().currentUser
 			
-			if let controller = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "Home") as? HomeViewController {
-				if let window = self.window, let rootViewController = window.rootViewController {
-					var currentController = rootViewController
-					while let presentedController = currentController.presentedViewController {
-						currentController = presentedController
-					}
-					currentController.present(controller, animated: true, completion: nil)
-				}
-			}		}
+			// Access the storyboard and fetch an instance of the view controller
+			let storyboard = UIStoryboard(name: "Main", bundle: nil);
+			let viewController: HomeViewController = storyboard.instantiateViewController(withIdentifier: "Home") as! HomeViewController;
+			
+			// Then push that view controller onto the navigation stack
+			let rootViewController = self.window!.rootViewController as! UINavigationController;
+			rootViewController.pushViewController(viewController, animated: true);
+
+//			if let controller = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "Home") as? HomeViewController {
+//				if let window = self.window, let rootViewController = window.rootViewController {
+//					var currentController = rootViewController
+//					while let presentedController = currentController.presentedViewController {
+//						currentController = presentedController
+//					}
+//					currentController.present(controller, animated: true, completion: nil)
+//					self.performSegue(withIdentifier: "alreadyLoggedIn", sender: self)
+//				}
+//			}
+		}
 	}
 	
 	func sign(_ signIn: GIDSignIn!, didDisconnectWith user: GIDGoogleUser!, withError error: Error!) {

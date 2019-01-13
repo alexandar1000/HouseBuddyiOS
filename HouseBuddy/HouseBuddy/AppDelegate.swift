@@ -37,7 +37,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
 	}
 	
 	func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error?) {
-		// ...
 		if let error = error {
 			print("Error occurred \(error.localizedDescription)")
 			return
@@ -55,25 +54,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
 			}
 			
 			self.currentUser = Auth.auth().currentUser
+
+			let firstName: String = user.profile.givenName
+			let lastName: String = user.profile.familyName
+			let userEmail: String = user.profile.email
 			
 			// Access the storyboard and fetch an instance of the view controller
 			let storyboard = UIStoryboard(name: "Main", bundle: nil);
 			let viewController: HomeViewController = storyboard.instantiateViewController(withIdentifier: "Home") as! HomeViewController;
 			
+			// Send the data to the HomeViewController
+			viewController.userName = firstName
+			viewController.userSurname = lastName
+			viewController.userEmail = userEmail
+			
 			// Then push that view controller onto the navigation stack
 			let rootViewController = self.window!.rootViewController as! UINavigationController;
 			rootViewController.pushViewController(viewController, animated: true);
-
-//			if let controller = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "Home") as? HomeViewController {
-//				if let window = self.window, let rootViewController = window.rootViewController {
-//					var currentController = rootViewController
-//					while let presentedController = currentController.presentedViewController {
-//						currentController = presentedController
-//					}
-//					currentController.present(controller, animated: true, completion: nil)
-//					self.performSegue(withIdentifier: "alreadyLoggedIn", sender: self)
-//				}
-//			}
 		}
 	}
 	

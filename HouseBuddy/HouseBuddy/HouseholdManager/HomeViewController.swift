@@ -9,6 +9,8 @@
 import UIKit
 import FirebaseAuth
 import GoogleSignIn
+import Firebase
+import FirebaseFirestore
 
 class HomeViewController: UIViewController {
     
@@ -16,9 +18,13 @@ class HomeViewController: UIViewController {
 	@IBOutlet weak var userNameLbl: UILabel!
 	@IBOutlet weak var signOutBtn: UIButton!
 
+	var userEmail : String?
+	var userName : String?
+	var userSurname : String?
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
+		checkAndAddToDatabase()
 	}
     
     @IBAction func logOutAction(_ sender: Any) {
@@ -33,4 +39,41 @@ class HomeViewController: UIViewController {
 		let initial = storyboard.instantiateInitialViewController()
 		UIApplication.shared.keyWindow?.rootViewController = initial
     }
+	
+	func checkAndAddToDatabase() {
+		let db = Firestore.firestore()
+		
+		let settings = db.settings
+		settings.areTimestampsInSnapshotsEnabled = true
+		db.settings = settings
+		
+		if (userEmail != nil) && (userName != nil) && (userSurname != nil) {
+			if let user = Auth.auth().currentUser {
+				let uid = user.uid
+				let docRef = db.collection("users").document(uid)
+				
+				docRef.getDocument { (document, error) in
+					if let document = document {
+						if !document.exists {
+							print("First Sign Up. Adding the user to the database")
+							let userData: [String: Any] = [
+								"email": self.userEmail!,
+								"first_name": self.userName!,
+								"last_name": self.userSurname!
+							]
+							db.collection("users").document(uid).setData(userData) { err in
+								if let err = err {
+									print("Error adding user document: \(err)")
+								} else {
+									print("User document added with ID: \(uid)")
+								}
+							}
+						} else {
+							print("User with the UserID \(uid) already added")
+						}
+					}
+				}
+			}
+		}
+	}
 }

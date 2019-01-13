@@ -9,6 +9,8 @@
 import UIKit
 import os.log
 import Firebase
+import FirebaseFirestore
+import FirebaseAuth
 
 class ShoppingListTableViewController: UITableViewController {
 	
@@ -22,6 +24,7 @@ class ShoppingListTableViewController: UITableViewController {
 	//MARK: - View Handling
 	override func viewDidLoad() {
 		super.viewDidLoad()
+		getShoppingListQuery()
 	}
 	
 	override func viewWillAppear(_ animated: Bool) {
@@ -34,6 +37,40 @@ class ShoppingListTableViewController: UITableViewController {
 		// Show the NavBar on disappearing
 		self.navigationController?.setNavigationBarHidden(false, animated: animated)
 		super.viewWillDisappear(animated)
+	}
+	
+	// MARK: - Firestore functions
+	fileprivate func getShoppingListQuery() {
+		
+		let settings = db.settings
+		settings.areTimestampsInSnapshotsEnabled = true
+		db.settings = settings
+		
+		// TODO: Retrieving household id should be moved to HouseHoldManager class where it's put in the device storage..
+		if let user = Auth.auth().currentUser {
+			let userId = user.uid
+			let userRef = db.collection(FireStoreConstants.CollectionPathUsers).document(userId)
+			
+			userRef.getDocument { (document, error) in
+				if let document = document, document.exists {
+					let householdRef = document.get(FireStoreConstants.FieldHousehold) as! DocumentReference
+					householdRef.collection(FireStoreConstants.CollectionPathToDoList).getDocuments() { (querySnapshot, err) in
+						if let err = err {
+							print("Error getting shopping_list documents: \(err)")
+						} else {
+							for document in querySnapshot!.documents {
+								print("\(document.documentID) => \(document.data())")
+							}
+						}
+					}
+
+				} else {
+					print("Document does not exist")
+				}
+			}
+		} else {
+			print("No user signed in.")
+		}
 	}
 	
 	

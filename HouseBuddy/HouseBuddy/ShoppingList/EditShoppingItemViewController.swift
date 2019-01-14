@@ -15,7 +15,7 @@ class EditShoppingItemViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var itemName: UITextField!
 	
 	// MARK: - Field Setup
-	var shoppingItem:ShoppingItem? = nil
+	var shoppingItem: ShoppingItem? = nil
 	
 	// MARK: - View Handling
 	override func viewDidLoad() {
@@ -59,8 +59,12 @@ class EditShoppingItemViewController: UIViewController, UITextFieldDelegate {
 			return
 		}
 		
-		//Update the item with he newest data (just before updating the list)
-		shoppingItem = ShoppingItem(name: name)
+		//Update the item with the newest data (just before updating the list)
+		if let item = shoppingItem {
+			shoppingItem = ShoppingItem(name: name, bought: item.bought, itemID: item.itemID!)
+		} else {
+			shoppingItem = ShoppingItem(name: name)
+		}
     }
 	
 	// MARK: - Input Handling

@@ -416,7 +416,7 @@
                                 </constraints>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" returnKeyType="done"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences" returnKeyType="done"/>
                             </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -623,7 +623,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="19x-lM-fuA"/>
+        <segue reference="lwq-pr-HIf"/>
         <segue reference="M0p-dK-2BB"/>
         <segue reference="aKv-is-LY0"/>
     </inferredMetricsTieBreakers>

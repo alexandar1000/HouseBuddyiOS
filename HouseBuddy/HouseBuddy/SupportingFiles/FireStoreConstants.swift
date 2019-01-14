@@ -12,4 +12,6 @@ struct FireStoreConstants {
 	static let CollectionPathUsers = "users"
 	static let CollectionPathToDoList = "to_do_list"
 	static let FieldHousehold = "household"
+	static let CollectionPathShoppingList = "shopping_list"
+	static let CollectionPathExpenseTracker = "expense_tracker"
 }

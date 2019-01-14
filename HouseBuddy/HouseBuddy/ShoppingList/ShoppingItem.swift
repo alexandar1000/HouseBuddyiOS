@@ -10,12 +10,26 @@ import Foundation
 
 class ShoppingItem {
 	var name: String
+	var itemID: String?
+	var bought: Bool
 	
 	init() {
 		self.name = "Shopping Item"
+		self.bought = false
+		self.itemID = nil
 	}
 	
 	init(name: String) {
 		self.name = name
+		self.bought = false
+		self.itemID = nil
 	}
+	
+	init(name: String, bought: Bool, itemID: String) {
+		self.name = name
+		self.bought = bought
+		self.itemID = itemID
+	}
+	
+	
 }

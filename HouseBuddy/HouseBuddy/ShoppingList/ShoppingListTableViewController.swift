@@ -9,25 +9,34 @@
 import UIKit
 import os.log
 import Firebase
+import FirebaseFirestore
+import FirebaseAuth
 
 class ShoppingListTableViewController: UITableViewController {
 	
 	// MARK: - Field Declaration
-	private var shoppingItems: Array<ShoppingItem> = [ShoppingItem(name: "Food"),
-													  ShoppingItem(name: "Drinks"),
-													  ShoppingItem(name: "Cake")]
+	private var shoppingItems: Array<ShoppingItem> = []
 	let db = Firestore.firestore()
 	
+	private var listener: ListenerRegistration?
+	
+	private var shoppingListRef: CollectionReference?
 	
 	//MARK: - View Handling
 	override func viewDidLoad() {
 		super.viewDidLoad()
+		
+		let settings = db.settings
+		settings.areTimestampsInSnapshotsEnabled = true
+		db.settings = settings
 	}
 	
 	override func viewWillAppear(_ animated: Bool) {
 		// Hide the NavBar on appearing
 		self.navigationController?.setNavigationBarHidden(false, animated: animated)
 		super.viewWillAppear(animated)
+		
+		handleDBData()
 	}
 	
 	override func viewWillDisappear(_ animated: Bool) {
@@ -36,6 +45,53 @@ class ShoppingListTableViewController: UITableViewController {
 		super.viewWillDisappear(animated)
 	}
 	
+	// MARK: - Firestore functions
+	fileprivate func handleDBData() {
+		
+		// TODO: Retrieving household id should be moved to HouseHoldManager class where it's put in the device storage..
+		if let user = Auth.auth().currentUser {
+			let userId = user.uid
+			let userRef = db.collection(FireStoreConstants.CollectionPathUsers).document(userId)
+			
+			userRef.getDocument { (document, error) in
+				if let document = document, document.exists {
+					let householdRef = document.get(FireStoreConstants.FieldHousehold) as! DocumentReference
+					self.shoppingListRef = householdRef.collection(FireStoreConstants.CollectionPathShoppingList)
+					
+					self.shoppingListRef!.getDocuments() { (querySnapshot, err) in
+						if let err = err {
+							print("Error getting documents: \(err)")
+						} else {
+							if !querySnapshot!.documents.isEmpty {
+								self.listener = self.shoppingListRef!.order(by: "last_modified", descending: false).addSnapshotListener { querySnapshot, error in
+									guard let documents = querySnapshot?.documents else {
+										print("Error fetching documents: \(error!)")
+										return
+									}
+									self.shoppingItems.removeAll()
+									for document in documents {
+										let name: String = document.get("item") as! String
+										let bought: Bool = document.get("bought") as! Bool
+										self.shoppingItems.append(ShoppingItem(name: name, bought: bought, itemID: document.documentID))
+										print("\(document.documentID) => \(document.data())")
+									}
+									self.tableView.reloadData()
+								}
+							} else {
+								print("Document does not exist")
+							}
+						}
+					}
+				}
+			}
+		} else {
+			print("No user signed in.")
+		}
+	}
+	
+	deinit {
+		listener!.remove()
+	}
 	
 	// MARK: - Table view data source
 	override func numberOfSections(in tableView: UITableView) -> Int {
@@ -55,9 +111,11 @@ class ShoppingListTableViewController: UITableViewController {
 			fatalError("The dequeued cell is not an instance of ShoppingListTableViewCell.")
 		}
 		
-		let name = shoppingItems[indexPath.row].name
+		let item = shoppingItems[indexPath.row]
 		
-		cell.nameLabel.text = name
+		cell.nameLabel.text = item.name
+		
+		cell.backgroundColor = (item.bought ? UIColor.green : UIColor.white)
 		
 		return cell
 	}
@@ -66,11 +124,49 @@ class ShoppingListTableViewController: UITableViewController {
 	override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
 		if editingStyle == .delete {
 			// Delete the row from the data source
+			let selectedTask = shoppingItems[indexPath.row]
+			
 			shoppingItems.remove(at: indexPath.row)
 			tableView.deleteRows(at: [indexPath], with: .fade)
+			
+			shoppingListRef!.document(selectedTask.itemID!).delete() { err in
+				if let err = err {
+					print("Error removing document: \(err)")
+				} else {
+					print("Document successfully removed!")
+				}
+			}
 		} else if editingStyle == .insert {
 			// Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
 		}
+	}
+	
+	override func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+		let closeAction = UIContextualAction(style: .normal, title:  "Bought", handler: { (ac:UIContextualAction, view:UIView, success:(Bool) -> Void) in
+			print("Changed bought state")
+			let selectedTask = self.shoppingItems[indexPath.row]
+			
+			let currentState = !selectedTask.bought
+			self.shoppingItems[indexPath.row].bought = currentState
+			self.tableView.cellForRow(at: indexPath)?.backgroundColor = (currentState ? UIColor.green : UIColor.white)
+			
+			self.shoppingListRef!.document(selectedTask.itemID!).updateData([
+				"bought": currentState
+			]) { err in
+				if let err = err {
+					print("Error updating document: \(err)")
+				} else {
+					print("Document successfully updated")
+				}
+			}
+			
+			success(true)
+		})
+		closeAction.image = UIImage(named: "tick")
+		closeAction.backgroundColor = .blue
+		
+		return UISwipeActionsConfiguration(actions: [closeAction])
+		
 	}
 	
 	
@@ -80,12 +176,41 @@ class ShoppingListTableViewController: UITableViewController {
 		if let sourceViewController = sender.source as? EditShoppingItemViewController, let shopItem = sourceViewController.shoppingItem {
 			
 			if let selectedIndexPath = tableView.indexPathForSelectedRow {
+				
 				// Update an existing meal.
 				shoppingItems[selectedIndexPath.row] = shopItem
 				tableView.reloadRows(at: [selectedIndexPath], with: .none)
+				
+				shoppingListRef?.document(shopItem.itemID!).updateData([
+					"item": shopItem.name,
+					"bought": shopItem.bought,
+					"last_modified": FieldValue.serverTimestamp()
+				]) { err in
+					if let err = err {
+						print("Error updating document: \(err)")
+					} else {
+						print("Document successfully updated")
+					}
+				}
 			} else {
+				
 				// Add a new shoppingItem.
 				let newIndexPath = IndexPath(row: shoppingItems.count, section: 0)
+				
+				var ref: DocumentReference? = nil
+				ref = shoppingListRef?.addDocument(data: [
+					"item": shopItem.name,
+					"bought": false,
+					"last_modified": FieldValue.serverTimestamp()
+				]) { err in
+					if let err = err {
+						print("Error adding document: \(err)")
+					} else {
+						print("Document added with ID: \(ref!.documentID)")
+					}
+				}
+				shopItem.itemID = ref!.documentID
+				
 				shoppingItems.append(shopItem)
 				tableView.insertRows(at: [newIndexPath], with: .automatic)
 			}

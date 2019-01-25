@@ -373,7 +373,7 @@
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="nameLabel" destination="0bN-OL-fjr" id="aR9-UW-faq"/>
-                                    <segue destination="4f8-lW-wxa" kind="show" identifier="editShoppingItemSegue" id="M0p-dK-2BB"/>
+                                    <segue destination="7hM-RM-pcO" kind="show" identifier="showShoppingItemSegue" id="EVm-EB-MK5"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -394,6 +394,40 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zbE-Ne-Vik" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3577" y="-21"/>
+        </scene>
+        <!--Shopping Item-->
+        <scene sceneID="rcn-de-GNR">
+            <objects>
+                <viewController id="7hM-RM-pcO" customClass="ShowShoppingItemViewController" customModule="HouseBuddy" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="dZA-Zj-T8o">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WwX-y8-15c">
+                                <rect key="frame" x="16" y="87" width="343" height="42"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="JrH-dc-QnO"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Shopping Item" id="5h7-ap-A2m">
+                        <barButtonItem key="rightBarButtonItem" systemItem="edit" id="nfb-MK-Rrn">
+                            <connections>
+                                <segue destination="4f8-lW-wxa" kind="show" identifier="editShownShoppingItemSegue" id="0Pw-qv-Yqg"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="nameLbl" destination="WwX-y8-15c" id="tlk-fp-ytR"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Fum-Ap-sn6" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4824.8000000000002" y="-377.36131934032989"/>
         </scene>
         <!--New Shopping Item-->
         <scene sceneID="TF6-Zh-uj4">
@@ -418,6 +452,22 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences" returnKeyType="done"/>
                             </textField>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QRV-9H-ma8" customClass="BEMCheckBox">
+                                <rect key="frame" x="152" y="335" width="70" height="70"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="lineWidth">
+                                        <real key="value" value="2"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="0.0"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="animationDuration">
+                                        <real key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -438,20 +488,21 @@
                         <barButtonItem key="rightBarButtonItem" systemItem="done" id="fe7-k4-3nX">
                             <connections>
                                 <action selector="doneButtonTapped:" destination="4f8-lW-wxa" id="fAl-qo-Fi1"/>
+                                <segue destination="0O6-zc-dyY" kind="unwind" unwindAction="unwindToShoppingListWithSender:" id="LHN-tY-KDo"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
+                        <outlet property="boughtCheckBox" destination="QRV-9H-ma8" id="iaO-2d-gin"/>
                         <outlet property="doneButton" destination="fe7-k4-3nX" id="s3Q-f5-sLT"/>
                         <outlet property="itemName" destination="jVW-vN-ceL" id="n7I-Bm-wl8"/>
-                        <segue destination="0O6-zc-dyY" kind="unwind" identifier="unwindToShoppingListSegue" unwindAction="unwindToShoppingListWithSender:" id="qS1-u8-NXI"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xZx-O1-2Hx" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="0O6-zc-dyY" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="4825" y="-21"/>
+            <point key="canvasLocation" x="5981.6000000000004" y="-21.139430284857571"/>
         </scene>
         <!--Add Task-->
         <scene sceneID="ona-Ut-o45">
@@ -623,8 +674,8 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="lwq-pr-HIf"/>
-        <segue reference="M0p-dK-2BB"/>
+        <segue reference="19x-lM-fuA"/>
+        <segue reference="Ayc-Np-4w4"/>
         <segue reference="aKv-is-LY0"/>
     </inferredMetricsTieBreakers>
 </document>

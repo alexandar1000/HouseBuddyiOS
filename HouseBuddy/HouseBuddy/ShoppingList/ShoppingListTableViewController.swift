@@ -226,8 +226,8 @@ class ShoppingListTableViewController: UITableViewController {
 		case "addNewShoppingItemSegue":
 			os_log("Adding a new shopping item.", log: OSLog.default, type: .debug)
 			
-		case "editShoppingItemSegue":
-			guard let editShoppingItemViewController = segue.destination as? EditShoppingItemViewController else {
+		case "showShoppingItemSegue":
+			guard let showShoppingItemViewController = segue.destination as? ShowShoppingItemViewController else {
 				fatalError("Unexpected destination: \(segue.destination)")
 			}
 			
@@ -239,8 +239,8 @@ class ShoppingListTableViewController: UITableViewController {
 				fatalError("The selected cell is not being displayed by the table")
 			}
 			
-			let selectedMeal = shoppingItems[indexPath.row]
-			editShoppingItemViewController.shoppingItem = selectedMeal
+			let selectedShoppingItem = shoppingItems[indexPath.row]
+			showShoppingItemViewController.shoppingItem = selectedShoppingItem
 			
 		default:
 			fatalError("Unexpected Segue Identifier; \(segue.identifier ?? "No segue defined")")

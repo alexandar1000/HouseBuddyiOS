@@ -37,11 +37,17 @@ class ExpenseTrackerViewController: UIViewController, UITableViewDataSource {
 	}
 	
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-		let cell = tableView.dequeueReusableCell(withIdentifier: "expenseTrackerCell")!
 		
-		let text = expenses[indexPath.row].name
 		
-		cell.textLabel?.text = text
+		guard let cell = tableView.dequeueReusableCell(withIdentifier: "expenseTrackerCell", for: indexPath) as? ExpenseTrackerTableViewCell  else {
+			fatalError("The dequeued cell is not an instance of ExpenseTrackerListTableViewCell.")
+		}
+		
+		let expenseName = expenses[indexPath.row].name
+		let expensePrice = expenses[indexPath.row].price
+		
+		cell.expenseName.text = expenseName
+		cell.expensePrice.text = String(expensePrice)
 		
 		return cell
 	}

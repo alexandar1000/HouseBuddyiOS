@@ -410,13 +410,40 @@
                                 <rect key="frame" x="0.0" y="313" width="375" height="294"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="expenseTrackerCell" id="4s6-D7-5ff">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="expenseTrackerCell" id="4s6-D7-5ff" customClass="ExpenseTrackerTableViewCell" customModule="HouseBuddy" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="4s6-D7-5ff" id="gYB-Op-xzp">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ppT-AM-1YZ">
+                                                    <rect key="frame" x="20" y="11" width="98" height="22"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eOu-S9-MgN">
+                                                    <rect key="frame" x="323" y="11" width="42" height="22"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="eOu-S9-MgN" firstAttribute="top" secondItem="gYB-Op-xzp" secondAttribute="topMargin" id="2lV-Pp-jVt"/>
+                                                <constraint firstItem="ppT-AM-1YZ" firstAttribute="width" relation="greaterThanOrEqual" secondItem="eOu-S9-MgN" secondAttribute="width" multiplier="7:3" id="4Jl-j5-tC0"/>
+                                                <constraint firstItem="ppT-AM-1YZ" firstAttribute="leading" secondItem="gYB-Op-xzp" secondAttribute="leadingMargin" constant="5" id="F66-AV-Gi5"/>
+                                                <constraint firstItem="ppT-AM-1YZ" firstAttribute="top" secondItem="gYB-Op-xzp" secondAttribute="topMargin" id="I1s-8W-d3a"/>
+                                                <constraint firstItem="ppT-AM-1YZ" firstAttribute="bottom" secondItem="gYB-Op-xzp" secondAttribute="bottomMargin" id="QXG-m3-UiK"/>
+                                                <constraint firstItem="eOu-S9-MgN" firstAttribute="trailing" secondItem="gYB-Op-xzp" secondAttribute="trailingMargin" constant="5" id="U7S-rP-fGV"/>
+                                                <constraint firstItem="eOu-S9-MgN" firstAttribute="bottom" secondItem="gYB-Op-xzp" secondAttribute="bottomMargin" id="pNo-KN-aXB"/>
+                                            </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="expenseName" destination="ppT-AM-1YZ" id="guR-nj-rci"/>
+                                            <outlet property="expensePrice" destination="eOu-S9-MgN" id="Pdb-YZ-tbL"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -720,6 +747,6 @@
     <inferredMetricsTieBreakers>
         <segue reference="19x-lM-fuA"/>
         <segue reference="0Pw-qv-Yqg"/>
-        <segue reference="aKv-is-LY0"/>
+        <segue reference="npG-B3-hep"/>
     </inferredMetricsTieBreakers>
 </document>

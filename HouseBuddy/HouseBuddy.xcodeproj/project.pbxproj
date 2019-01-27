@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		4570566821FE44FE0030403B /* ExpenseTrackerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4570566721FE44FE0030403B /* ExpenseTrackerViewController.swift */; };
+		4570566A21FE5D360030403B /* ExpenseTrackerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4570566921FE5D360030403B /* ExpenseTrackerTableViewCell.swift */; };
 		4598884421FBB1CC00E4176B /* ShowShoppingItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4598884321FBB1CC00E4176B /* ShowShoppingItemViewController.swift */; };
 		4AE4F69611247EF36EF55309 /* Pods_HouseBuddy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8596F7D91C4EAD293992B3B9 /* Pods_HouseBuddy.framework */; };
 		5684910F21E65BC4005C80E2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5684910E21E65BC4005C80E2 /* AppDelegate.swift */; };
@@ -34,6 +35,7 @@
 
 /* Begin PBXFileReference section */
 		4570566721FE44FE0030403B /* ExpenseTrackerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseTrackerViewController.swift; sourceTree = "<group>"; };
+		4570566921FE5D360030403B /* ExpenseTrackerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseTrackerTableViewCell.swift; sourceTree = "<group>"; };
 		4598884321FBB1CC00E4176B /* ShowShoppingItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowShoppingItemViewController.swift; sourceTree = "<group>"; };
 		5684910E21E65BC4005C80E2 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5692DACC21C7E168005A1A9E /* ShowTaskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowTaskViewController.swift; sourceTree = "<group>"; };
@@ -194,6 +196,7 @@
 			children = (
 				A9BCE6B821C95B1C00F92F67 /* ExpenseEntry.swift */,
 				4570566721FE44FE0030403B /* ExpenseTrackerViewController.swift */,
+				4570566921FE5D360030403B /* ExpenseTrackerTableViewCell.swift */,
 			);
 			name = ExpenseTracker;
 			path = HouseBuddy/ExpenseTracker;
@@ -363,6 +366,7 @@
 				56962CC521B43F2000E17880 /* TaskTableViewCell.swift in Sources */,
 				A949AD7921C40FCA009EC68F /* ShoppingListTableViewCell.swift in Sources */,
 				5692DACF21C7EF8C005A1A9E /* AddTaskViewController.swift in Sources */,
+				4570566A21FE5D360030403B /* ExpenseTrackerTableViewCell.swift in Sources */,
 				4598884421FBB1CC00E4176B /* ShowShoppingItemViewController.swift in Sources */,
 				5684910F21E65BC4005C80E2 /* AppDelegate.swift in Sources */,
 				A95D601B21B16B58003244DF /* SignUpViewController.swift in Sources */,

@@ -306,6 +306,9 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="13z-6j-eSB">
                                 <rect key="frame" x="70" y="411" width="235" height="30"/>
                                 <state key="normal" title="Expense Tracker"/>
+                                <connections>
+                                    <segue destination="nvi-gG-a2n" kind="show" id="Gvx-FP-uL6"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -394,6 +397,47 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zbE-Ne-Vik" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3577" y="-21"/>
+        </scene>
+        <!--Expense Tracker-->
+        <scene sceneID="R31-3a-tKd">
+            <objects>
+                <viewController id="nvi-gG-a2n" customClass="ExpenseTrackerViewController" customModule="HouseBuddy" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="1sX-ms-QEU">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="H0u-05-7ei">
+                                <rect key="frame" x="0.0" y="313" width="375" height="294"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="expenseTrackerCell" id="4s6-D7-5ff">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="4s6-D7-5ff" id="gYB-Op-xzp">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="3ni-uI-tPY" firstAttribute="bottom" secondItem="H0u-05-7ei" secondAttribute="bottom" constant="60" id="Uqy-uZ-RXr"/>
+                            <constraint firstItem="H0u-05-7ei" firstAttribute="trailing" secondItem="3ni-uI-tPY" secondAttribute="trailing" id="a4o-Yp-Zhc"/>
+                            <constraint firstItem="H0u-05-7ei" firstAttribute="leading" secondItem="3ni-uI-tPY" secondAttribute="leading" id="hjM-kL-Slt"/>
+                            <constraint firstItem="H0u-05-7ei" firstAttribute="top" secondItem="3ni-uI-tPY" secondAttribute="top" constant="249" id="ilr-ax-cyL"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="3ni-uI-tPY"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Expense Tracker" id="xDf-cl-MB6"/>
+                    <connections>
+                        <outlet property="tableView" destination="H0u-05-7ei" id="FtG-Yy-u5f"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="CNL-1p-hFM" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3576.8000000000002" y="859.52023988005999"/>
         </scene>
         <!--Shopping Item-->
         <scene sceneID="rcn-de-GNR">
@@ -675,7 +719,7 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="19x-lM-fuA"/>
-        <segue reference="Ayc-Np-4w4"/>
+        <segue reference="0Pw-qv-Yqg"/>
         <segue reference="aKv-is-LY0"/>
     </inferredMetricsTieBreakers>
 </document>

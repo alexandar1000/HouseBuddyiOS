@@ -10,18 +10,18 @@ import Foundation
 
 class ExpenseEntry {
 	var name: String
+	var description: String
 	var price: Double
-	var bought: Bool
 	
 	init() {
 		self.name = "Expense"
+		self.description = ""
 		self.price = 0.0
-		self.bought = false
 	}
 	
-	init(name: String, price: Double, bought: Bool) {
+	init(name: String, description: String, price: Double) {
 		self.name = name
+		self.description = description
 		self.price = price
-		self.bought = bought
 	}
 }

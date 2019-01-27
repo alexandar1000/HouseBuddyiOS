@@ -41,6 +41,7 @@
 		56962CC621B441C000E17880 /* TaskTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskTableViewController.swift; sourceTree = "<group>"; };
 		56F1426021C3F453001E909A /* FireStoreConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FireStoreConstants.swift; sourceTree = "<group>"; };
 		8596F7D91C4EAD293992B3B9 /* Pods_HouseBuddy.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HouseBuddy.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8B5D948D5352EB4483B404BF /* Pods-HouseBuddy.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HouseBuddy.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HouseBuddy/Pods-HouseBuddy.debug.xcconfig"; sourceTree = "<group>"; };
 		A945BBA021A7095D00A4E39B /* HouseBuddy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HouseBuddy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A945BBA821A7095D00A4E39B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		A945BBAA21A7095D00A4E39B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -56,6 +57,7 @@
 		A95D601A21B16B58003244DF /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		A95D601C21B16B6C003244DF /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		A9BCE6B821C95B1C00F92F67 /* ExpenseEntry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExpenseEntry.swift; sourceTree = "<group>"; };
+		BCF2B527740BA83A43EFA3B3 /* Pods-HouseBuddy.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HouseBuddy.release.xcconfig"; path = "Pods/Target Support Files/Pods-HouseBuddy/Pods-HouseBuddy.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,6 +72,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2B138A6F7B3BF914525798DE /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				8B5D948D5352EB4483B404BF /* Pods-HouseBuddy.debug.xcconfig */,
+				BCF2B527740BA83A43EFA3B3 /* Pods-HouseBuddy.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		3B22A24F49F91737498F797A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -112,6 +123,7 @@
 				A945BBA121A7095D00A4E39B /* Products */,
 				3B22A24F49F91737498F797A /* Frameworks */,
 				5684910D21E658FA005C80E2 /* Recovered References */,
+				2B138A6F7B3BF914525798DE /* Pods */,
 			);
 			indentWidth = 4;
 			sourceTree = "<group>";
@@ -503,6 +515,7 @@
 		};
 		A945BBB321A7095D00A4E39B /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8B5D948D5352EB4483B404BF /* Pods-HouseBuddy.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -521,6 +534,7 @@
 		};
 		A945BBB421A7095D00A4E39B /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = BCF2B527740BA83A43EFA3B3 /* Pods-HouseBuddy.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;

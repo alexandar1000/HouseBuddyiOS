@@ -7,26 +7,32 @@
 //
 
 import UIKit
+import BEMCheckBox
 
-class EditShoppingItemViewController: UIViewController, UITextFieldDelegate {
+class EditShoppingItemViewController: UIViewController, UITextFieldDelegate, BEMCheckBoxDelegate {
 
 	// MARK - Outlets
 	@IBOutlet weak var doneButton: UIBarButtonItem!
     @IBOutlet weak var itemName: UITextField!
+	@IBOutlet weak var boughtCheckBox: BEMCheckBox!
 	
 	// MARK: - Field Setup
 	var shoppingItem: ShoppingItem? = nil
+	var completeness: Bool = false
 	
 	// MARK: - View Handling
 	override func viewDidLoad() {
         super.viewDidLoad()
 
 		self.itemName.delegate = self
+		self.boughtCheckBox.delegate = self
 		
 		// Set up the ShoppingItem if editing an existing ShoppingItem
 		if let shoppingItem = shoppingItem {
 			navigationItem.title = "Edit Shopping Item"
 			itemName.text = shoppingItem.name
+			completeness = shoppingItem.bought
+			self.boughtCheckBox.on = completeness
 		}
     }
 	
@@ -47,6 +53,11 @@ class EditShoppingItemViewController: UIViewController, UITextFieldDelegate {
 		}
 	}
 	
+	//MARK: BEMCheckBoxDelegate Actions
+	func didTap(_ checkBox: BEMCheckBox) {
+		self.completeness = boughtCheckBox.on
+	}
+	
 	
     // MARK: - Navigation
 	
@@ -61,7 +72,7 @@ class EditShoppingItemViewController: UIViewController, UITextFieldDelegate {
 		
 		//Update the item with the newest data (just before updating the list)
 		if let item = shoppingItem {
-			shoppingItem = ShoppingItem(name: name, bought: item.bought, itemID: item.itemID!)
+			shoppingItem = ShoppingItem(name: name, bought: completeness, itemID: item.itemID!)
 		} else {
 			shoppingItem = ShoppingItem(name: name)
 		}

@@ -10,5 +10,6 @@ target 'HouseBuddy' do
   pod 'Firebase/Firestore'
   pod 'Firebase/Auth'
   pod 'GoogleSignIn'
+  pod 'BEMCheckBox'
   
 end

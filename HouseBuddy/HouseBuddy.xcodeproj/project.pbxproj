@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4598884421FBB1CC00E4176B /* ShowShoppingItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4598884321FBB1CC00E4176B /* ShowShoppingItemViewController.swift */; };
 		4AE4F69611247EF36EF55309 /* Pods_HouseBuddy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8596F7D91C4EAD293992B3B9 /* Pods_HouseBuddy.framework */; };
 		5684910F21E65BC4005C80E2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5684910E21E65BC4005C80E2 /* AppDelegate.swift */; };
 		5692DACD21C7E168005A1A9E /* ShowTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5692DACC21C7E168005A1A9E /* ShowTaskViewController.swift */; };
@@ -31,6 +32,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4598884321FBB1CC00E4176B /* ShowShoppingItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowShoppingItemViewController.swift; sourceTree = "<group>"; };
 		5684910E21E65BC4005C80E2 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5692DACC21C7E168005A1A9E /* ShowTaskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowTaskViewController.swift; sourceTree = "<group>"; };
 		5692DACE21C7EF8C005A1A9E /* AddTaskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTaskViewController.swift; sourceTree = "<group>"; };
@@ -38,7 +40,6 @@
 		56962CC421B43F2000E17880 /* TaskTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskTableViewCell.swift; sourceTree = "<group>"; };
 		56962CC621B441C000E17880 /* TaskTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskTableViewController.swift; sourceTree = "<group>"; };
 		56F1426021C3F453001E909A /* FireStoreConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FireStoreConstants.swift; sourceTree = "<group>"; };
-		6EDE2D62A15B3990DB5AB051 /* Pods-HouseBuddy.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HouseBuddy.release.xcconfig"; path = "Pods/Target Support Files/Pods-HouseBuddy/Pods-HouseBuddy.release.xcconfig"; sourceTree = "<group>"; };
 		8596F7D91C4EAD293992B3B9 /* Pods_HouseBuddy.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HouseBuddy.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A945BBA021A7095D00A4E39B /* HouseBuddy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HouseBuddy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A945BBA821A7095D00A4E39B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -54,7 +55,6 @@
 		A95D601821B16B3C003244DF /* LogInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
 		A95D601A21B16B58003244DF /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		A95D601C21B16B6C003244DF /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
-		A99EC1F4D7AAD8B1A013CF56 /* Pods-HouseBuddy.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HouseBuddy.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HouseBuddy/Pods-HouseBuddy.debug.xcconfig"; sourceTree = "<group>"; };
 		A9BCE6B821C95B1C00F92F67 /* ExpenseEntry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExpenseEntry.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -105,21 +105,11 @@
 			path = HouseholdManager;
 			sourceTree = "<group>";
 		};
-		9F430C37F818FD00525CFB57 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				A99EC1F4D7AAD8B1A013CF56 /* Pods-HouseBuddy.debug.xcconfig */,
-				6EDE2D62A15B3990DB5AB051 /* Pods-HouseBuddy.release.xcconfig */,
-			);
-			name = Pods;
-			sourceTree = "<group>";
-		};
 		A945BB9721A7095D00A4E39B = {
 			isa = PBXGroup;
 			children = (
 				A945BBA221A7095D00A4E39B /* HouseBuddy */,
 				A945BBA121A7095D00A4E39B /* Products */,
-				9F430C37F818FD00525CFB57 /* Pods */,
 				3B22A24F49F91737498F797A /* Frameworks */,
 				5684910D21E658FA005C80E2 /* Recovered References */,
 			);
@@ -170,6 +160,7 @@
 				A949AD7621C40A68009EC68F /* ShoppingListTableViewController.swift */,
 				A949AD7821C40FCA009EC68F /* ShoppingListTableViewCell.swift */,
 				A949AD7A21C42CEF009EC68F /* EditShoppingItemViewController.swift */,
+				4598884321FBB1CC00E4176B /* ShowShoppingItemViewController.swift */,
 			);
 			path = ShoppingList;
 			sourceTree = "<group>";
@@ -316,6 +307,7 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-HouseBuddy/Pods-HouseBuddy-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/BEMCheckBox/BEMCheckBox.framework",
 				"${BUILT_PRODUCTS_DIR}/BoringSSL/openssl.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
@@ -330,6 +322,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/BEMCheckBox.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/openssl.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
@@ -355,6 +348,7 @@
 				56962CC521B43F2000E17880 /* TaskTableViewCell.swift in Sources */,
 				A949AD7921C40FCA009EC68F /* ShoppingListTableViewCell.swift in Sources */,
 				5692DACF21C7EF8C005A1A9E /* AddTaskViewController.swift in Sources */,
+				4598884421FBB1CC00E4176B /* ShowShoppingItemViewController.swift in Sources */,
 				5684910F21E65BC4005C80E2 /* AppDelegate.swift in Sources */,
 				A95D601B21B16B58003244DF /* SignUpViewController.swift in Sources */,
 				A949AD7B21C42CEF009EC68F /* EditShoppingItemViewController.swift in Sources */,
@@ -509,7 +503,6 @@
 		};
 		A945BBB321A7095D00A4E39B /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A99EC1F4D7AAD8B1A013CF56 /* Pods-HouseBuddy.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -528,7 +521,6 @@
 		};
 		A945BBB421A7095D00A4E39B /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 6EDE2D62A15B3990DB5AB051 /* Pods-HouseBuddy.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;

@@ -443,7 +443,7 @@
                                         <connections>
                                             <outlet property="expenseName" destination="ppT-AM-1YZ" id="guR-nj-rci"/>
                                             <outlet property="expensePrice" destination="eOu-S9-MgN" id="Pdb-YZ-tbL"/>
-                                            <segue destination="fgO-pN-FnM" kind="show" id="dpj-2a-TFn"/>
+                                            <segue destination="fgO-pN-FnM" kind="show" identifier="showExpenseSegue" id="dpj-2a-TFn"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -461,7 +461,7 @@
                     <navigationItem key="navigationItem" title="Expense Tracker" id="xDf-cl-MB6">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="9lz-u0-goI">
                             <connections>
-                                <segue destination="uWT-4q-qHG" kind="show" id="ohn-uS-gz9"/>
+                                <segue destination="uWT-4q-qHG" kind="show" identifier="editExpenseSegue" id="ohn-uS-gz9"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -529,6 +529,12 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="dateLbl" destination="Mw6-FS-bt5" id="bOj-oG-jDX"/>
+                        <outlet property="descriptionLbl" destination="TbX-dP-ro3" id="Vl0-tm-HiX"/>
+                        <outlet property="nameLbl" destination="48T-MM-QvP" id="ZpO-hv-9o1"/>
+                        <outlet property="priceLbl" destination="TvR-bY-iwV" id="bya-X6-Ky5"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BtE-0S-DqP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -875,7 +881,7 @@
     <inferredMetricsTieBreakers>
         <segue reference="19x-lM-fuA"/>
         <segue reference="0Pw-qv-Yqg"/>
-        <segue reference="Q6g-g5-kOY"/>
+        <segue reference="ohn-uS-gz9"/>
         <segue reference="npG-B3-hep"/>
     </inferredMetricsTieBreakers>
 </document>

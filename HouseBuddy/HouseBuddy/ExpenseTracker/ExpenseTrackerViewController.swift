@@ -7,15 +7,16 @@
 //
 
 import UIKit
+import os.log
 
 class ExpenseTrackerViewController: UIViewController, UITableViewDataSource {
 
 	// MARK: - Fields
 	@IBOutlet weak var tableView: UITableView!
 	var expenses: [ExpenseEntry] = [
-	ExpenseEntry(name: "Food", description: "Party food", price: 7.99),
-	ExpenseEntry(name: "Drinks", description: "Party Drinks", price: 4.58),
-	ExpenseEntry(name: "Candles", description: "Cake Candles", price: 2.99)]
+		ExpenseEntry(name: "Food", description: "Party food", price: 7.99, date: Date()),
+		ExpenseEntry(name: "Drinks", description: "Party Drinks", price: 4.58, date: Date()),
+		ExpenseEntry(name: "Candles", description: "Cake Candles", price: 2.99, date: Date())]
 	
 	
     override func viewDidLoad() {
@@ -57,14 +58,55 @@ class ExpenseTrackerViewController: UIViewController, UITableViewDataSource {
 	}
 	
 
-    /*
+	
     // MARK: - Navigation
+	
+	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+		super.prepare(for: segue, sender: sender)
+		
+		switch (segue.identifier ?? "") {
+		case "showExpenseSegue":
+			guard let showExpenseViewController = segue.destination as? ShowExpenseViewController else {
+				fatalError("Unexpected destination: \(segue.destination)")
+			}
+			
+			guard let selectedExpenseCell = sender as? ExpenseTrackerTableViewCell else {
+				fatalError("Unexpected sender: \(sender ?? "Undeclared sender")")
+			}
+			
+			guard let indexPath = tableView.indexPath(for: selectedExpenseCell) else {
+				fatalError("The selected cell is not being displayed by the table")
+			}
+			
+			let selectedExpense = expenses[indexPath.row]
+			showExpenseViewController.expense = selectedExpense
+			
+		case "editExpenseSegue":
+			os_log("Adding a new expense.", log: OSLog.default, type: .debug)
+			
+		default:
+			fatalError("Unexpected Segue Identifier; \(segue.identifier ?? "No segue defined")")
+		}
+	}
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+	//Used for Unwind Segues
+	@IBAction func unwindToExpenseTracker(sender: UIStoryboardSegue) {
+		if let sourceViewController = sender.source as? EditExpenseViewController, let expense = sourceViewController.expense {
+			
+			if let selectedIndexPath = tableView.indexPathForSelectedRow {
+				
+				// Update an existing meal.
+				expenses[selectedIndexPath.row] = expense
+				tableView.reloadRows(at: [selectedIndexPath], with: .none)
+				
+			} else {
+				
+				// Add a new shoppingItem.
+				let newIndexPath = IndexPath(row: expenses.count, section: 0)
+				
+				expenses.append(expense)
+				tableView.insertRows(at: [newIndexPath], with: .automatic)
+			}
+		}
+	}
 }

@@ -10,6 +10,11 @@ import UIKit
 
 class EditExpenseViewController: UIViewController {
 
+	//MARK: - Outlets
+	
+	//MARK: - Fields
+	var expense: ExpenseEntry? = ExpenseEntry();
+	
     override func viewDidLoad() {
         super.viewDidLoad()
 

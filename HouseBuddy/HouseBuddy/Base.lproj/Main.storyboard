@@ -561,7 +561,7 @@
                                 <rect key="frame" x="131" y="156" width="113" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="U2E-rf-l40">
                                 <rect key="frame" x="64" y="211" width="247" height="30"/>
@@ -593,10 +593,21 @@
                         <viewLayoutGuide key="safeArea" id="1xL-bP-Ti4"/>
                     </view>
                     <navigationItem key="navigationItem" title="Edit Expenese" id="CAa-D9-MlN">
-                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="SAR-at-YUm"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="SAR-at-YUm">
+                            <connections>
+                                <segue destination="nCv-2F-Kfn" kind="unwind" unwindAction="unwindToExpenseTrackerWithSender:" id="onE-Va-660"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="dateInput" destination="VRz-Sv-F5D" id="C6r-ns-wPg"/>
+                        <outlet property="descriptionInput" destination="4Uf-FA-WFq" id="7pB-Ng-bad"/>
+                        <outlet property="priceInput" destination="Plj-eO-4j0" id="E71-dm-LEH"/>
+                        <outlet property="titleInput" destination="U2E-rf-l40" id="e8M-gf-bgX"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="v6X-eo-g0y" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="nCv-2F-Kfn" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="5981.6000000000004" y="859.52023988005999"/>
         </scene>

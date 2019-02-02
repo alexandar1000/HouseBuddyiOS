@@ -8,29 +8,98 @@
 
 import UIKit
 import os.log
+import Firebase
+import FirebaseFirestore
+import FirebaseAuth
 
 class ExpenseTrackerViewController: UIViewController, UITableViewDataSource {
 
 	// MARK: - Fields
 	@IBOutlet weak var tableView: UITableView!
-	var expenses: [ExpenseEntry] = [
-		ExpenseEntry(name: "Food", description: "Party food", price: 7.99, date: Date()),
-		ExpenseEntry(name: "Drinks", description: "Party Drinks", price: 4.58, date: Date()),
-		ExpenseEntry(name: "Candles", description: "Cake Candles", price: 2.99, date: Date())]
-	
+	private var expenses: [ExpenseEntry] = []
+	let db = Firestore.firestore()
+	private var listener: ListenerRegistration?
+	private var expensesRef: CollectionReference?
+	var df: DateFormatter = DateFormatter()
 	
     override func viewDidLoad() {
         super.viewDidLoad()
 		
+		df.dateFormat = "dd.MM.yyyy"
+		let settings = db.settings
+		settings.areTimestampsInSnapshotsEnabled = true
+		db.settings = settings
 		//add border to the tableView
 		tableView.layer.masksToBounds = true
 		tableView.layer.borderColor = UIColor( red: 0/255, green: 0/255, blue:0/255, alpha: 1.0 ).cgColor
 		tableView.layer.borderWidth = 0.7
 		
 		tableView.dataSource = self
-
-        // Do any additional setup after loading the view.
     }
+	
+	override func viewWillAppear(_ animated: Bool) {
+		// Hide the NavBar on appearing
+		self.navigationController?.setNavigationBarHidden(false, animated: animated)
+		super.viewWillAppear(animated)
+		
+		handleDBData()
+	}
+	
+	override func viewWillDisappear(_ animated: Bool) {
+		// Show the NavBar on disappearing
+		self.navigationController?.setNavigationBarHidden(false, animated: animated)
+		super.viewWillDisappear(animated)
+	}
+	
+	// MARK: - Firestore functions
+	fileprivate func handleDBData() {
+		
+		// TODO: Retrieving household id should be moved to HouseHoldManager class where it's put in the device storage..
+		if let user = Auth.auth().currentUser {
+			let userId = user.uid
+			let userRef = db.collection(FireStoreConstants.CollectionPathUsers).document(userId)
+			
+			userRef.getDocument { (document, error) in
+				if let document = document, document.exists {
+					let householdRef = document.get(FireStoreConstants.FieldHousehold) as! DocumentReference
+					self.expensesRef = householdRef.collection(FireStoreConstants.CollectionPathExpenseTracker)
+					
+					self.expensesRef!.getDocuments() { (querySnapshot, err) in
+						if let err = err {
+							print("Error getting documents: \(err)")
+						} else {
+							if !querySnapshot!.documents.isEmpty {
+								self.listener = self.expensesRef!.order(by: "last_modified", descending: false).addSnapshotListener { querySnapshot, error in
+									guard let documents = querySnapshot?.documents else {
+										print("Error fetching documents: \(error!)")
+										return
+									}
+									self.expenses.removeAll()
+									for document in documents {
+										let name: String = document.get("name") as! String
+										let price: Double = Double(document.get("price") as! String) ?? 0
+										let description: String = document.get("description") as! String
+										let date: Date = self.df.date(from: document.get("date") as! String)!
+										self.expenses.append(ExpenseEntry(name: name, description: description, price: price, date: date, expenseId: document.documentID))
+										print("\(document.documentID) => \(document.data())")
+									}
+									self.tableView.reloadData()
+								}
+							} else {
+								print("Document does not exist")
+							}
+						}
+					}
+				}
+			}
+		} else {
+			print("No user signed in.")
+		}
+	}
+	
+	deinit {
+		listener!.remove()
+	}
 	
 	//MARK: - UITableViewDataSource Protocol Methods
 	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -81,7 +150,7 @@ class ExpenseTrackerViewController: UIViewController, UITableViewDataSource {
 			let selectedExpense = expenses[indexPath.row]
 			showExpenseViewController.expense = selectedExpense
 			
-		case "editExpenseSegue":
+		case "createExpenseSegue":
 			os_log("Adding a new expense.", log: OSLog.default, type: .debug)
 			
 		default:
@@ -99,10 +168,39 @@ class ExpenseTrackerViewController: UIViewController, UITableViewDataSource {
 				expenses[selectedIndexPath.row] = expense
 				tableView.reloadRows(at: [selectedIndexPath], with: .none)
 				
+				expensesRef?.document(expense.expenseId!).updateData([
+					"name": expense.name,
+					"price": String(expense.price),
+					"description": expense.description,
+					"date": df.string(from: expense.date),
+					"last_modified": FieldValue.serverTimestamp()
+				]) { err in
+					if let err = err {
+						print("Error updating document: \(err)")
+					} else {
+						print("Document successfully updated")
+					}
+				}
 			} else {
 				
 				// Add a new shoppingItem.
 				let newIndexPath = IndexPath(row: expenses.count, section: 0)
+				
+				var ref: DocumentReference? = nil
+				ref = expensesRef?.addDocument(data: [
+					"name": expense.name,
+					"price": String(expense.price),
+					"description": expense.description,
+					"date": df.string(from: expense.date),
+					"last_modified": FieldValue.serverTimestamp()
+				]) { err in
+					if let err = err {
+						print("Error adding document: \(err)")
+					} else {
+						print("Document added with ID: \(ref!.documentID)")
+					}
+				}
+				expense.expenseId = ref!.documentID
 				
 				expenses.append(expense)
 				tableView.insertRows(at: [newIndexPath], with: .automatic)

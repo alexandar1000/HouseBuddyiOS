@@ -34,6 +34,13 @@ class EditExpenseViewController: UIViewController {
         datePicker?.addTarget(self, action: #selector(datePickerChanged(_:)), for: .valueChanged)
         
         dateInput.inputView = datePicker
+		
+		if (expense != nil) {
+			dateInput.text = df.string(from: expense?.date ?? Date.init())
+			priceInput.text = String(expense?.price ?? 0)
+			titleInput.text = expense?.name ?? ""
+			descriptionInput.text = expense?.description ?? ""
+		}
     }
     
     @objc func datePickerChanged(_ sender: UIDatePicker) {
@@ -61,8 +68,28 @@ class EditExpenseViewController: UIViewController {
         }
         
         let convertedDate: Date = df.date(from: date) ?? Date.init()
-        let convertedPrice: Double = Double(price) ?? 0
-        
-        expense = ExpenseEntry(name: name, description: description, price: convertedPrice, date: convertedDate)
+        let convertedPrice: Double = price.doubleValue
+		
+		if let entry = expense {
+			expense = ExpenseEntry(name: name, description: description, price: convertedPrice, date: convertedDate, expenseId: entry.expenseId ?? "")
+		} else {
+			expense = ExpenseEntry(name: name, description: description, price: convertedPrice, date: convertedDate)
+		}
     }
+}
+
+extension String {
+	static let numberFormatter = NumberFormatter()
+	var doubleValue: Double {
+		String.numberFormatter.decimalSeparator = "."
+		if let result =  String.numberFormatter.number(from: self) {
+			return result.doubleValue
+		} else {
+			String.numberFormatter.decimalSeparator = ","
+			if let result = String.numberFormatter.number(from: self) {
+				return result.doubleValue
+			}
+		}
+		return 0
+	}
 }

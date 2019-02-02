@@ -14,7 +14,7 @@ import FirebaseAuth
 
 class ShoppingListTableViewController: UITableViewController {
 	
-	// MARK: - Field Declaration
+	// MARK: - Fields
 	private var shoppingItems: Array<ShoppingItem> = []
 	let db = Firestore.firestore()
 	

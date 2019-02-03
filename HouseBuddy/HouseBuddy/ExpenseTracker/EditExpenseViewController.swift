@@ -8,7 +8,7 @@
 
 import UIKit
 
-class EditExpenseViewController: UIViewController {
+class EditExpenseViewController: UIViewController, UITextFieldDelegate {
 
 	//MARK: - Outlets
     @IBOutlet weak var dateInput: UITextField!
@@ -26,7 +26,11 @@ class EditExpenseViewController: UIViewController {
 	
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+		
+		priceInput.delegate = self
+		titleInput.delegate = self
+		descriptionInput.delegate = self
+		
         df.dateFormat = "dd.MM.yyyy"
         
         datePicker = UIDatePicker()
@@ -35,11 +39,21 @@ class EditExpenseViewController: UIViewController {
         
         dateInput.inputView = datePicker
 		
+		let toolBarDate = UIToolbar().ToolbarPiker(mySelectNext: #selector(EditExpenseViewController.dismissPicker), mySelectDone: #selector(EditExpenseViewController.nextItemDateResponder))
+		
+		dateInput.inputAccessoryView = toolBarDate
+		
+		let toolBarPrice = UIToolbar().ToolbarPiker(mySelectNext: #selector(EditExpenseViewController.dismissPicker), mySelectDone: #selector(EditExpenseViewController.nextItemPriceResponder))
+		
+		priceInput.inputAccessoryView = toolBarPrice
+		
 		if (expense != nil) {
 			dateInput.text = df.string(from: expense?.date ?? Date.init())
 			priceInput.text = String(expense?.price ?? 0)
 			titleInput.text = expense?.name ?? ""
 			descriptionInput.text = expense?.description ?? ""
+		} else {
+			dateInput.text = df.string(from: Date.init())
 		}
     }
     
@@ -76,6 +90,39 @@ class EditExpenseViewController: UIViewController {
 			expense = ExpenseEntry(name: name, description: description, price: convertedPrice, date: convertedDate)
 		}
     }
+	
+	//MARK: Controlling the Keyboard
+	func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+		if textField == dateInput {
+			textField.resignFirstResponder()
+			priceInput.becomeFirstResponder()
+		} else if textField == priceInput {
+			textField.resignFirstResponder()
+			titleInput.becomeFirstResponder()
+		} else if textField == titleInput {
+			textField.resignFirstResponder()
+			descriptionInput.becomeFirstResponder()
+		} else if textField == descriptionInput {
+			textField.resignFirstResponder()
+		}
+		return true
+	}
+	
+	@objc func dismissPicker() {
+		
+		view.endEditing(true)
+		
+	}
+	
+	@objc func nextItemDateResponder() {
+		dateInput.resignFirstResponder()
+		priceInput.becomeFirstResponder()
+	}
+	
+	@objc func nextItemPriceResponder() {
+		priceInput.resignFirstResponder()
+		titleInput.becomeFirstResponder()
+	}
 }
 
 extension String {
@@ -92,4 +139,28 @@ extension String {
 		}
 		return 0
 	}
+}
+
+extension UIToolbar {
+	
+	func ToolbarPiker(mySelectNext : Selector, mySelectDone : Selector) -> UIToolbar {
+		
+		let toolBar = UIToolbar()
+		
+		toolBar.barStyle = UIBarStyle.default
+		toolBar.isTranslucent = true
+		toolBar.tintColor = UIColor.black
+		toolBar.sizeToFit()
+		
+		let doneButton = UIBarButtonItem(title: "Done", style: UIBarButtonItem.Style.done, target: self, action: mySelectNext)
+		let nextButton = UIBarButtonItem(title: "Next", style: UIBarButtonItem.Style.plain, target: self, action: mySelectDone)
+		
+		let spaceButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.flexibleSpace, target: nil, action: nil)
+		
+		toolBar.setItems([ nextButton, spaceButton, doneButton], animated: false)
+		toolBar.isUserInteractionEnabled = true
+		
+		return toolBar
+	}
+	
 }

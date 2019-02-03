@@ -12,7 +12,7 @@ import Firebase
 import FirebaseFirestore
 import FirebaseAuth
 
-class ExpenseTrackerViewController: UIViewController, UITableViewDataSource {
+class ExpenseTrackerViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
 	// MARK: - Fields
 	@IBOutlet weak var tableView: UITableView!
@@ -35,6 +35,7 @@ class ExpenseTrackerViewController: UIViewController, UITableViewDataSource {
 		tableView.layer.borderWidth = 0.7
 		
 		tableView.dataSource = self
+        tableView.delegate = self
     }
 	
 	override func viewWillAppear(_ animated: Bool) {
@@ -125,6 +126,27 @@ class ExpenseTrackerViewController: UIViewController, UITableViewDataSource {
 	func numberOfSections(in tableView: UITableView) -> Int {
 		return 1
 	}
+    
+    // Override to support editing the table view.
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            // Delete the row from the data source
+            let selectedExpense = expenses[indexPath.row]
+            
+            expenses.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .fade)
+            
+            expensesRef!.document(selectedExpense.expenseId!).delete() { err in
+                if let err = err {
+                    print("Error removing document: \(err)")
+                } else {
+                    print("Document successfully removed!")
+                }
+            }
+        } else if editingStyle == .insert {
+            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
+        }
+    }
 	
 
 	

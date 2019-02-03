@@ -123,6 +123,7 @@ class TaskTableViewController: UITableViewController {
 	
 	override func viewWillAppear(_ animated: Bool) {
 		super.viewWillAppear(animated)
+		self.navigationController?.setNavigationBarHidden(false, animated: animated)
 		
 		// Start loading animation and call baseQuery on a seperate thread
 		if (taskList.isEmpty) {

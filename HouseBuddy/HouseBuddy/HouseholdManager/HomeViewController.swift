@@ -22,6 +22,9 @@ class HomeViewController: UIViewController {
 	var userName : String?
 	var userSurname : String?
 
+	override func viewWillAppear(_ animated: Bool) {
+		self.navigationController?.setNavigationBarHidden(true, animated: animated)
+	}
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		checkAndAddToDatabase()

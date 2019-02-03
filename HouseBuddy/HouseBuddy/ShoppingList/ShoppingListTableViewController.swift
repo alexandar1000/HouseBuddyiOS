@@ -17,10 +17,9 @@ class ShoppingListTableViewController: UITableViewController {
 	// MARK: - Fields
 	private var shoppingItems: Array<ShoppingItem> = []
 	let db = Firestore.firestore()
-	
 	private var listener: ListenerRegistration?
-	
 	private var shoppingListRef: CollectionReference?
+	var activityIndicatorView: UIActivityIndicatorView!
 	
 	//MARK: - View Handling
 	override func viewDidLoad() {
@@ -35,6 +34,13 @@ class ShoppingListTableViewController: UITableViewController {
 		// Hide the NavBar on appearing
 		self.navigationController?.setNavigationBarHidden(false, animated: animated)
 		super.viewWillAppear(animated)
+		
+		if (shoppingItems.isEmpty) {
+			activityIndicatorView = UIActivityIndicatorView(style: .gray)
+			tableView.backgroundView = activityIndicatorView
+			activityIndicatorView.startAnimating()
+			
+		}
 		
 		handleDBData()
 	}
@@ -75,6 +81,7 @@ class ShoppingListTableViewController: UITableViewController {
 										self.shoppingItems.append(ShoppingItem(name: name, bought: bought, itemID: document.documentID))
 										print("\(document.documentID) => \(document.data())")
 									}
+									self.activityIndicatorView.stopAnimating()
 									self.tableView.reloadData()
 								}
 							} else {

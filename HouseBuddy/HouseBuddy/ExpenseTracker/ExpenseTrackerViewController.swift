@@ -21,6 +21,7 @@ class ExpenseTrackerViewController: UIViewController, UITableViewDataSource, UIT
 	private var listener: ListenerRegistration?
 	private var expensesRef: CollectionReference?
 	var df: DateFormatter = DateFormatter()
+	var activityIndicatorView: UIActivityIndicatorView!
 	
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,6 +43,13 @@ class ExpenseTrackerViewController: UIViewController, UITableViewDataSource, UIT
 		// Hide the NavBar on appearing
 		self.navigationController?.setNavigationBarHidden(false, animated: animated)
 		super.viewWillAppear(animated)
+		
+		if (expenses.isEmpty) {
+			activityIndicatorView = UIActivityIndicatorView(style: .gray)
+			tableView.backgroundView = activityIndicatorView
+			activityIndicatorView.startAnimating()
+			
+		}
 		
 		handleDBData()
 	}
@@ -84,6 +92,7 @@ class ExpenseTrackerViewController: UIViewController, UITableViewDataSource, UIT
 										self.expenses.append(ExpenseEntry(name: name, description: description, price: price, date: date, expenseId: document.documentID))
 										print("\(document.documentID) => \(document.data())")
 									}
+									self.activityIndicatorView.stopAnimating()
 									self.tableView.reloadData()
 								}
 							} else {

@@ -20,6 +20,7 @@ class ShowExpenseViewController: UIViewController {
     var expense: ExpenseEntry? = nil
 	private var df: DateFormatter = DateFormatter()
 	
+	// MARK: - View Handling
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -37,10 +38,6 @@ class ShowExpenseViewController: UIViewController {
             descriptionLbl.text = ""
         }
     }
-    
-    //MARK: - Methods
-    
-
     
     // MARK: - Navigation
 

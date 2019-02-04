@@ -41,14 +41,13 @@ class ShoppingListTableViewController: UITableViewController {
 			activityIndicatorView.startAnimating()
 			
 		}
-		
 		handleDBData()
 	}
 	
 	override func viewWillDisappear(_ animated: Bool) {
+		super.viewWillDisappear(animated)
 		// Show the NavBar on disappearing
 		self.navigationController?.setNavigationBarHidden(false, animated: animated)
-		super.viewWillDisappear(animated)
 	}
 	
 	// MARK: - Firestore functions
@@ -178,7 +177,6 @@ class ShoppingListTableViewController: UITableViewController {
 	
 	
 	// MARK: - Navigation
-	//Used for Unwind Segues
 	@IBAction func unwindToShoppingList(sender: UIStoryboardSegue) {
 		if let sourceViewController = sender.source as? EditShoppingItemViewController, let shopItem = sourceViewController.shoppingItem {
 			

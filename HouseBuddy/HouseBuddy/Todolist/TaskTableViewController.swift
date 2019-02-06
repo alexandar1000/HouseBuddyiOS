@@ -39,7 +39,9 @@ class TaskTableViewController: UITableViewController {
 	
 	fileprivate func observeQuery() {
 		// Make sure that query is actually set (not nil)
-		guard let query = query else { return }
+		guard let query = query else {
+			return
+		}
 		
 		// Detach listener before attaching a new one
 		stopObserving()
@@ -79,9 +81,12 @@ class TaskTableViewController: UITableViewController {
 			
 			userRef.getDocument { (document, error) in
 				if let document = document, document.exists {
-					let householdRef = document.get(FireStoreConstants.FieldHousehold) as! DocumentReference
-					// Set query to the todo list collection reference
-					self.query = householdRef.collection(FireStoreConstants.CollectionPathToDoList)
+					if let householdRef = document.get(FireStoreConstants.FieldHousehold) as? DocumentReference {
+						// Set query to the todo list collection reference
+						self.query = householdRef.collection(FireStoreConstants.CollectionPathToDoList)
+					} else {
+						print("User has no household")
+					}
 				} else {
 					print("Document does not exist")
 				}

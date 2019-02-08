@@ -67,12 +67,12 @@
                         <outlet property="signUpBtn" destination="SJB-yI-JGL" id="xN8-0k-5Gc"/>
                         <segue destination="Her-wD-yvP" kind="show" identifier="logInSegue" id="QMp-SL-9Ca"/>
                         <segue destination="Kxn-H9-ofk" kind="show" identifier="signUpSegue" id="nr1-9h-TT2"/>
-                        <segue destination="b3M-vM-2MA" kind="show" identifier="alreadyLoggedIn" id="npG-B3-hep"/>
+                        <segue destination="aLK-oA-aoF" kind="show" identifier="alreadyLoggedIn" id="sAv-ld-CKi"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0GO-sZ-71d" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="341.60000000000002" y="-21.139430284857571"/>
+            <point key="canvasLocation" x="-1654" y="34"/>
         </scene>
         <!--Log In-->
         <scene sceneID="fec-F2-VXb">
@@ -137,12 +137,122 @@
                         <outlet property="emailTF" destination="Gs8-hJ-boF" id="vzD-5p-hc9"/>
                         <outlet property="logInBtn" destination="9dy-L6-MQE" id="VsI-sV-suP"/>
                         <outlet property="passwordTF" destination="yNZ-LW-Vff" id="8M9-Lo-dO0"/>
-                        <segue destination="b3M-vM-2MA" kind="show" identifier="logInToHome" id="l35-ge-nbf"/>
+                        <segue destination="aLK-oA-aoF" kind="show" identifier="logInToHome" id="NCr-F3-mvh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iNi-5Y-ndA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1412" y="-545"/>
+            <point key="canvasLocation" x="-526" y="-492"/>
+        </scene>
+        <!--No Household View Controller-->
+        <scene sceneID="T22-jn-bqh">
+            <objects>
+                <viewController id="Zzz-0a-Akj" customClass="NoHouseholdViewController" customModule="HouseBuddy" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="C6B-D2-2ty">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="24" translatesAutoresizingMaskIntoConstraints="NO" id="NHi-jH-YrT">
+                                <rect key="frame" x="48" y="220" width="279" height="227"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WgO-XW-qMz">
+                                        <rect key="frame" x="1.5" y="0.0" width="276.5" height="129"/>
+                                        <string key="text">It looks like you don't have a household yet!  Press one of the buttons below to join an existing household or to create your own.</string>
+                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Yo2-xv-eEX">
+                                        <rect key="frame" x="0.0" y="153" width="279" height="74"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xB1-WC-3fu">
+                                                <rect key="frame" x="0.0" y="0.0" width="279" height="33"/>
+                                                <color key="backgroundColor" red="0.0" green="0.47843137254901957" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <state key="normal" title="Join a household">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="joinHousehold:" destination="Zzz-0a-Akj" eventType="touchUpInside" id="gyz-Rp-66A"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="htN-4e-xrC">
+                                                <rect key="frame" x="0.0" y="41" width="279" height="33"/>
+                                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <state key="normal" title="Create a household">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="createHousehold:" destination="Zzz-0a-Akj" eventType="touchUpInside" id="FxF-Wl-rIj"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="Yo2-xv-eEX" secondAttribute="trailing" id="4It-LJ-MlG"/>
+                                    <constraint firstItem="Yo2-xv-eEX" firstAttribute="leading" secondItem="NHi-jH-YrT" secondAttribute="leading" id="bwt-8H-cBZ"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="NHi-jH-YrT" firstAttribute="leading" secondItem="C6B-D2-2ty" secondAttribute="leading" constant="48" id="2ln-mM-CwK"/>
+                            <constraint firstItem="cdH-vJ-bSR" firstAttribute="trailing" secondItem="NHi-jH-YrT" secondAttribute="trailing" constant="48" id="bRB-y3-yDR"/>
+                            <constraint firstItem="NHi-jH-YrT" firstAttribute="centerY" secondItem="C6B-D2-2ty" secondAttribute="centerY" id="fJq-2c-36b"/>
+                            <constraint firstItem="NHi-jH-YrT" firstAttribute="centerX" secondItem="C6B-D2-2ty" secondAttribute="centerX" id="z3g-QE-KuJ"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="cdH-vJ-bSR"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="VWu-7h-ayQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1647" y="-785"/>
+        </scene>
+        <!--Home Loading View Controller-->
+        <scene sceneID="XEp-fF-Qm8">
+            <objects>
+                <viewController storyboardIdentifier="HomeLoading" id="aLK-oA-aoF" customClass="HomeLoadingViewController" customModule="HouseBuddy" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="lAL-8C-3m1">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="qlM-cE-atN">
+                                <rect key="frame" x="8" y="313.5" width="359" height="40.5"/>
+                                <subviews>
+                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="Du8-NO-iSN">
+                                        <rect key="frame" x="0.0" y="0.0" width="359" height="20"/>
+                                    </activityIndicatorView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loading user data..." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qs1-Eu-aO6">
+                                        <rect key="frame" x="0.0" y="20" width="359" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="qs1-Eu-aO6" firstAttribute="top" secondItem="Du8-NO-iSN" secondAttribute="bottom" constant="16" id="UIR-lU-IhX"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="qlM-cE-atN" firstAttribute="centerX" secondItem="lAL-8C-3m1" secondAttribute="centerX" id="7sM-bf-mAo"/>
+                            <constraint firstItem="qlM-cE-atN" firstAttribute="leading" secondItem="q2K-J0-gKe" secondAttribute="leading" constant="8" id="KkF-T6-uur"/>
+                            <constraint firstItem="q2K-J0-gKe" firstAttribute="trailing" secondItem="qlM-cE-atN" secondAttribute="trailing" constant="8" id="gZT-Jn-drp"/>
+                            <constraint firstItem="qlM-cE-atN" firstAttribute="centerY" secondItem="lAL-8C-3m1" secondAttribute="centerY" id="kON-mT-r5K"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="q2K-J0-gKe"/>
+                    </view>
+                    <connections>
+                        <segue destination="b3M-vM-2MA" kind="show" identifier="loadingToHome" id="9r4-mn-kTm"/>
+                        <segue destination="Zzz-0a-Akj" kind="show" identifier="noHousehold" id="aKi-Nj-N3m"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="oJh-Ld-CV1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="879" y="34"/>
         </scene>
         <!--Sign Up-->
         <scene sceneID="8bF-Ww-P07">
@@ -261,12 +371,12 @@
                         <outlet property="passwordTF" destination="irc-yr-ZZR" id="zga-0K-bHQ"/>
                         <outlet property="signUpBtn" destination="bhd-Z8-bfJ" id="fqk-5H-2Gc"/>
                         <outlet property="surnameTF" destination="xt7-7n-rj2" id="p2R-q5-tkZ"/>
-                        <segue destination="b3M-vM-2MA" kind="show" identifier="signUpToHome" id="aKv-is-LY0"/>
+                        <segue destination="aLK-oA-aoF" kind="show" identifier="signUpToHome" id="go3-Jl-jZT"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bY0-hm-9Rf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1412" y="551"/>
+            <point key="canvasLocation" x="-526" y="607"/>
         </scene>
         <!--Home View Controller-->
         <scene sceneID="xMN-TH-zKc">
@@ -341,7 +451,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SLe-lG-KSb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2509.5999999999999" y="-21.139430284857571"/>
+            <point key="canvasLocation" x="2519" y="34"/>
         </scene>
         <!--Shopping List-->
         <scene sceneID="Ah9-TH-p4J">
@@ -887,13 +997,13 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xxK-qA-iZH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-700" y="-21.139430284857571"/>
+            <point key="canvasLocation" x="-2638" y="34"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="19x-lM-fuA"/>
-        <segue reference="0Pw-qv-Yqg"/>
-        <segue reference="Q6g-g5-kOY"/>
-        <segue reference="npG-B3-hep"/>
+        <segue reference="lwq-pr-HIf"/>
+        <segue reference="Ayc-Np-4w4"/>
+        <segue reference="ohn-uS-gz9"/>
+        <segue reference="sAv-ld-CKi"/>
     </inferredMetricsTieBreakers>
 </document>

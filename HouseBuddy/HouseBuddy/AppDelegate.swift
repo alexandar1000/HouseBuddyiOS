@@ -16,7 +16,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
     var window: UIWindow?
 	var currentUser: User?
 
-
 	func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
 		// Override point for customization after application launch.
 		FirebaseApp.configure()
@@ -61,9 +60,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
 			
 			// Access the storyboard and fetch an instance of the view controller
 			let storyboard = UIStoryboard(name: "Main", bundle: nil);
-			let viewController: HomeViewController = storyboard.instantiateViewController(withIdentifier: "Home") as! HomeViewController;
+			let viewController: HomeLoadingViewController = storyboard.instantiateViewController(withIdentifier: "HomeLoading") as! HomeLoadingViewController;
 			
-			// Send the data to the HomeViewController
+			// Send the data to the HomeLoadingViewController
 			viewController.userName = firstName
 			viewController.userSurname = lastName
 			viewController.userEmail = userEmail

@@ -108,7 +108,9 @@ class ExpenseTrackerViewController: UIViewController, UITableViewDataSource, UIT
 	}
 	
 	deinit {
-		listener!.remove()
+		if listener != nil {
+			listener!.remove()
+		}
 	}
 	
 	//MARK: - UITableViewDataSource Protocol Methods

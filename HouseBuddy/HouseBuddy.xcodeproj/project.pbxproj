@@ -33,6 +33,9 @@
 		A95D601B21B16B58003244DF /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A95D601A21B16B58003244DF /* SignUpViewController.swift */; };
 		A95D601D21B16B6C003244DF /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A95D601C21B16B6C003244DF /* HomeViewController.swift */; };
 		A9BCE6B921C95B1C00F92F67 /* ExpenseEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9BCE6B821C95B1C00F92F67 /* ExpenseEntry.swift */; };
+		E1075563220DD57400251879 /* StorageKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1075562220DD57300251879 /* StorageKeys.swift */; };
+		E1075569220DE5C600251879 /* HomeLoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1075568220DE5C600251879 /* HomeLoadingViewController.swift */; };
+		E107556B220DFBAF00251879 /* NoHouseholdViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E107556A220DFBAF00251879 /* NoHouseholdViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -66,6 +69,9 @@
 		A95D601C21B16B6C003244DF /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		A9BCE6B821C95B1C00F92F67 /* ExpenseEntry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExpenseEntry.swift; sourceTree = "<group>"; };
 		BCF2B527740BA83A43EFA3B3 /* Pods-HouseBuddy.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HouseBuddy.release.xcconfig"; path = "Pods/Target Support Files/Pods-HouseBuddy/Pods-HouseBuddy.release.xcconfig"; sourceTree = "<group>"; };
+		E1075562220DD57300251879 /* StorageKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageKeys.swift; sourceTree = "<group>"; };
+		E1075568220DE5C600251879 /* HomeLoadingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeLoadingViewController.swift; sourceTree = "<group>"; };
+		E107556A220DFBAF00251879 /* NoHouseholdViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoHouseholdViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,6 +126,8 @@
 			isa = PBXGroup;
 			children = (
 				A95D601C21B16B6C003244DF /* HomeViewController.swift */,
+				E1075568220DE5C600251879 /* HomeLoadingViewController.swift */,
+				E107556A220DFBAF00251879 /* NoHouseholdViewController.swift */,
 			);
 			path = HouseholdManager;
 			sourceTree = "<group>";
@@ -169,6 +177,7 @@
 				A945BBAA21A7095D00A4E39B /* Assets.xcassets */,
 				A945BBAC21A7095D00A4E39B /* LaunchScreen.storyboard */,
 				56F1426021C3F453001E909A /* FireStoreConstants.swift */,
+				E1075562220DD57300251879 /* StorageKeys.swift */,
 			);
 			path = SupportingFiles;
 			sourceTree = "<group>";
@@ -379,17 +388,20 @@
 				A95D601B21B16B58003244DF /* SignUpViewController.swift in Sources */,
 				A949AD7B21C42CEF009EC68F /* EditShoppingItemViewController.swift in Sources */,
 				A9BCE6B921C95B1C00F92F67 /* ExpenseEntry.swift in Sources */,
+				E1075569220DE5C600251879 /* HomeLoadingViewController.swift in Sources */,
 				A95D601921B16B3C003244DF /* LogInViewController.swift in Sources */,
 				45A59ADD21FF968D00449163 /* ShowExpenseViewController.swift in Sources */,
 				A95D601721B16B1A003244DF /* StartViewController.swift in Sources */,
 				A949AD7721C40A68009EC68F /* ShoppingListTableViewController.swift in Sources */,
 				56962CC721B441C000E17880 /* TaskTableViewController.swift in Sources */,
 				4570566821FE44FE0030403B /* ExpenseTrackerViewController.swift in Sources */,
+				E107556B220DFBAF00251879 /* NoHouseholdViewController.swift in Sources */,
 				56F1426121C3F453001E909A /* FireStoreConstants.swift in Sources */,
 				5692DACD21C7E168005A1A9E /* ShowTaskViewController.swift in Sources */,
 				56962CC321B4314700E17880 /* Task.swift in Sources */,
 				A949AD7521C403F2009EC68F /* ShoppingItem.swift in Sources */,
 				A95D601D21B16B6C003244DF /* HomeViewController.swift in Sources */,
+				E1075563220DD57400251879 /* StorageKeys.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

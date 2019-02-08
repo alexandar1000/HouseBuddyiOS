@@ -34,11 +34,11 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
 	//MARK: - Navigation
   @IBAction func signUpAction(_ sender: Any) {
 		if passwordTF.text != passwordConfirmTF.text {
-      let alertController = UIAlertController(title: "Passwords do not match", message: "Please re-type password", preferredStyle: .alert)
-      let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
-            
-      alertController.addAction(defaultAction)
-      self.present(alertController, animated: true, completion: nil)
+			let alertController = UIAlertController(title: "Passwords do not match", message: "Please re-type password", preferredStyle: .alert)
+			let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+			
+			alertController.addAction(defaultAction)
+			self.present(alertController, animated: true, completion: nil)
         } else if (self.nameTF.text?.isEmpty)! ||
             (self.surnameTF.text?.isEmpty)! || (self.emailTF.text?.isEmpty)! {
             let alertController = UIAlertController(title: "Not all information entered", message: "Please enter all of the information", preferredStyle: .alert)
@@ -47,18 +47,18 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
             alertController.addAction(defaultAction)
             self.present(alertController, animated: true, completion: nil)
         } else {
-		  Auth.auth().createUser(withEmail: emailTF.text!, password: passwordTF.text!) { (user, error) in
-          if error == nil {
-        	self.performSegue(withIdentifier: "signUpToHome", sender: self)
-		  } else {
-        	let alertController = UIAlertController(title: "Error", message: error?.localizedDescription, preferredStyle: .alert)
-        	let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
-                    
-        	alertController.addAction(defaultAction)
-        	self.present(alertController, animated: true, completion: nil)
-		  }
-    	}
-	  }
+			Auth.auth().createUser(withEmail: emailTF.text!, password: passwordTF.text!) { (result, error) in
+				if error == nil {
+					self.performSegue(withIdentifier: "signUpToHome", sender: self)
+				} else {
+					let alertController = UIAlertController(title: "Error", message: error?.localizedDescription, preferredStyle: .alert)
+					let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+					
+					alertController.addAction(defaultAction)
+					self.present(alertController, animated: true, completion: nil)
+				}
+			}
+		}
 	}
 	
 	// Prepares for the segue to take place
@@ -66,7 +66,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
 		super.prepare(for: segue, sender: sender)
 		
 		if segue.identifier == "signUpToHome" {
-			let destVC = segue.destination as! HomeViewController
+			let destVC = segue.destination as! HomeLoadingViewController
 			destVC.userName = nameTF.text!
 			destVC.userSurname = surnameTF.text!
 			destVC.userEmail = emailTF.text!

@@ -12,16 +12,17 @@ import Firebase
 import GoogleSignIn
 
 class StartViewController: UIViewController, GIDSignInUIDelegate {
-	
-	
-	
+
 	//MARK: Fields
 	@IBOutlet weak var logInBtn: UIButton!
 	@IBOutlet weak var signUpBtn: UIButton!
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		if Auth.auth().currentUser != nil {
+		if let user = Auth.auth().currentUser {
+			// Store user id
+			UserDefaults.standard.set(user.uid, forKey: StorageKeys.USER_ID)
+			
 			self.performSegue(withIdentifier: "alreadyLoggedIn", sender: self)
 		}
 		
@@ -32,15 +33,13 @@ class StartViewController: UIViewController, GIDSignInUIDelegate {
 	// MARK: - Navigation
 	@IBAction func logInAction(_ sender: Any) {
 		if Auth.auth().currentUser == nil {
-			self.performSegue(withIdentifier: "logInSegue",
-							  sender: self)
+			self.performSegue(withIdentifier: "logInSegue", sender: self)
 		}
 	}
 	
 	@IBAction func signUpAction(_ sender: Any) {
 		if Auth.auth().currentUser == nil {
-			self.performSegue(withIdentifier: "signUpSegue",
-							  sender: self)
+			self.performSegue(withIdentifier: "signUpSegue", sender: self)
 		}
 	}
 	

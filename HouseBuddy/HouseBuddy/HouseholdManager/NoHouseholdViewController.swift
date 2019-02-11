@@ -11,6 +11,7 @@ import FirebaseAuth
 import GoogleSignIn
 
 class NoHouseholdViewController: UIViewController {
+	
     // MARK: Lifecycle methods
 	
     override func viewDidLoad() {
@@ -37,15 +38,4 @@ class NoHouseholdViewController: UIViewController {
 			UIApplication.shared.keyWindow?.rootViewController = initial
 		}
 	}
-	
-	// MARK: Actions
-    
-    @IBAction func joinHousehold(_ sender: Any) {
-		// TODO: implement joining (with invite code)
-    }
-    
-    @IBAction func createHousehold(_ sender: Any) {
-		// TODO: implement creating a household
-    }
-
 }

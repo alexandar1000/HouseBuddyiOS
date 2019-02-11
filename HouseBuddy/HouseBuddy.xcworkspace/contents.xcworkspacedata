@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:CreateHouseholdViewController.swift">
+   </FileRef>
+   <FileRef
       location = "group:HouseBuddy.xcodeproj">
    </FileRef>
    <FileRef

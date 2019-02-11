@@ -173,7 +173,7 @@
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
                                                 <connections>
-                                                    <action selector="joinHousehold:" destination="Zzz-0a-Akj" eventType="touchUpInside" id="gyz-Rp-66A"/>
+                                                    <segue destination="oTp-nj-amM" kind="show" id="vYI-Q2-301"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="htN-4e-xrC">
@@ -184,7 +184,7 @@
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
                                                 <connections>
-                                                    <action selector="createHousehold:" destination="Zzz-0a-Akj" eventType="touchUpInside" id="FxF-Wl-rIj"/>
+                                                    <segue destination="VmX-E6-v23" kind="show" id="ZZw-pr-5pW"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -208,7 +208,95 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VWu-7h-ayQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1647" y="-785"/>
+            <point key="canvasLocation" x="878" y="-1081"/>
+        </scene>
+        <!--Join a household-->
+        <scene sceneID="IXs-pV-VZH">
+            <objects>
+                <viewController id="oTp-nj-amM" customClass="JoinHouseholdViewController" customModule="HouseBuddy" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Qku-hL-Fsv">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="aAm-Qo-Cie">
+                                <rect key="frame" x="16" y="281" width="343" height="105"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Fill in the invitation code of the household you wish to join below." textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iTG-HB-tMK">
+                                        <rect key="frame" x="0.0" y="0.0" width="343" height="41"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" borderStyle="line" textAlignment="center" minimumFontSize="30" translatesAutoresizingMaskIntoConstraints="NO" id="GoQ-S1-JF5">
+                                        <rect key="frame" x="0.0" y="57" width="343" height="48"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="48" id="y94-Sd-GPf"/>
+                                        </constraints>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="aAm-Qo-Cie" firstAttribute="leading" secondItem="Qku-hL-Fsv" secondAttribute="leading" constant="16" id="0a1-Y3-gkw"/>
+                            <constraint firstAttribute="trailing" secondItem="aAm-Qo-Cie" secondAttribute="trailing" constant="16" id="8zC-Jp-Y10"/>
+                            <constraint firstItem="aAm-Qo-Cie" firstAttribute="centerY" secondItem="Qku-hL-Fsv" secondAttribute="centerY" id="Bkd-La-59c"/>
+                            <constraint firstItem="aAm-Qo-Cie" firstAttribute="centerX" secondItem="Qku-hL-Fsv" secondAttribute="centerX" id="N2k-OI-Xnv"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="KTR-tk-QXL"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Join a household" id="YS5-3A-hYI">
+                        <barButtonItem key="rightBarButtonItem" title="Join" id="Fu1-CZ-UCF">
+                            <connections>
+                                <action selector="joinHouseholdAction:" destination="oTp-nj-amM" id="K0N-Ca-c50"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="invitationCodeField" destination="GoQ-S1-JF5" id="PBK-VY-Uel"/>
+                        <segue destination="b3M-vM-2MA" kind="show" identifier="joinHousehold" id="ifS-Ub-vZe"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Cdn-jk-mtY" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2556" y="-1551"/>
+        </scene>
+        <!--New household-->
+        <scene sceneID="MMd-0y-phW">
+            <objects>
+                <viewController id="VmX-E6-v23" customClass="CreateHouseholdViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="aoO-ss-RQz">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lgD-4u-MNk">
+                                <rect key="frame" x="16" y="80" width="343" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="lgD-4u-MNk" firstAttribute="top" secondItem="IH6-re-AUd" secondAttribute="top" constant="16" id="QWg-bc-EZV"/>
+                            <constraint firstItem="IH6-re-AUd" firstAttribute="trailing" secondItem="lgD-4u-MNk" secondAttribute="trailing" constant="16" id="ea9-VF-OjH"/>
+                            <constraint firstItem="lgD-4u-MNk" firstAttribute="leading" secondItem="IH6-re-AUd" secondAttribute="leading" constant="16" id="nd7-RT-O9j"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="IH6-re-AUd"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="New household" id="1Vb-MC-Gb1">
+                        <barButtonItem key="rightBarButtonItem" title="Create" id="yCZ-p6-YVZ"/>
+                    </navigationItem>
+                    <connections>
+                        <segue destination="b3M-vM-2MA" kind="show" id="Wjz-vE-kMf"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="p5w-Ir-hYy" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1812" y="-736"/>
         </scene>
         <!--Home Loading View Controller-->
         <scene sceneID="XEp-fF-Qm8">
@@ -218,14 +306,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="qlM-cE-atN">
-                                <rect key="frame" x="8" y="313.5" width="359" height="40.5"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="qlM-cE-atN">
+                                <rect key="frame" x="8" y="309.5" width="359" height="48.5"/>
                                 <subviews>
                                     <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="Du8-NO-iSN">
                                         <rect key="frame" x="0.0" y="0.0" width="359" height="20"/>
                                     </activityIndicatorView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loading user data..." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qs1-Eu-aO6">
-                                        <rect key="frame" x="0.0" y="20" width="359" height="20.5"/>
+                                        <rect key="frame" x="0.0" y="28" width="359" height="20.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -1004,6 +1092,7 @@
         <segue reference="lwq-pr-HIf"/>
         <segue reference="Ayc-Np-4w4"/>
         <segue reference="ohn-uS-gz9"/>
+        <segue reference="ifS-Ub-vZe"/>
         <segue reference="sAv-ld-CKi"/>
     </inferredMetricsTieBreakers>
 </document>

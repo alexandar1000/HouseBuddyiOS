@@ -36,6 +36,7 @@
 		E1075563220DD57400251879 /* StorageKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1075562220DD57300251879 /* StorageKeys.swift */; };
 		E1075569220DE5C600251879 /* HomeLoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1075568220DE5C600251879 /* HomeLoadingViewController.swift */; };
 		E107556B220DFBAF00251879 /* NoHouseholdViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E107556A220DFBAF00251879 /* NoHouseholdViewController.swift */; };
+		E1AA26252211D14B007BEC20 /* JoinHouseholdViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1AA26242211D14B007BEC20 /* JoinHouseholdViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -72,6 +73,7 @@
 		E1075562220DD57300251879 /* StorageKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageKeys.swift; sourceTree = "<group>"; };
 		E1075568220DE5C600251879 /* HomeLoadingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeLoadingViewController.swift; sourceTree = "<group>"; };
 		E107556A220DFBAF00251879 /* NoHouseholdViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoHouseholdViewController.swift; sourceTree = "<group>"; };
+		E1AA26242211D14B007BEC20 /* JoinHouseholdViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinHouseholdViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -128,6 +130,7 @@
 				A95D601C21B16B6C003244DF /* HomeViewController.swift */,
 				E1075568220DE5C600251879 /* HomeLoadingViewController.swift */,
 				E107556A220DFBAF00251879 /* NoHouseholdViewController.swift */,
+				E1AA26242211D14B007BEC20 /* JoinHouseholdViewController.swift */,
 			);
 			path = HouseholdManager;
 			sourceTree = "<group>";
@@ -393,6 +396,7 @@
 				45A59ADD21FF968D00449163 /* ShowExpenseViewController.swift in Sources */,
 				A95D601721B16B1A003244DF /* StartViewController.swift in Sources */,
 				A949AD7721C40A68009EC68F /* ShoppingListTableViewController.swift in Sources */,
+				E1AA26252211D14B007BEC20 /* JoinHouseholdViewController.swift in Sources */,
 				56962CC721B441C000E17880 /* TaskTableViewController.swift in Sources */,
 				4570566821FE44FE0030403B /* ExpenseTrackerViewController.swift in Sources */,
 				E107556B220DFBAF00251879 /* NoHouseholdViewController.swift in Sources */,

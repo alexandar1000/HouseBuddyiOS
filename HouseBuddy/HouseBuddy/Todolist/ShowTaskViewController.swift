@@ -37,7 +37,7 @@ class ShowTaskViewController: UIViewController {
 			self.title = title
 			
 			let firestore: Firestore = Firestore.firestore()
-			let householdPath = UserDefaults.standard.string(forKey: StorageKeys.HOUSEHOLD_PATH)
+			let householdPath = UserDefaults.standard.string(forKey: StorageKeys.HouseholdPath)
 			let householdRef = firestore.document(householdPath!)
 			let todoListRef = householdRef.collection(FireStoreConstants.CollectionPathToDoList)
 			

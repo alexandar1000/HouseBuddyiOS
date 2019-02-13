@@ -29,7 +29,7 @@ class NoHouseholdViewController: UIViewController {
 		GIDSignIn.sharedInstance().signOut()
 	
 		// Remove stored household path
-		UserDefaults.standard.set("", forKey: StorageKeys.HOUSEHOLD_PATH)
+		UserDefaults.standard.set("", forKey: StorageKeys.HouseholdPath)
 		} catch let signOutError as NSError {
 		print ("Error signing out: %@", signOutError)
 		}

@@ -69,7 +69,7 @@ class TaskTableViewController: UITableViewController {
 	}
 	
 	fileprivate func baseQuery() {
-		let householdPath = UserDefaults.standard.string(forKey: StorageKeys.HOUSEHOLD_PATH)
+		let householdPath = UserDefaults.standard.string(forKey: StorageKeys.HouseholdPath)
 		let householdRef = firestore.document(householdPath!)
 		self.query = householdRef.collection(FireStoreConstants.CollectionPathToDoList)
 	}

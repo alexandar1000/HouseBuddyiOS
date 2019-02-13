@@ -206,7 +206,7 @@
                         <viewLayoutGuide key="safeArea" id="cdH-vJ-bSR"/>
                     </view>
                     <navigationItem key="navigationItem" id="KIl-xY-mcH">
-                        <barButtonItem key="leftBarButtonItem" title="Sign Out" id="AGn-au-ZzJ">
+                        <barButtonItem key="leftBarButtonItem" title="Sign out" id="AGn-au-ZzJ">
                             <connections>
                                 <action selector="signOut:" destination="Zzz-0a-Akj" id="Vws-Sp-pO1"/>
                             </connections>
@@ -490,27 +490,27 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="GyA-IX-aPZ">
-                                <rect key="frame" x="128.5" y="437" width="118" height="166"/>
+                                <rect key="frame" x="122" y="407" width="131" height="196"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="p7L-na-gLH">
-                                        <rect key="frame" x="0.0" y="0.0" width="118" height="90"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="131" height="90"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N63-jO-qEs">
-                                                <rect key="frame" x="0.0" y="0.0" width="118" height="30"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="131" height="30"/>
                                                 <state key="normal" title="Shopping List"/>
                                                 <connections>
                                                     <segue destination="e03-p0-S7j" kind="show" id="YqF-hV-BmJ"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="13z-6j-eSB">
-                                                <rect key="frame" x="0.0" y="30" width="118" height="30"/>
+                                                <rect key="frame" x="0.0" y="30" width="131" height="30"/>
                                                 <state key="normal" title="Expense Tracker"/>
                                                 <connections>
                                                     <segue destination="nvi-gG-a2n" kind="show" id="Gvx-FP-uL6"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Awl-H6-KbT">
-                                                <rect key="frame" x="0.0" y="60" width="118" height="30"/>
+                                                <rect key="frame" x="0.0" y="60" width="131" height="30"/>
                                                 <state key="normal" title="Todo List"/>
                                                 <connections>
                                                     <segue destination="YpZ-80-Iar" kind="show" id="Mgq-bO-Ddv"/>
@@ -522,19 +522,26 @@
                                         </constraints>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="C0y-tz-f75">
-                                        <rect key="frame" x="0.0" y="106" width="118" height="60"/>
+                                        <rect key="frame" x="0.0" y="106" width="131" height="90"/>
                                         <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="glh-Xz-vtG">
+                                                <rect key="frame" x="0.0" y="0.0" width="131" height="30"/>
+                                                <state key="normal" title="Invite to household"/>
+                                                <connections>
+                                                    <segue destination="tuB-22-4XS" kind="show" id="Nqe-sH-jKS"/>
+                                                </connections>
+                                            </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tdA-91-UVS">
-                                                <rect key="frame" x="0.0" y="0.0" width="118" height="30"/>
-                                                <state key="normal" title="Leave Household"/>
+                                                <rect key="frame" x="0.0" y="30" width="131" height="30"/>
+                                                <state key="normal" title="Leave household"/>
                                                 <connections>
                                                     <action selector="leaveHousehold:" destination="b3M-vM-2MA" eventType="touchUpInside" id="9PK-oz-lEI"/>
                                                     <segue destination="IG3-l3-Gg8" kind="unwind" identifier="leaveHousehold" unwindAction="unwindFromHomeWithSender:" id="1df-pV-9MD"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jL5-O7-ICF">
-                                                <rect key="frame" x="0.0" y="30" width="118" height="30"/>
-                                                <state key="normal" title="Sign Out"/>
+                                                <rect key="frame" x="0.0" y="60" width="131" height="30"/>
+                                                <state key="normal" title="Sign out"/>
                                                 <connections>
                                                     <action selector="logOutAction:" destination="b3M-vM-2MA" eventType="touchUpInside" id="7jk-B3-pwA"/>
                                                 </connections>
@@ -554,7 +561,6 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="gpD-FF-OIp"/>
                     </view>
-                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
                         <outlet property="signOutBtn" destination="jL5-O7-ICF" id="5M5-cZ-ltg"/>
                         <outlet property="userNameLbl" destination="hdK-ci-tbc" id="oc0-Tn-fCV"/>
@@ -564,6 +570,73 @@
                 <exit id="IG3-l3-Gg8" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="2519" y="34"/>
+        </scene>
+        <!--Invite to household-->
+        <scene sceneID="gxz-Jz-9Bc">
+            <objects>
+                <viewController id="tuB-22-4XS" customClass="InviteToHouseholdViewController" customModule="HouseBuddy" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="SbT-4Z-PSM">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="UGz-cm-9vj">
+                                <rect key="frame" x="16" y="291" width="343" height="85.5"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="The invitation code for this household is:" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8it-ky-hsN">
+                                        <rect key="frame" x="0.0" y="0.0" width="343" height="21.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="t2U-No-bwy">
+                                        <rect key="frame" x="0.0" y="37.5" width="343" height="48"/>
+                                        <subviews>
+                                            <textField opaque="NO" contentMode="scaleToFill" enabled="NO" highlighted="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" borderStyle="line" textAlignment="center" minimumFontSize="30" translatesAutoresizingMaskIntoConstraints="NO" id="DBb-a3-2jb">
+                                                <rect key="frame" x="0.0" y="0.0" width="218" height="48"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="48" id="Vxt-oI-GOs"/>
+                                                </constraints>
+                                                <nil key="textColor"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nQS-h7-r4k">
+                                                <rect key="frame" x="234" y="0.0" width="109" height="48"/>
+                                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                <inset key="titleEdgeInsets" minX="4" minY="0.0" maxX="4" maxY="0.0"/>
+                                                <state key="normal" title="Renew Code">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="renewInviteCode:" destination="tuB-22-4XS" eventType="touchUpInside" id="9H2-Sh-cV6"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="DBb-a3-2jb" firstAttribute="width" secondItem="nQS-h7-r4k" secondAttribute="width" multiplier="2" id="wkz-O7-j5d"/>
+                                        </constraints>
+                                    </stackView>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="UGz-cm-9vj" firstAttribute="centerX" secondItem="SbT-4Z-PSM" secondAttribute="centerX" id="PWQ-RK-i6o"/>
+                            <constraint firstAttribute="trailing" secondItem="UGz-cm-9vj" secondAttribute="trailing" constant="16" id="iWz-0c-uMt"/>
+                            <constraint firstItem="UGz-cm-9vj" firstAttribute="centerY" secondItem="SbT-4Z-PSM" secondAttribute="centerY" id="jRD-8Y-5ga"/>
+                            <constraint firstItem="UGz-cm-9vj" firstAttribute="leading" secondItem="swK-Ke-jya" secondAttribute="leading" constant="16" id="mtg-0o-0Qy"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="swK-Ke-jya"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Invite to household" id="uCX-fa-0lO"/>
+                    <connections>
+                        <outlet property="invitationCodeField" destination="DBb-a3-2jb" id="251-my-KSo"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="NmL-LZ-LkH" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2518" y="860"/>
         </scene>
         <!--Shopping List-->
         <scene sceneID="Ah9-TH-p4J">
@@ -1042,7 +1115,6 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
-                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <segue destination="Wy4-JA-hbn" kind="show" identifier="showTask" id="Qwi-N4-brw"/>
                     </connections>
@@ -1113,10 +1185,10 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="19x-lM-fuA"/>
+        <segue reference="lwq-pr-HIf"/>
         <segue reference="Ayc-Np-4w4"/>
         <segue reference="ohn-uS-gz9"/>
-        <segue reference="Wjz-vE-kMf"/>
+        <segue reference="9r4-mn-kTm"/>
         <segue reference="NCr-F3-mvh"/>
     </inferredMetricsTieBreakers>
 </document>

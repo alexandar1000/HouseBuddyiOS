@@ -21,7 +21,7 @@ class StartViewController: UIViewController, GIDSignInUIDelegate {
 		super.viewDidLoad()
 		if let user = Auth.auth().currentUser {
 			// Store user id
-			UserDefaults.standard.set(user.uid, forKey: StorageKeys.USER_ID)
+			UserDefaults.standard.set(user.uid, forKey: StorageKeys.UserId)
 			
 			self.performSegue(withIdentifier: "alreadyLoggedIn", sender: self)
 		}

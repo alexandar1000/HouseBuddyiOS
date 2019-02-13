@@ -38,6 +38,7 @@
 		E107556B220DFBAF00251879 /* NoHouseholdViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E107556A220DFBAF00251879 /* NoHouseholdViewController.swift */; };
 		E1AA26252211D14B007BEC20 /* JoinHouseholdViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1AA26242211D14B007BEC20 /* JoinHouseholdViewController.swift */; };
 		E1AA26292214878B007BEC20 /* CreateHouseholdViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1AA26282214878B007BEC20 /* CreateHouseholdViewController.swift */; };
+		E1AA262B22149519007BEC20 /* InviteToHouseholdViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1AA262A22149519007BEC20 /* InviteToHouseholdViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -76,6 +77,7 @@
 		E107556A220DFBAF00251879 /* NoHouseholdViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoHouseholdViewController.swift; sourceTree = "<group>"; };
 		E1AA26242211D14B007BEC20 /* JoinHouseholdViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinHouseholdViewController.swift; sourceTree = "<group>"; };
 		E1AA26282214878B007BEC20 /* CreateHouseholdViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateHouseholdViewController.swift; sourceTree = "<group>"; };
+		E1AA262A22149519007BEC20 /* InviteToHouseholdViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InviteToHouseholdViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -134,6 +136,7 @@
 				E107556A220DFBAF00251879 /* NoHouseholdViewController.swift */,
 				E1AA26242211D14B007BEC20 /* JoinHouseholdViewController.swift */,
 				E1AA26282214878B007BEC20 /* CreateHouseholdViewController.swift */,
+				E1AA262A22149519007BEC20 /* InviteToHouseholdViewController.swift */,
 			);
 			path = HouseholdManager;
 			sourceTree = "<group>";
@@ -384,6 +387,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E1AA262B22149519007BEC20 /* InviteToHouseholdViewController.swift in Sources */,
 				45A59ADF21FF96AA00449163 /* EditExpenseViewController.swift in Sources */,
 				56962CC521B43F2000E17880 /* TaskTableViewCell.swift in Sources */,
 				A949AD7921C40FCA009EC68F /* ShoppingListTableViewCell.swift in Sources */,

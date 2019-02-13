@@ -33,30 +33,14 @@ class HomeViewController: UIViewController {
 	
 	// MARK: Actions
 	
-    @IBAction func logOutAction(_ sender: Any) {
-		do {
-			try Auth.auth().signOut()
-			GIDSignIn.sharedInstance().signOut()
-			
-			// Reset stored household path
-			UserDefaults.standard.set("", forKey: StorageKeys.HOUSEHOLD_PATH)
-		} catch let signOutError as NSError {
-			print ("Error signing out: %@", signOutError)
-		}
-
-		let storyboard = UIStoryboard(name: "Main", bundle: nil)
-		let initial = storyboard.instantiateInitialViewController()
-		UIApplication.shared.keyWindow?.rootViewController = initial
-    }
-	
     @IBAction func leaveHousehold(_ sender: Any) {
 		let alert = UIAlertController(title: "Leave household", message: "Are you sure you want to leave this household?", preferredStyle: .alert)
 		
 		alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { action in
 			// Initialize FireStore references
-			let userId = UserDefaults.standard.string(forKey: StorageKeys.USER_ID)
+			let userId = UserDefaults.standard.string(forKey: StorageKeys.UserId)
 			let userRef = self.db.collection(FireStoreConstants.CollectionPathUsers).document(userId!)
-			let householdPath = UserDefaults.standard.string(forKey: StorageKeys.HOUSEHOLD_PATH)
+			let householdPath = UserDefaults.standard.string(forKey: StorageKeys.HouseholdPath)
 			let householdRef = self.db.document(householdPath!)
 			
 			// Delete user from household's members
@@ -125,7 +109,7 @@ class HomeViewController: UIViewController {
 			}
 			
 			// Reset stored household path
-			UserDefaults.standard.set("", forKey: StorageKeys.HOUSEHOLD_PATH)
+			UserDefaults.standard.set("", forKey: StorageKeys.HouseholdPath)
 			
 			// Go to no household view
 			let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "noHouseholdVC") as! NoHouseholdViewController
@@ -135,5 +119,21 @@ class HomeViewController: UIViewController {
 		alert.addAction(UIAlertAction(title: "No", style: .cancel, handler: nil))
 		
 		self.present(alert, animated: true)
+	}
+	
+	@IBAction func logOutAction(_ sender: Any) {
+		do {
+			try Auth.auth().signOut()
+			GIDSignIn.sharedInstance().signOut()
+			
+			// Reset stored household path
+			UserDefaults.standard.set("", forKey: StorageKeys.HouseholdPath)
+		} catch let signOutError as NSError {
+			print ("Error signing out: %@", signOutError)
+		}
+		
+		let storyboard = UIStoryboard(name: "Main", bundle: nil)
+		let initial = storyboard.instantiateInitialViewController()
+		UIApplication.shared.keyWindow?.rootViewController = initial
 	}
 }

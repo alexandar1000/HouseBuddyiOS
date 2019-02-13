@@ -27,14 +27,14 @@ class JoinHouseholdViewController: UIViewController, UITextFieldDelegate {
 		invitationCodeField.delegate = self
 		
 		// Add blue border
-		invitationCodeField.layer.borderColor = UIColor(red: 0.0, green: 122.0, blue: 255.0, alpha: 1.0).cgColor
+		invitationCodeField.layer.borderColor = UIColor(red: 0.0, green: 0.48, blue: 1.0, alpha: 1.0).cgColor
 		invitationCodeField.layer.borderWidth = 1.0
 	}
 	
 	// MARK: Actions
     
     @IBAction func joinHouseholdAction(_ sender: Any) {
-		let userId = UserDefaults.standard.string(forKey: StorageKeys.USER_ID)
+		let userId = UserDefaults.standard.string(forKey: StorageKeys.UserId)
 		if userId != nil && !userId!.isEmpty {
 			let invitationCode = invitationCodeField.text ?? ""
 			if invitationCode.isEmpty || invitationCode.count < 8 {
@@ -94,7 +94,7 @@ class JoinHouseholdViewController: UIViewController, UITextFieldDelegate {
 						}
 						
 						// Store household and go to household manager home
-						UserDefaults.standard.set(householdRef.path, forKey: StorageKeys.HOUSEHOLD_PATH)
+						UserDefaults.standard.set(householdRef.path, forKey: StorageKeys.HouseholdPath)
 						self.performSegue(withIdentifier: "joinHousehold", sender: self)
 					}
 				} else {

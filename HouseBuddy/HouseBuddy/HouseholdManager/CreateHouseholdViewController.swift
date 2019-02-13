@@ -68,7 +68,7 @@ class CreateHouseholdViewController: UIViewController, UITextFieldDelegate {
 				}
 				
 				// Store household and go to household manager home
-				UserDefaults.standard.set(householdRef!.path, forKey: StorageKeys.HOUSEHOLD_PATH)
+				UserDefaults.standard.set(householdRef!.path, forKey: StorageKeys.HouseholdPath)
 				self.performSegue(withIdentifier: "createHousehold", sender: self)
 			}
 		}
@@ -77,7 +77,7 @@ class CreateHouseholdViewController: UIViewController, UITextFieldDelegate {
 	// MARK: Actions
 	
     @IBAction func createHouseholdAction(_ sender: Any) {
-		let userId = UserDefaults.standard.string(forKey: StorageKeys.USER_ID)
+		let userId = UserDefaults.standard.string(forKey: StorageKeys.UserId)
 		if userId != nil && !userId!.isEmpty {
 			let householdName = householdNameField.text ?? ""
 			if householdName.isEmpty {

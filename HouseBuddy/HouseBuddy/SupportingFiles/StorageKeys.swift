@@ -9,9 +9,10 @@
 import Foundation
 
 struct StorageKeys {
-	static let USER_ID = "user_id"
-	static let USER_EMAIL = "user_email"
-	static let FIRST_NAME = "first_name"
-	static let LAST_NAME = "last_name"
-	static let HOUSEHOLD_PATH = "household_path";
+	static let UserId = "user_id"
+	static let UserEmail = "user_email"
+	static let FirstName = "first_name"
+	static let LastName = "last_name"
+	static let HouseholdPath = "household_path";
+	static let InviteCode = "invite_code"
 }

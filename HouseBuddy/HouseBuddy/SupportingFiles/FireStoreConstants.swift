@@ -16,7 +16,11 @@ struct FireStoreConstants {
 	static let CollectionPathInvites = "invites"
 	static let CollectionPathMembers = "members"
 	
+	// TODO: add change log
+	static let HouseholdCollectionPaths = [ CollectionPathToDoList, CollectionPathShoppingList, CollectionPathExpenseTracker, "expenses_list" ]
+	
 	static let FieldHousehold = "household"
 	static let FieldColor = "color"
 	static let FieldUserReference = "user_reference"
+	static let FieldInviteCode = "invite_code"
 }

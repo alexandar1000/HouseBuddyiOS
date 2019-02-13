@@ -147,7 +147,7 @@
         <!--No Household View Controller-->
         <scene sceneID="T22-jn-bqh">
             <objects>
-                <viewController id="Zzz-0a-Akj" customClass="NoHouseholdViewController" customModule="HouseBuddy" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="noHouseholdVC" id="Zzz-0a-Akj" customClass="NoHouseholdViewController" customModule="HouseBuddy" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="C6B-D2-2ty">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -205,6 +205,13 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="cdH-vJ-bSR"/>
                     </view>
+                    <navigationItem key="navigationItem" id="KIl-xY-mcH">
+                        <barButtonItem key="leftBarButtonItem" title="Sign Out" id="AGn-au-ZzJ">
+                            <connections>
+                                <action selector="signOut:" destination="Zzz-0a-Akj" id="Vws-Sp-pO1"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VWu-7h-ayQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -319,9 +326,6 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
-                                <constraints>
-                                    <constraint firstItem="qs1-Eu-aO6" firstAttribute="top" secondItem="Du8-NO-iSN" secondAttribute="bottom" constant="16" id="UIR-lU-IhX"/>
-                                </constraints>
                             </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -480,57 +484,71 @@
                                 <color key="textColor" red="0.0" green="0.21708443320000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jL5-O7-ICF">
-                                <rect key="frame" x="70" y="537" width="235" height="30"/>
-                                <state key="normal" title="Sign Out"/>
-                                <connections>
-                                    <action selector="logOutAction:" destination="b3M-vM-2MA" eventType="touchUpInside" id="7jk-B3-pwA"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N63-jO-qEs">
-                                <rect key="frame" x="70" y="449" width="235" height="30"/>
-                                <state key="normal" title="Shopping List"/>
-                                <connections>
-                                    <segue destination="e03-p0-S7j" kind="show" id="YqF-hV-BmJ"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Awl-H6-KbT">
-                                <rect key="frame" x="70" y="487" width="235" height="30"/>
-                                <state key="normal" title="Todo List"/>
-                                <connections>
-                                    <segue destination="YpZ-80-Iar" kind="show" id="Mgq-bO-Ddv"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="13z-6j-eSB">
-                                <rect key="frame" x="70" y="411" width="235" height="30"/>
-                                <state key="normal" title="Expense Tracker"/>
-                                <connections>
-                                    <segue destination="nvi-gG-a2n" kind="show" id="Gvx-FP-uL6"/>
-                                </connections>
-                            </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="GyA-IX-aPZ">
+                                <rect key="frame" x="128.5" y="437" width="118" height="166"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="p7L-na-gLH">
+                                        <rect key="frame" x="0.0" y="0.0" width="118" height="90"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N63-jO-qEs">
+                                                <rect key="frame" x="0.0" y="0.0" width="118" height="30"/>
+                                                <state key="normal" title="Shopping List"/>
+                                                <connections>
+                                                    <segue destination="e03-p0-S7j" kind="show" id="YqF-hV-BmJ"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="13z-6j-eSB">
+                                                <rect key="frame" x="0.0" y="30" width="118" height="30"/>
+                                                <state key="normal" title="Expense Tracker"/>
+                                                <connections>
+                                                    <segue destination="nvi-gG-a2n" kind="show" id="Gvx-FP-uL6"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Awl-H6-KbT">
+                                                <rect key="frame" x="0.0" y="60" width="118" height="30"/>
+                                                <state key="normal" title="Todo List"/>
+                                                <connections>
+                                                    <segue destination="YpZ-80-Iar" kind="show" id="Mgq-bO-Ddv"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="13z-6j-eSB" firstAttribute="centerX" secondItem="p7L-na-gLH" secondAttribute="centerX" id="wCO-cl-CkM"/>
+                                        </constraints>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="C0y-tz-f75">
+                                        <rect key="frame" x="0.0" y="106" width="118" height="60"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tdA-91-UVS">
+                                                <rect key="frame" x="0.0" y="0.0" width="118" height="30"/>
+                                                <state key="normal" title="Leave Household"/>
+                                                <connections>
+                                                    <action selector="leaveHousehold:" destination="b3M-vM-2MA" eventType="touchUpInside" id="9PK-oz-lEI"/>
+                                                    <segue destination="IG3-l3-Gg8" kind="unwind" identifier="leaveHousehold" unwindAction="unwindFromHomeWithSender:" id="1df-pV-9MD"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jL5-O7-ICF">
+                                                <rect key="frame" x="0.0" y="30" width="118" height="30"/>
+                                                <state key="normal" title="Sign Out"/>
+                                                <connections>
+                                                    <action selector="logOutAction:" destination="b3M-vM-2MA" eventType="touchUpInside" id="7jk-B3-pwA"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="jL5-O7-ICF" firstAttribute="leading" secondItem="gpD-FF-OIp" secondAttribute="leading" constant="70" id="1Y1-Gn-xSF"/>
-                            <constraint firstItem="13z-6j-eSB" firstAttribute="leading" secondItem="gpD-FF-OIp" secondAttribute="leading" constant="70" id="2oD-JV-l6r"/>
-                            <constraint firstItem="Awl-H6-KbT" firstAttribute="top" secondItem="N63-jO-qEs" secondAttribute="bottom" constant="8" id="78B-L2-nd8"/>
-                            <constraint firstItem="Awl-H6-KbT" firstAttribute="leading" secondItem="gpD-FF-OIp" secondAttribute="leading" constant="70" id="BTK-aA-jOF"/>
-                            <constraint firstItem="jL5-O7-ICF" firstAttribute="top" secondItem="Awl-H6-KbT" secondAttribute="bottom" constant="20" id="EvR-Ri-Fny"/>
+                            <constraint firstItem="gpD-FF-OIp" firstAttribute="bottom" secondItem="GyA-IX-aPZ" secondAttribute="bottom" constant="64" id="FfW-CG-RUg"/>
                             <constraint firstItem="gpD-FF-OIp" firstAttribute="trailing" secondItem="hdK-ci-tbc" secondAttribute="trailing" constant="16" id="O21-GA-Rbv"/>
-                            <constraint firstItem="gpD-FF-OIp" firstAttribute="trailing" secondItem="Awl-H6-KbT" secondAttribute="trailing" constant="70" id="Opv-ST-LEG"/>
-                            <constraint firstItem="N63-jO-qEs" firstAttribute="leading" secondItem="gpD-FF-OIp" secondAttribute="leading" constant="70" id="T4m-w3-KoL"/>
-                            <constraint firstItem="gpD-FF-OIp" firstAttribute="trailing" secondItem="jL5-O7-ICF" secondAttribute="trailing" constant="70" id="UWV-y6-0yO"/>
-                            <constraint firstItem="gpD-FF-OIp" firstAttribute="bottom" secondItem="jL5-O7-ICF" secondAttribute="bottom" constant="100" id="WI8-4C-nkX"/>
-                            <constraint firstItem="gpD-FF-OIp" firstAttribute="trailing" secondItem="N63-jO-qEs" secondAttribute="trailing" constant="70" id="Zza-dS-6rt"/>
+                            <constraint firstItem="GyA-IX-aPZ" firstAttribute="centerX" secondItem="Ivh-H0-VDt" secondAttribute="centerX" id="W50-q5-Vsx"/>
                             <constraint firstItem="hdK-ci-tbc" firstAttribute="top" secondItem="gpD-FF-OIp" secondAttribute="top" constant="122" id="aQg-BG-OLF"/>
-                            <constraint firstItem="gpD-FF-OIp" firstAttribute="trailing" secondItem="13z-6j-eSB" secondAttribute="trailing" constant="70" id="bk6-KP-DeQ"/>
-                            <constraint firstItem="N63-jO-qEs" firstAttribute="top" secondItem="13z-6j-eSB" secondAttribute="bottom" constant="8" id="geG-Ei-POx"/>
                             <constraint firstItem="hdK-ci-tbc" firstAttribute="leading" secondItem="gpD-FF-OIp" secondAttribute="leading" constant="16" id="xgl-qY-dO0"/>
-                            <constraint firstItem="Awl-H6-KbT" firstAttribute="centerX" secondItem="Ivh-H0-VDt" secondAttribute="centerX" id="zBb-Wm-Gd0"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="gpD-FF-OIp"/>
                     </view>
-                    <navigationItem key="navigationItem" id="iF3-4I-mb4"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
                         <outlet property="signOutBtn" destination="jL5-O7-ICF" id="5M5-cZ-ltg"/>
@@ -538,6 +556,7 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SLe-lG-KSb" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="IG3-l3-Gg8" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="2519" y="34"/>
         </scene>
@@ -952,11 +971,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Add Task" id="mA7-PA-CDr">
                         <barButtonItem key="backBarButtonItem" title="Cancel" id="Evp-ZW-Zce"/>
-                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="w98-4Y-cnF">
-                            <connections>
-                                <segue destination="fZs-oL-UYu" kind="unwind" unwindAction="unwindFromAddTaskWithSender:" id="nHh-YD-Dbj"/>
-                            </connections>
-                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="w98-4Y-cnF"/>
                     </navigationItem>
                     <connections>
                         <outlet property="descTextField" destination="h9h-xA-u4t" id="3dW-Sd-G46"/>
@@ -965,7 +980,6 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Mwo-pB-3if" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <exit id="fZs-oL-UYu" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="5983" y="-851"/>
         </scene>
@@ -1092,7 +1106,7 @@
         <segue reference="lwq-pr-HIf"/>
         <segue reference="Ayc-Np-4w4"/>
         <segue reference="ohn-uS-gz9"/>
-        <segue reference="ifS-Ub-vZe"/>
-        <segue reference="sAv-ld-CKi"/>
+        <segue reference="9r4-mn-kTm"/>
+        <segue reference="NCr-F3-mvh"/>
     </inferredMetricsTieBreakers>
 </document>

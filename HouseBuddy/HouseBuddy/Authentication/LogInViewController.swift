@@ -29,7 +29,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
 			if error == nil {
 				if let user = result?.user {
 					// Store user id
-					UserDefaults.standard.set(user.uid, forKey: StorageKeys.USER_ID)
+					UserDefaults.standard.set(user.uid, forKey: StorageKeys.UserId)
 					
 					self.performSegue(withIdentifier: "logInToHome", sender: self)
 				}

@@ -36,10 +36,10 @@ class HomeLoadingViewController: UIViewController {
 	
 	override func viewDidAppear(_ animated: Bool) {
 		if userHasHousehold() {
-			userId = UserDefaults.standard.string(forKey: StorageKeys.USER_ID)
+			userId = UserDefaults.standard.string(forKey: StorageKeys.UserId)
 			userRef = db.collection(FireStoreConstants.CollectionPathUsers).document(userId!)
 			
-			let householdPath = UserDefaults.standard.string(forKey: StorageKeys.HOUSEHOLD_PATH)
+			let householdPath = UserDefaults.standard.string(forKey: StorageKeys.HouseholdPath)
 			householdRef = db.document(householdPath!)
 			
 			self.performSegue(withIdentifier: "loadingToHome", sender: self)
@@ -52,7 +52,7 @@ class HomeLoadingViewController: UIViewController {
 	
 	func userHasHousehold() -> Bool {
 		// Checks if user has a stored household
-		let householdPath = UserDefaults.standard.string(forKey: StorageKeys.HOUSEHOLD_PATH) ?? ""
+		let householdPath = UserDefaults.standard.string(forKey: StorageKeys.HouseholdPath) ?? ""
 		return !householdPath.isEmpty
 	}
 	
@@ -60,24 +60,24 @@ class HomeLoadingViewController: UIViewController {
 		householdRef = db.document(householdPath)
 		
 		// Store household path on device
-		UserDefaults.standard.set(householdPath, forKey: StorageKeys.HOUSEHOLD_PATH)
+		UserDefaults.standard.set(householdPath, forKey: StorageKeys.HouseholdPath)
 	}
 	
 	func saveUserInfo(userId: String?, userEmail: String?, firstName: String?, lastName: String?) {
 		if userId != nil {
-			UserDefaults.standard.set(userId, forKey: StorageKeys.USER_ID)
+			UserDefaults.standard.set(userId, forKey: StorageKeys.UserId)
 		}
 		
 		if userEmail != nil {
-			UserDefaults.standard.set(userEmail, forKey: StorageKeys.USER_EMAIL)
+			UserDefaults.standard.set(userEmail, forKey: StorageKeys.UserEmail)
 		}
 		
 		if firstName != nil {
-			UserDefaults.standard.set(firstName, forKey: StorageKeys.FIRST_NAME)
+			UserDefaults.standard.set(firstName, forKey: StorageKeys.FirstName)
 		}
 		
 		if lastName != nil {
-			UserDefaults.standard.set(lastName, forKey: StorageKeys.LAST_NAME)
+			UserDefaults.standard.set(lastName, forKey: StorageKeys.LastName)
 		}
 	}
 	

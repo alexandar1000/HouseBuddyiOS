@@ -69,7 +69,7 @@ class TaskTableViewController: UITableViewController {
 	}
 	
 	fileprivate func baseQuery() {
-		let householdPath = UserDefaults.standard.string(forKey: StorageKeys.HOUSEHOLD_PATH)
+		let householdPath = UserDefaults.standard.string(forKey: StorageKeys.HouseholdPath)
 		let householdRef = firestore.document(householdPath!)
 		self.query = householdRef.collection(FireStoreConstants.CollectionPathToDoList)
 	}
@@ -164,7 +164,7 @@ class TaskTableViewController: UITableViewController {
 	
 	override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
 		if editingStyle == UITableViewCell.EditingStyle.delete {
-			// Delete task by deleteing document with the task id
+			// Delete task by deleting document with the task id
 			clickedTask = taskList[indexPath.row]
 			if let todoListRef = query as? CollectionReference {
 				if let documentId = clickedTask.taskId {

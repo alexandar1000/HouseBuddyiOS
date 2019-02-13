@@ -85,7 +85,9 @@ class JoinHouseholdViewController: UIViewController, UITextFieldDelegate {
 							FireStoreConstants.FieldColor: "0000FF", // TODO: Randomize color
 							FireStoreConstants.FieldUserReference: userRef
 						]
-						householdRef.collection(FireStoreConstants.CollectionPathMembers).document(userId).setData(userData) { err in
+						
+						householdRef.collection(FireStoreConstants.CollectionPathMembers)
+						.document(userId).setData(userData) { err in
 							if let err = err {
 								print("Failed to add user as household member: \(err)")
 							}

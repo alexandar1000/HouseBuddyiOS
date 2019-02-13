@@ -37,6 +37,7 @@
 		E1075569220DE5C600251879 /* HomeLoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1075568220DE5C600251879 /* HomeLoadingViewController.swift */; };
 		E107556B220DFBAF00251879 /* NoHouseholdViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E107556A220DFBAF00251879 /* NoHouseholdViewController.swift */; };
 		E1AA26252211D14B007BEC20 /* JoinHouseholdViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1AA26242211D14B007BEC20 /* JoinHouseholdViewController.swift */; };
+		E1AA26292214878B007BEC20 /* CreateHouseholdViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1AA26282214878B007BEC20 /* CreateHouseholdViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -74,6 +75,7 @@
 		E1075568220DE5C600251879 /* HomeLoadingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeLoadingViewController.swift; sourceTree = "<group>"; };
 		E107556A220DFBAF00251879 /* NoHouseholdViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoHouseholdViewController.swift; sourceTree = "<group>"; };
 		E1AA26242211D14B007BEC20 /* JoinHouseholdViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinHouseholdViewController.swift; sourceTree = "<group>"; };
+		E1AA26282214878B007BEC20 /* CreateHouseholdViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateHouseholdViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -131,6 +133,7 @@
 				E1075568220DE5C600251879 /* HomeLoadingViewController.swift */,
 				E107556A220DFBAF00251879 /* NoHouseholdViewController.swift */,
 				E1AA26242211D14B007BEC20 /* JoinHouseholdViewController.swift */,
+				E1AA26282214878B007BEC20 /* CreateHouseholdViewController.swift */,
 			);
 			path = HouseholdManager;
 			sourceTree = "<group>";
@@ -389,6 +392,7 @@
 				4598884421FBB1CC00E4176B /* ShowShoppingItemViewController.swift in Sources */,
 				5684910F21E65BC4005C80E2 /* AppDelegate.swift in Sources */,
 				A95D601B21B16B58003244DF /* SignUpViewController.swift in Sources */,
+				E1AA26292214878B007BEC20 /* CreateHouseholdViewController.swift in Sources */,
 				A949AD7B21C42CEF009EC68F /* EditShoppingItemViewController.swift in Sources */,
 				A9BCE6B921C95B1C00F92F67 /* ExpenseEntry.swift in Sources */,
 				E1075569220DE5C600251879 /* HomeLoadingViewController.swift in Sources */,

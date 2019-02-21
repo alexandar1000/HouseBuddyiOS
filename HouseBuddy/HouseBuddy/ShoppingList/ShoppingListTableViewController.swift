@@ -97,7 +97,9 @@ class ShoppingListTableViewController: UITableViewController {
 	}
 	
 	deinit {
-		listener!.remove()
+		if listener != nil {
+			listener!.remove()
+		}
 	}
 	
 	// MARK: - Table view data source

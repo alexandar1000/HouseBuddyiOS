@@ -36,38 +36,24 @@ class ShowTaskViewController: UIViewController {
 			}
 			self.title = title
 			
-			// TODO: CHANGE TO HOUSEHOLD ID IN STORAGE ONCE IMPLEMENTED
 			let firestore: Firestore = Firestore.firestore()
-			if let user = Auth.auth().currentUser {
-				let userId = user.uid
-				let userRef = firestore.collection(FireStoreConstants.CollectionPathUsers).document(userId)
-				
-				userRef.getDocument { (document, error) in
-					if let document = document, document.exists {
-						let householdRef = document.get(FireStoreConstants.FieldHousehold) as! DocumentReference
-						// Set query to the todo list collection reference
-						let todoListRef = householdRef.collection(FireStoreConstants.CollectionPathToDoList)
-						
-						// Replace task in database with edited task
-						if let id = task.taskId {
-							todoListRef.document(id).setData([
-								"taskName": task.taskName,
-								"taskDesc": task.taskDesc ?? "",
-								"completed": task.isCompleted
-							]) { err in
-								if let err = err {
-									print("Error setting document data: \(err)")
-								}
-							}
-						} else {
-							print("Task doesn't have an id")
-						}
-					} else {
-						print("Document does not exist")
+			let householdPath = UserDefaults.standard.string(forKey: StorageKeys.HouseholdPath)
+			let householdRef = firestore.document(householdPath!)
+			let todoListRef = householdRef.collection(FireStoreConstants.CollectionPathToDoList)
+			
+			// Replace task in database with edited task
+			if let id = task.taskId {
+				todoListRef.document(id).setData([
+					"taskName": task.taskName,
+					"taskDesc": task.taskDesc ?? "",
+					"completed": task.isCompleted
+				]) { err in
+					if let err = err {
+						print("Error setting document data: \(err)")
 					}
 				}
 			} else {
-				print("No user signed in.")
+				print("Task doesn't have an id")
 			}
 		}
 	}

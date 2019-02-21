@@ -26,6 +26,8 @@ class TaskTableViewController: UITableViewController {
 		}
 	}
 	
+	let firestore: Firestore = Firestore.firestore()
+	
 	var activityIndicatorView: UIActivityIndicatorView!
 	let dispatchQueue = DispatchQueue(label: "Retrieving Tasks from FireStore")
 	
@@ -39,7 +41,9 @@ class TaskTableViewController: UITableViewController {
 	
 	fileprivate func observeQuery() {
 		// Make sure that query is actually set (not nil)
-		guard let query = query else { return }
+		guard let query = query else {
+			return
+		}
 		
 		// Detach listener before attaching a new one
 		stopObserving()
@@ -65,48 +69,30 @@ class TaskTableViewController: UITableViewController {
 	}
 	
 	fileprivate func baseQuery() {
-		let firestore: Firestore = Firestore.firestore()
-		
-		// TODO: This part should be moved to future HouseHoldManager class
-		let settings = firestore.settings
-		settings.areTimestampsInSnapshotsEnabled = true
-		firestore.settings = settings
-		
-		// TODO: Retrieving household id should be moved to HouseHoldManager class where it's put in the device storage..
-		if let user = Auth.auth().currentUser {
-			let userId = user.uid
-			let userRef = firestore.collection(FireStoreConstants.CollectionPathUsers).document(userId)
-			
-			userRef.getDocument { (document, error) in
-				if let document = document, document.exists {
-					let householdRef = document.get(FireStoreConstants.FieldHousehold) as! DocumentReference
-					// Set query to the todo list collection reference
-					self.query = householdRef.collection(FireStoreConstants.CollectionPathToDoList)
-				} else {
-					print("Document does not exist")
-				}
-			}
-		} else {
-			print("No user signed in.")
-		}
+		let householdPath = UserDefaults.standard.string(forKey: StorageKeys.HouseholdPath)
+		let householdRef = firestore.document(householdPath!)
+		self.query = householdRef.collection(FireStoreConstants.CollectionPathToDoList)
 	}
 	
 	fileprivate func addTask(task: Task) {
 		// Add a new document with a generated id.
 		var ref: DocumentReference? = nil
-		if let todoListRef = query as? CollectionReference {
-			ref = todoListRef.addDocument(data: [
-				"taskName": task.taskName,
-				"taskDesc": task.taskDesc ?? "",
-				"completed": task.isCompleted
-			]) { err in
-				if let err = err {
-					os_log("Error adding document", log: OSLog.default, type: .debug)
-					print(err);
-				} else {
-					// Set auto generated FireStore id as task id
-					task.taskId = ref!.documentID
-				}
+		if query != nil {
+			baseQuery()
+		}
+		
+		let todoListRef = query as! CollectionReference
+		ref = todoListRef.addDocument(data: [
+			"taskName": task.taskName,
+			"taskDesc": task.taskDesc ?? "",
+			"completed": task.isCompleted
+		]) { err in
+			if let err = err {
+				os_log("Error adding document", log: OSLog.default, type: .debug)
+				print(err);
+			} else {
+				// Set auto generated FireStore id as task id
+				task.taskId = ref!.documentID
 			}
 		}
 	}
@@ -178,7 +164,7 @@ class TaskTableViewController: UITableViewController {
 	
 	override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
 		if editingStyle == UITableViewCell.EditingStyle.delete {
-			// Delete task by deleteing document with the task id
+			// Delete task by deleting document with the task id
 			clickedTask = taskList[indexPath.row]
 			if let todoListRef = query as? CollectionReference {
 				if let documentId = clickedTask.taskId {

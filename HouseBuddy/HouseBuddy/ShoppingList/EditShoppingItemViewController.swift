@@ -27,13 +27,13 @@ class EditShoppingItemViewController: UIViewController, UITextFieldDelegate, BEM
 		self.itemName.delegate = self
 		self.boughtCheckBox.delegate = self
 		
-		// Set up the ShoppingItem if editing an existing ShoppingItem
-		if let shoppingItem = shoppingItem {
-			navigationItem.title = "Edit Shopping Item"
-			itemName.text = shoppingItem.name
-			completeness = shoppingItem.bought
-			self.boughtCheckBox.on = completeness
-		}
+//		// Set up the ShoppingItem if editing an existing ShoppingItem
+//		if let shoppingItem = shoppingItem {
+//			navigationItem.title = "Edit Shopping Item"
+//			itemName.text = shoppingItem.name
+//			completeness = shoppingItem.bought
+//			self.boughtCheckBox.on = completeness
+//		}
     }
 	
 	//MARK: - Actions

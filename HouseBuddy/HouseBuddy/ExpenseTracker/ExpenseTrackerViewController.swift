@@ -23,6 +23,7 @@ class ExpenseTrackerViewController: UIViewController, UITableViewDataSource, UIT
 	var df: DateFormatter = DateFormatter()
 	var activityIndicatorView: UIActivityIndicatorView!
 	
+	// MARK: - View Handling
     override func viewDidLoad() {
         super.viewDidLoad()
 		
@@ -30,7 +31,7 @@ class ExpenseTrackerViewController: UIViewController, UITableViewDataSource, UIT
 		let settings = db.settings
 		settings.areTimestampsInSnapshotsEnabled = true
 		db.settings = settings
-		//add border to the tableView
+		// add border to the tableView
 		tableView.layer.masksToBounds = true
 		tableView.layer.borderColor = UIColor( red: 0/255, green: 0/255, blue:0/255, alpha: 1.0 ).cgColor
 		tableView.layer.borderWidth = 0.7
@@ -154,8 +155,6 @@ class ExpenseTrackerViewController: UIViewController, UITableViewDataSource, UIT
                     print("Document successfully removed!")
                 }
             }
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
         }
     }
 	

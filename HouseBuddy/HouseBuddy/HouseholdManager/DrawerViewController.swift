@@ -17,8 +17,10 @@ class DrawerViewController: UITableViewController {
     // MARK: Outlets
     
     @IBOutlet var menuTable: UITableView!
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var emailLabel: UILabel!
 	
-	// MARK: Fields
+    // MARK: Fields
 	
 	let db = Firestore.firestore()
 	let drawerController = (UIApplication.shared.delegate as! AppDelegate).drawerController
@@ -31,6 +33,8 @@ class DrawerViewController: UITableViewController {
 		
 		// Remove unneeded cell seperators
         tableView.tableFooterView = UIView()
+		
+		setupDrawerUserInfo()
     }
 	
 	// Private methods
@@ -42,6 +46,37 @@ class DrawerViewController: UITableViewController {
 		
 		// Hide drawer
 		drawerController.setDrawerState(.closed, animated: true)
+	}
+	
+	func setupDrawerUserInfo() {
+		var firstName = UserDefaults.standard.string(forKey: StorageKeys.FirstName)
+		var lastName = UserDefaults.standard.string(forKey: StorageKeys.LastName)
+		
+		if let user = Auth.auth().currentUser {
+			// Set email label
+			emailLabel.text = user.email
+			if firstName != nil && lastName != nil {
+				// Set name label
+				nameLabel.text = firstName! + " " + lastName!
+			} else {
+				if user.displayName != nil && !user.displayName!.isEmpty {
+					// User account bound display name
+					nameLabel.text = user.displayName
+				} else {
+					// Get name from database
+					db.collection(FireStoreConstants.CollectionPathUsers).document(user.uid).getDocument() { (documentSnapshot, err) in
+						if let err = err {
+							print("Failed to retrieve user: \(err)")
+						} else {
+							firstName = documentSnapshot?.get(FireStoreConstants.FieldFirstName) as? String
+							lastName = documentSnapshot?.get(FireStoreConstants.FieldLastName) as? String
+							
+							self.nameLabel.text = firstName! + " " + lastName!
+						}
+					}
+				}
+			}
+		}
 	}
     
     // MARK: Actions

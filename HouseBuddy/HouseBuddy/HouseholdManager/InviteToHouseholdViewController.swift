@@ -137,7 +137,7 @@ class InviteToHouseholdViewController: UIViewController, UITextFieldDelegate {
 	func addListener() {
 		listener = householdRef!.addSnapshotListener { (documentSnapshot, error) in
 			guard documentSnapshot != nil else {
-				print("Error fetching documents: \(error!)")
+				print("Error fetching household: \(error!)")
 				return
 			}
 			

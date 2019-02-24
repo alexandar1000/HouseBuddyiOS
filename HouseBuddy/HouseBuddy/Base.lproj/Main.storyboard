@@ -484,17 +484,58 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Household Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hdK-ci-tbc">
-                                <rect key="frame" x="16" y="80" width="343" height="31.5"/>
+                                <rect key="frame" x="16" y="80" width="343" height="32"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="32" id="m6c-EG-Gt9"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="26"/>
                                 <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="PhQ-Yc-gh4">
+                                <rect key="frame" x="16" y="144" width="343" height="97"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Household members" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fLE-XB-Gzo">
+                                        <rect key="frame" x="0.0" y="0.0" width="343" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="95v-yg-e9t">
+                                        <rect key="frame" x="0.0" y="36.5" width="343" height="60.5"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <prototypes>
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="memberCell" id="IWu-ZF-g50">
+                                                <rect key="frame" x="0.0" y="28" width="343" height="44"/>
+                                                <autoresizingMask key="autoresizingMask"/>
+                                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="IWu-ZF-g50" id="tmn-os-7BK">
+                                                    <rect key="frame" x="0.0" y="0.0" width="343" height="43.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                </tableViewCellContentView>
+                                            </tableViewCell>
+                                        </prototypes>
+                                        <connections>
+                                            <outlet property="dataSource" destination="b3M-vM-2MA" id="Hl8-84-077"/>
+                                            <outlet property="delegate" destination="b3M-vM-2MA" id="0gL-vd-D5P"/>
+                                        </connections>
+                                    </tableView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="95v-yg-e9t" secondAttribute="trailing" id="8k0-7e-pX4"/>
+                                    <constraint firstItem="fLE-XB-Gzo" firstAttribute="leading" secondItem="PhQ-Yc-gh4" secondAttribute="leading" id="PWq-ng-EUy"/>
+                                    <constraint firstItem="95v-yg-e9t" firstAttribute="leading" secondItem="PhQ-Yc-gh4" secondAttribute="leading" id="okS-VW-6kw"/>
+                                </constraints>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="gpD-FF-OIp" firstAttribute="trailing" secondItem="hdK-ci-tbc" secondAttribute="trailing" constant="16" id="O21-GA-Rbv"/>
-                            <constraint firstItem="hdK-ci-tbc" firstAttribute="top" secondItem="gpD-FF-OIp" secondAttribute="top" constant="16" id="aQg-BG-OLF"/>
-                            <constraint firstItem="hdK-ci-tbc" firstAttribute="leading" secondItem="gpD-FF-OIp" secondAttribute="leading" constant="16" id="xgl-qY-dO0"/>
+                            <constraint firstItem="gpD-FF-OIp" firstAttribute="bottom" secondItem="PhQ-Yc-gh4" secondAttribute="bottom" constant="426" id="ABR-aj-ycL"/>
+                            <constraint firstItem="gpD-FF-OIp" firstAttribute="trailing" secondItem="PhQ-Yc-gh4" secondAttribute="trailing" constant="16" id="JWr-Go-etO"/>
+                            <constraint firstItem="PhQ-Yc-gh4" firstAttribute="leading" secondItem="gpD-FF-OIp" secondAttribute="leading" constant="16" id="Knu-WK-aKf"/>
+                            <constraint firstItem="PhQ-Yc-gh4" firstAttribute="top" secondItem="hdK-ci-tbc" secondAttribute="bottom" constant="32" id="jKw-LG-bYm"/>
+                            <constraint firstItem="hdK-ci-tbc" firstAttribute="leading" secondItem="Ivh-H0-VDt" secondAttribute="leading" constant="16" id="s33-6v-WGE"/>
+                            <constraint firstItem="hdK-ci-tbc" firstAttribute="top" secondItem="gpD-FF-OIp" secondAttribute="top" constant="16" id="xH2-3F-S3z"/>
+                            <constraint firstAttribute="trailing" secondItem="hdK-ci-tbc" secondAttribute="trailing" constant="16" id="zxZ-WO-9lS"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="gpD-FF-OIp"/>
                     </view>
@@ -507,6 +548,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="householdNameLabel" destination="hdK-ci-tbc" id="2HR-CA-VW2"/>
+                        <outlet property="memberTableView" destination="95v-yg-e9t" id="lUs-s8-RqS"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SLe-lG-KSb" userLabel="First Responder" sceneMemberID="firstResponder"/>

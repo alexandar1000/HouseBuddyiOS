@@ -25,4 +25,6 @@ struct FireStoreConstants {
 	static let FieldUserReference = "user_reference"
 	static let FieldInviteCode = "invite_code"
 	static let FieldName = "name"
+	static let FieldFirstName = "first_name"
+	static let FieldLastName = "last_name"
 }

@@ -1288,8 +1288,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Task has no description." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ocb-M6-X8l">
-                                <rect key="frame" x="16" y="36" width="185" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Task has no description." textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ocb-M6-X8l">
+                                <rect key="frame" x="16" y="36" width="343" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -1297,7 +1297,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="91X-oG-xV9" firstAttribute="trailing" secondItem="Ocb-M6-X8l" secondAttribute="trailing" constant="174" id="OIz-cu-z8P"/>
+                            <constraint firstItem="91X-oG-xV9" firstAttribute="trailing" secondItem="Ocb-M6-X8l" secondAttribute="trailing" constant="16" id="OIz-cu-z8P"/>
                             <constraint firstItem="Ocb-M6-X8l" firstAttribute="leading" secondItem="91X-oG-xV9" secondAttribute="leading" constant="16" id="Rvp-we-Min"/>
                             <constraint firstItem="Ocb-M6-X8l" firstAttribute="top" secondItem="91X-oG-xV9" secondAttribute="top" constant="16" id="nel-Vd-kIS"/>
                         </constraints>
@@ -1342,7 +1342,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="lwq-pr-HIf"/>
+        <segue reference="19x-lM-fuA"/>
         <segue reference="Ayc-Np-4w4"/>
         <segue reference="ohn-uS-gz9"/>
         <segue reference="9r4-mn-kTm"/>

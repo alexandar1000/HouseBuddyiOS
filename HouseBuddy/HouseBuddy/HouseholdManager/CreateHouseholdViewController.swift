@@ -16,7 +16,7 @@ class CreateHouseholdViewController: UIViewController, UITextFieldDelegate {
 	
     @IBOutlet weak var householdNameField: UITextField!
 	
-	// MARK: Attributes
+	// MARK: Fields
 	
 	let db = Firestore.firestore()
 	

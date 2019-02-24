@@ -255,5 +255,12 @@ class ShoppingListTableViewController: UITableViewController {
 			fatalError("Unexpected Segue Identifier; \(segue.identifier ?? "No segue defined")")
 		}
 	}
+    
+    // MARK: Actions
+    
+    @IBAction func menuAction(_ sender: Any) {
+        let appDel = UIApplication.shared.delegate as! AppDelegate
+        appDel.drawerController.setDrawerState(.opened, animated: true)
+    }
 	
 }

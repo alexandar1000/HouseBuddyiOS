@@ -16,12 +16,14 @@ class NoHouseholdViewController: UIViewController {
 	
     override func viewDidLoad() {
         super.viewDidLoad()
-		self.navigationController?.setNavigationBarHidden(false, animated: false)
     }
 	
 	override func viewWillDisappear(_ animated: Bool) {
 		super.viewWillDisappear(animated)
+		self.navigationController?.setNavigationBarHidden(false, animated: animated)
 	}
+	
+	// MARK: Actions
     
     @IBAction func signOut(_ sender: Any) {
 		do {

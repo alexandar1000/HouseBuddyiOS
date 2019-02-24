@@ -13,7 +13,7 @@ import os.log
 
 class TaskTableViewController: UITableViewController {
 
-    //MARK: Properties
+    // MARK: Fields
 
 	private var taskList = [Task]()
 	var clickedTask = Task()
@@ -190,7 +190,12 @@ class TaskTableViewController: UITableViewController {
 			tableView.insertRows(at: [newIndexPath], with: .automatic)*/
 		}
 	}
-	
+    
+    @IBAction func menuAction(_ sender: Any) {
+        let appDel = UIApplication.shared.delegate as! AppDelegate
+        appDel.drawerController.setDrawerState(.opened, animated: true)
+    }
+    
 	// MARK: Navigation
 	
 	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

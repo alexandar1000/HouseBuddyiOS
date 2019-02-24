@@ -11,5 +11,6 @@ target 'HouseBuddy' do
   pod 'Firebase/Auth'
   pod 'GoogleSignIn'
   pod 'BEMCheckBox'
+  pod 'KYDrawerController'
   
 end

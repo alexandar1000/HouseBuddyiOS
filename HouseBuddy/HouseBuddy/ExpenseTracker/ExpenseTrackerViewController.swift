@@ -240,4 +240,12 @@ class ExpenseTrackerViewController: UIViewController, UITableViewDataSource, UIT
 			}
 		}
 	}
+    
+    // MARK: Actions
+    
+    @IBAction func menuAction(_ sender: Any) {
+        let appDel = UIApplication.shared.delegate as! AppDelegate
+        appDel.drawerController.setDrawerState(.opened, animated: true)
+    }
+    
 }

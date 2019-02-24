@@ -10,7 +10,7 @@ import UIKit
 
 class TaskTableViewCell: UITableViewCell {
 
-    //MARK: Properties
+    // MARK: Properties
 	
     @IBOutlet weak var taskNameLabel: UILabel!
     

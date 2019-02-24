@@ -141,8 +141,9 @@ class DrawerViewController: UITableViewController {
 				}
 			}
 			
-			// Reset stored household path
+			// Reset stored household path and name
 			UserDefaults.standard.set("", forKey: StorageKeys.HouseholdPath)
+			UserDefaults.standard.set("", forKey: StorageKeys.HouseholdName)
 			
 			// Go to no household view
 			self.navigateToScreen(withIdentifier: "noHouseholdVC")

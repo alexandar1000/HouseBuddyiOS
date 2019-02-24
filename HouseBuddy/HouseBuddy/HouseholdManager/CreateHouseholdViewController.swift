@@ -47,7 +47,7 @@ class CreateHouseholdViewController: UIViewController, UITextFieldDelegate {
 				let userRef = self.db.collection(FireStoreConstants.CollectionPathUsers).document(userId)
 				print("Household with id \(householdRef!.documentID) added to user")
 				userRef.updateData([
-					FireStoreConstants.FieldHousehold: householdRef!.documentID
+					FireStoreConstants.FieldHousehold: householdRef!
 				]) { err in
 					if let err = err {
 						print("Failed to add household to user: \(err)")

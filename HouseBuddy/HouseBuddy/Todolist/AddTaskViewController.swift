@@ -10,12 +10,18 @@ import UIKit
 
 class AddTaskViewController: UIViewController, UITextFieldDelegate {
 	
+	// MARK: Outlets
+	
     @IBOutlet private weak var nameTextField: UITextField!
     @IBOutlet private weak var descTextField: UITextField!
     @IBOutlet private weak var saveButton: UIBarButtonItem!
-    
+	
+	// MARK: Fields
+	
     var task: Task?
 
+	// MARK: Lifecycle methods
+	
     override func viewDidLoad() {
         super.viewDidLoad()
 		
@@ -89,8 +95,6 @@ class AddTaskViewController: UIViewController, UITextFieldDelegate {
     }
 
     @IBAction func cancel(_ sender: UIBarButtonItem) {
-		// AddTaskViewController is shown modally, so we use dismiss instead of
-        // navigationController?.popViewController(animated: true)
 		dismiss(animated: true, completion: nil)
     }
     

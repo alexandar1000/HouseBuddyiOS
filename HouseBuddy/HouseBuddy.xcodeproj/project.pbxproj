@@ -39,6 +39,7 @@
 		E1AA26252211D14B007BEC20 /* JoinHouseholdViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1AA26242211D14B007BEC20 /* JoinHouseholdViewController.swift */; };
 		E1AA26292214878B007BEC20 /* CreateHouseholdViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1AA26282214878B007BEC20 /* CreateHouseholdViewController.swift */; };
 		E1AA262B22149519007BEC20 /* InviteToHouseholdViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1AA262A22149519007BEC20 /* InviteToHouseholdViewController.swift */; };
+		E1AA262D2221B864007BEC20 /* DrawerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1AA262C2221B864007BEC20 /* DrawerViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -78,6 +79,7 @@
 		E1AA26242211D14B007BEC20 /* JoinHouseholdViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinHouseholdViewController.swift; sourceTree = "<group>"; };
 		E1AA26282214878B007BEC20 /* CreateHouseholdViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateHouseholdViewController.swift; sourceTree = "<group>"; };
 		E1AA262A22149519007BEC20 /* InviteToHouseholdViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InviteToHouseholdViewController.swift; sourceTree = "<group>"; };
+		E1AA262C2221B864007BEC20 /* DrawerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawerViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -137,6 +139,7 @@
 				E1AA26242211D14B007BEC20 /* JoinHouseholdViewController.swift */,
 				E1AA26282214878B007BEC20 /* CreateHouseholdViewController.swift */,
 				E1AA262A22149519007BEC20 /* InviteToHouseholdViewController.swift */,
+				E1AA262C2221B864007BEC20 /* DrawerViewController.swift */,
 			);
 			path = HouseholdManager;
 			sourceTree = "<group>";
@@ -306,7 +309,7 @@
 			inputFileListPaths = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-HouseBuddy/Pods-HouseBuddy-resources.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-HouseBuddy/Pods-HouseBuddy-resources.sh",
 				"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseFirestore/gRPCCertificates-Firestore.bundle",
 				"${PODS_ROOT}/GoogleSignIn/Resources/GoogleSignIn.bundle",
 			);
@@ -319,7 +322,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-HouseBuddy/Pods-HouseBuddy-resources.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-HouseBuddy/Pods-HouseBuddy-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		CAB739DCCBF8A260551E67B7 /* [CP] Check Pods Manifest.lock */ = {
@@ -348,12 +351,13 @@
 			inputFileListPaths = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-HouseBuddy/Pods-HouseBuddy-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-HouseBuddy/Pods-HouseBuddy-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/BEMCheckBox/BEMCheckBox.framework",
 				"${BUILT_PRODUCTS_DIR}/BoringSSL/openssl.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
+				"${BUILT_PRODUCTS_DIR}/KYDrawerController/KYDrawerController.framework",
 				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
 				"${BUILT_PRODUCTS_DIR}/gRPC-C++/grpcpp.framework",
 				"${BUILT_PRODUCTS_DIR}/gRPC-Core/grpc.framework",
@@ -369,6 +373,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/KYDrawerController.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/grpcpp.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/grpc.framework",
@@ -377,7 +382,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-HouseBuddy/Pods-HouseBuddy-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-HouseBuddy/Pods-HouseBuddy-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -392,6 +397,7 @@
 				56962CC521B43F2000E17880 /* TaskTableViewCell.swift in Sources */,
 				A949AD7921C40FCA009EC68F /* ShoppingListTableViewCell.swift in Sources */,
 				5692DACF21C7EF8C005A1A9E /* AddTaskViewController.swift in Sources */,
+				E1AA262D2221B864007BEC20 /* DrawerViewController.swift in Sources */,
 				4570566A21FE5D360030403B /* ExpenseTrackerTableViewCell.swift in Sources */,
 				4598884421FBB1CC00E4176B /* ShowShoppingItemViewController.swift in Sources */,
 				5684910F21E65BC4005C80E2 /* AppDelegate.swift in Sources */,

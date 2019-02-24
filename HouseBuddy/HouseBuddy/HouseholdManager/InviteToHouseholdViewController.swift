@@ -12,7 +12,7 @@ import FirebaseFirestore
 
 class InviteToHouseholdViewController: UIViewController, UITextFieldDelegate {
 	
-	// MARK: Attributes
+	// MARK: Fields
 	
 	let db = Firestore.firestore()
 	var householdRef: DocumentReference?
@@ -153,6 +153,11 @@ class InviteToHouseholdViewController: UIViewController, UITextFieldDelegate {
 	}
 
 	// MARK: Actions
+	
+	@IBAction func menuAction(_ sender: Any) {
+		let appDel = UIApplication.shared.delegate as! AppDelegate
+		appDel.drawerController.setDrawerState(.opened, animated: true)
+	}
 	
     @IBAction func renewInviteCode(_ sender: Any) {
 		generateNewInviteCode()

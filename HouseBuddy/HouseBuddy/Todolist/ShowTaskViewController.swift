@@ -12,10 +12,16 @@ import FirebaseAuth
 
 class ShowTaskViewController: UIViewController {
 	
+	// MARK: Outlets
+	
     @IBOutlet private weak var taskDescLabel: UILabel!
-    
+	
+	// MARK: Fields
+	
     var task = Task()
 
+	// MARK: Lifecycle methods
+	
     override func viewDidLoad() {
         super.viewDidLoad()
 		
@@ -25,6 +31,8 @@ class ShowTaskViewController: UIViewController {
         	taskDescLabel.text = task.taskDesc
 		}
     }
+	
+	// MARK: Actions
 	
 	@IBAction func unwindFromAddTask(sender: UIStoryboardSegue) {
 		if let sourceViewController = sender.source as? AddTaskViewController, let task = sourceViewController.task {
@@ -57,6 +65,8 @@ class ShowTaskViewController: UIViewController {
 			}
 		}
 	}
+	
+	// MARK: Navigation
 	
 	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 		switch(segue.identifier ?? "") {

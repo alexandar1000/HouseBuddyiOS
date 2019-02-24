@@ -19,6 +19,7 @@ class StartViewController: UIViewController, GIDSignInUIDelegate {
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
+		
 		if let user = Auth.auth().currentUser {
 			// Store user id
 			UserDefaults.standard.set(user.uid, forKey: StorageKeys.UserId)
@@ -28,6 +29,20 @@ class StartViewController: UIViewController, GIDSignInUIDelegate {
 		
 		//Defining the Google Login Button
 		GIDSignIn.sharedInstance().uiDelegate = self
+	}
+	
+	override func viewWillAppear(_ animated: Bool) {
+		super.viewWillAppear(animated)
+		
+		// Disable back navigation
+		navigationItem.hidesBackButton = true;
+		navigationController?.navigationItem.backBarButtonItem?.isEnabled = false;
+		navigationController!.interactivePopGestureRecognizer!.isEnabled = false;
+		navigationController?.setNavigationBarHidden(true, animated: animated)
+	}
+	
+	override func viewWillDisappear(_ animated: Bool) {
+		navigationController?.setNavigationBarHidden(false, animated: animated)
 	}
 	
 	// MARK: - Navigation
@@ -41,16 +56,5 @@ class StartViewController: UIViewController, GIDSignInUIDelegate {
 		if Auth.auth().currentUser == nil {
 			self.performSegue(withIdentifier: "signUpSegue", sender: self)
 		}
-	}
-	
-	//MARK: Navigation Bar
-	override func viewWillAppear(_ animated: Bool) {
-		super.viewWillAppear(animated)
-		self.navigationController?.setNavigationBarHidden(true, animated: animated)
-	}
-	
-	override func viewWillDisappear(_ animated: Bool) {
-		super.viewWillDisappear(animated)
-		self.navigationController?.setNavigationBarHidden(false, animated: animated)
 	}
 }

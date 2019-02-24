@@ -25,9 +25,14 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
 	
 	//MARK: Firebase
 	@IBAction func logInAction(_ sender: Any) {
-		Auth.auth().signIn(withEmail: emailTF.text!, password: passwordTF.text!) { (user, error) in
-			if error == nil{
-				self.performSegue(withIdentifier: "logInToHome", sender: self)
+		Auth.auth().signIn(withEmail: emailTF.text!, password: passwordTF.text!) { (result, error) in
+			if error == nil {
+				if let user = result?.user {
+					// Store user id
+					UserDefaults.standard.set(user.uid, forKey: StorageKeys.UserId)
+					
+					self.performSegue(withIdentifier: "logInToHome", sender: self)
+				}
 			} else {
 				let alertController = UIAlertController(title: "Error", message: error?.localizedDescription, preferredStyle: .alert)
 				let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
@@ -48,4 +53,5 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
 		}
 		return true
 	}
+	
 }

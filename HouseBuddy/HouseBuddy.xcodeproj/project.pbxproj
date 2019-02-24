@@ -7,35 +7,79 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4570566821FE44FE0030403B /* ExpenseTrackerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4570566721FE44FE0030403B /* ExpenseTrackerViewController.swift */; };
+		4570566A21FE5D360030403B /* ExpenseTrackerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4570566921FE5D360030403B /* ExpenseTrackerTableViewCell.swift */; };
+		4598884421FBB1CC00E4176B /* ShowShoppingItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4598884321FBB1CC00E4176B /* ShowShoppingItemViewController.swift */; };
+		45A59ADD21FF968D00449163 /* ShowExpenseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45A59ADC21FF968D00449163 /* ShowExpenseViewController.swift */; };
+		45A59ADF21FF96AA00449163 /* EditExpenseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45A59ADE21FF96AA00449163 /* EditExpenseViewController.swift */; };
 		4AE4F69611247EF36EF55309 /* Pods_HouseBuddy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8596F7D91C4EAD293992B3B9 /* Pods_HouseBuddy.framework */; };
-		A945BBA421A7095D00A4E39B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A945BBA321A7095D00A4E39B /* AppDelegate.swift */; };
-		A945BBA621A7095D00A4E39B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A945BBA521A7095D00A4E39B /* ViewController.swift */; };
+		5684910F21E65BC4005C80E2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5684910E21E65BC4005C80E2 /* AppDelegate.swift */; };
+		5692DACD21C7E168005A1A9E /* ShowTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5692DACC21C7E168005A1A9E /* ShowTaskViewController.swift */; };
+		5692DACF21C7EF8C005A1A9E /* AddTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5692DACE21C7EF8C005A1A9E /* AddTaskViewController.swift */; };
+		56962CC321B4314700E17880 /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56962CC221B4314700E17880 /* Task.swift */; };
+		56962CC521B43F2000E17880 /* TaskTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56962CC421B43F2000E17880 /* TaskTableViewCell.swift */; };
+		56962CC721B441C000E17880 /* TaskTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56962CC621B441C000E17880 /* TaskTableViewController.swift */; };
+		56F1426121C3F453001E909A /* FireStoreConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56F1426021C3F453001E909A /* FireStoreConstants.swift */; };
 		A945BBA921A7095D00A4E39B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A945BBA721A7095D00A4E39B /* Main.storyboard */; };
 		A945BBAB21A7095D00A4E39B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A945BBAA21A7095D00A4E39B /* Assets.xcassets */; };
 		A945BBAE21A7095D00A4E39B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A945BBAC21A7095D00A4E39B /* LaunchScreen.storyboard */; };
 		A945BBB721A71F2C00A4E39B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A945BBB621A71F2C00A4E39B /* GoogleService-Info.plist */; };
+		A949AD7521C403F2009EC68F /* ShoppingItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = A949AD7421C403F2009EC68F /* ShoppingItem.swift */; };
+		A949AD7721C40A68009EC68F /* ShoppingListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A949AD7621C40A68009EC68F /* ShoppingListTableViewController.swift */; };
+		A949AD7921C40FCA009EC68F /* ShoppingListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A949AD7821C40FCA009EC68F /* ShoppingListTableViewCell.swift */; };
+		A949AD7B21C42CEF009EC68F /* EditShoppingItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A949AD7A21C42CEF009EC68F /* EditShoppingItemViewController.swift */; };
 		A95D601721B16B1A003244DF /* StartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A95D601621B16B1A003244DF /* StartViewController.swift */; };
 		A95D601921B16B3C003244DF /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A95D601821B16B3C003244DF /* LogInViewController.swift */; };
 		A95D601B21B16B58003244DF /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A95D601A21B16B58003244DF /* SignUpViewController.swift */; };
 		A95D601D21B16B6C003244DF /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A95D601C21B16B6C003244DF /* HomeViewController.swift */; };
+		A9BCE6B921C95B1C00F92F67 /* ExpenseEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9BCE6B821C95B1C00F92F67 /* ExpenseEntry.swift */; };
+		E1075563220DD57400251879 /* StorageKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1075562220DD57300251879 /* StorageKeys.swift */; };
+		E1075569220DE5C600251879 /* HomeLoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1075568220DE5C600251879 /* HomeLoadingViewController.swift */; };
+		E107556B220DFBAF00251879 /* NoHouseholdViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E107556A220DFBAF00251879 /* NoHouseholdViewController.swift */; };
+		E1AA26252211D14B007BEC20 /* JoinHouseholdViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1AA26242211D14B007BEC20 /* JoinHouseholdViewController.swift */; };
+		E1AA26292214878B007BEC20 /* CreateHouseholdViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1AA26282214878B007BEC20 /* CreateHouseholdViewController.swift */; };
+		E1AA262B22149519007BEC20 /* InviteToHouseholdViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1AA262A22149519007BEC20 /* InviteToHouseholdViewController.swift */; };
+		E1AA262D2221B864007BEC20 /* DrawerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1AA262C2221B864007BEC20 /* DrawerViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		6EDE2D62A15B3990DB5AB051 /* Pods-HouseBuddy.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HouseBuddy.release.xcconfig"; path = "Pods/Target Support Files/Pods-HouseBuddy/Pods-HouseBuddy.release.xcconfig"; sourceTree = "<group>"; };
+		4570566721FE44FE0030403B /* ExpenseTrackerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseTrackerViewController.swift; sourceTree = "<group>"; };
+		4570566921FE5D360030403B /* ExpenseTrackerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseTrackerTableViewCell.swift; sourceTree = "<group>"; };
+		4598884321FBB1CC00E4176B /* ShowShoppingItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowShoppingItemViewController.swift; sourceTree = "<group>"; };
+		45A59ADC21FF968D00449163 /* ShowExpenseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowExpenseViewController.swift; sourceTree = "<group>"; };
+		45A59ADE21FF96AA00449163 /* EditExpenseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditExpenseViewController.swift; sourceTree = "<group>"; };
+		5684910E21E65BC4005C80E2 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		5692DACC21C7E168005A1A9E /* ShowTaskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowTaskViewController.swift; sourceTree = "<group>"; };
+		5692DACE21C7EF8C005A1A9E /* AddTaskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTaskViewController.swift; sourceTree = "<group>"; };
+		56962CC221B4314700E17880 /* Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
+		56962CC421B43F2000E17880 /* TaskTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskTableViewCell.swift; sourceTree = "<group>"; };
+		56962CC621B441C000E17880 /* TaskTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskTableViewController.swift; sourceTree = "<group>"; };
+		56F1426021C3F453001E909A /* FireStoreConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FireStoreConstants.swift; sourceTree = "<group>"; };
 		8596F7D91C4EAD293992B3B9 /* Pods_HouseBuddy.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HouseBuddy.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8B5D948D5352EB4483B404BF /* Pods-HouseBuddy.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HouseBuddy.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HouseBuddy/Pods-HouseBuddy.debug.xcconfig"; sourceTree = "<group>"; };
 		A945BBA021A7095D00A4E39B /* HouseBuddy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HouseBuddy.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		A945BBA321A7095D00A4E39B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		A945BBA521A7095D00A4E39B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		A945BBA821A7095D00A4E39B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		A945BBAA21A7095D00A4E39B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A945BBAD21A7095D00A4E39B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A945BBAF21A7095D00A4E39B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A945BBB621A71F2C00A4E39B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		A949AD7421C403F2009EC68F /* ShoppingItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingItem.swift; sourceTree = "<group>"; };
+		A949AD7621C40A68009EC68F /* ShoppingListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingListTableViewController.swift; sourceTree = "<group>"; };
+		A949AD7821C40FCA009EC68F /* ShoppingListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingListTableViewCell.swift; sourceTree = "<group>"; };
+		A949AD7A21C42CEF009EC68F /* EditShoppingItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditShoppingItemViewController.swift; sourceTree = "<group>"; };
 		A95D601621B16B1A003244DF /* StartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartViewController.swift; sourceTree = "<group>"; };
 		A95D601821B16B3C003244DF /* LogInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
 		A95D601A21B16B58003244DF /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		A95D601C21B16B6C003244DF /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
-		A99EC1F4D7AAD8B1A013CF56 /* Pods-HouseBuddy.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HouseBuddy.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HouseBuddy/Pods-HouseBuddy.debug.xcconfig"; sourceTree = "<group>"; };
+		A9BCE6B821C95B1C00F92F67 /* ExpenseEntry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExpenseEntry.swift; sourceTree = "<group>"; };
+		BCF2B527740BA83A43EFA3B3 /* Pods-HouseBuddy.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HouseBuddy.release.xcconfig"; path = "Pods/Target Support Files/Pods-HouseBuddy/Pods-HouseBuddy.release.xcconfig"; sourceTree = "<group>"; };
+		E1075562220DD57300251879 /* StorageKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageKeys.swift; sourceTree = "<group>"; };
+		E1075568220DE5C600251879 /* HomeLoadingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeLoadingViewController.swift; sourceTree = "<group>"; };
+		E107556A220DFBAF00251879 /* NoHouseholdViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoHouseholdViewController.swift; sourceTree = "<group>"; };
+		E1AA26242211D14B007BEC20 /* JoinHouseholdViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinHouseholdViewController.swift; sourceTree = "<group>"; };
+		E1AA26282214878B007BEC20 /* CreateHouseholdViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateHouseholdViewController.swift; sourceTree = "<group>"; };
+		E1AA262A22149519007BEC20 /* InviteToHouseholdViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InviteToHouseholdViewController.swift; sourceTree = "<group>"; };
+		E1AA262C2221B864007BEC20 /* DrawerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawerViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -50,6 +94,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2B138A6F7B3BF914525798DE /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				8B5D948D5352EB4483B404BF /* Pods-HouseBuddy.debug.xcconfig */,
+				BCF2B527740BA83A43EFA3B3 /* Pods-HouseBuddy.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		3B22A24F49F91737498F797A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -58,13 +111,37 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		9F430C37F818FD00525CFB57 /* Pods */ = {
+		5684910D21E658FA005C80E2 /* Recovered References */ = {
 			isa = PBXGroup;
 			children = (
-				A99EC1F4D7AAD8B1A013CF56 /* Pods-HouseBuddy.debug.xcconfig */,
-				6EDE2D62A15B3990DB5AB051 /* Pods-HouseBuddy.release.xcconfig */,
 			);
-			name = Pods;
+			name = "Recovered References";
+			sourceTree = "<group>";
+		};
+		56962CC121B4312000E17880 /* Todolist */ = {
+			isa = PBXGroup;
+			children = (
+				56962CC221B4314700E17880 /* Task.swift */,
+				56962CC421B43F2000E17880 /* TaskTableViewCell.swift */,
+				56962CC621B441C000E17880 /* TaskTableViewController.swift */,
+				5692DACE21C7EF8C005A1A9E /* AddTaskViewController.swift */,
+				5692DACC21C7E168005A1A9E /* ShowTaskViewController.swift */,
+			);
+			path = Todolist;
+			sourceTree = "<group>";
+		};
+		56F1425F21C3ECC4001E909A /* HouseholdManager */ = {
+			isa = PBXGroup;
+			children = (
+				A95D601C21B16B6C003244DF /* HomeViewController.swift */,
+				E1075568220DE5C600251879 /* HomeLoadingViewController.swift */,
+				E107556A220DFBAF00251879 /* NoHouseholdViewController.swift */,
+				E1AA26242211D14B007BEC20 /* JoinHouseholdViewController.swift */,
+				E1AA26282214878B007BEC20 /* CreateHouseholdViewController.swift */,
+				E1AA262A22149519007BEC20 /* InviteToHouseholdViewController.swift */,
+				E1AA262C2221B864007BEC20 /* DrawerViewController.swift */,
+			);
+			path = HouseholdManager;
 			sourceTree = "<group>";
 		};
 		A945BB9721A7095D00A4E39B = {
@@ -72,12 +149,13 @@
 			children = (
 				A945BBA221A7095D00A4E39B /* HouseBuddy */,
 				A945BBA121A7095D00A4E39B /* Products */,
-				9F430C37F818FD00525CFB57 /* Pods */,
 				3B22A24F49F91737498F797A /* Frameworks */,
+				5684910D21E658FA005C80E2 /* Recovered References */,
+				2B138A6F7B3BF914525798DE /* Pods */,
 			);
-			indentWidth = 2;
+			indentWidth = 4;
 			sourceTree = "<group>";
-			tabWidth = 2;
+			tabWidth = 4;
 			usesTabs = 1;
 		};
 		A945BBA121A7095D00A4E39B /* Products */ = {
@@ -91,9 +169,13 @@
 		A945BBA221A7095D00A4E39B /* HouseBuddy */ = {
 			isa = PBXGroup;
 			children = (
-				A945BBA521A7095D00A4E39B /* ViewController.swift */,
+				5684910E21E65BC4005C80E2 /* AppDelegate.swift */,
 				A945BBA721A7095D00A4E39B /* Main.storyboard */,
+				56F1425F21C3ECC4001E909A /* HouseholdManager */,
 				A95D602021B178AF003244DF /* Authentication */,
+				56962CC121B4312000E17880 /* Todolist */,
+				A949AD7321C403C0009EC68F /* ShoppingList */,
+				A9BCE6B721C95B1C00F92F67 /* ExpenseTracker */,
 				A945BBB521A70B6D00A4E39B /* SupportingFiles */,
 				A945BBAF21A7095D00A4E39B /* Info.plist */,
 				A945BBB621A71F2C00A4E39B /* GoogleService-Info.plist */,
@@ -104,11 +186,24 @@
 		A945BBB521A70B6D00A4E39B /* SupportingFiles */ = {
 			isa = PBXGroup;
 			children = (
-				A945BBA321A7095D00A4E39B /* AppDelegate.swift */,
 				A945BBAA21A7095D00A4E39B /* Assets.xcassets */,
 				A945BBAC21A7095D00A4E39B /* LaunchScreen.storyboard */,
+				56F1426021C3F453001E909A /* FireStoreConstants.swift */,
+				E1075562220DD57300251879 /* StorageKeys.swift */,
 			);
 			path = SupportingFiles;
+			sourceTree = "<group>";
+		};
+		A949AD7321C403C0009EC68F /* ShoppingList */ = {
+			isa = PBXGroup;
+			children = (
+				A949AD7421C403F2009EC68F /* ShoppingItem.swift */,
+				A949AD7621C40A68009EC68F /* ShoppingListTableViewController.swift */,
+				A949AD7821C40FCA009EC68F /* ShoppingListTableViewCell.swift */,
+				A949AD7A21C42CEF009EC68F /* EditShoppingItemViewController.swift */,
+				4598884321FBB1CC00E4176B /* ShowShoppingItemViewController.swift */,
+			);
+			path = ShoppingList;
 			sourceTree = "<group>";
 		};
 		A95D602021B178AF003244DF /* Authentication */ = {
@@ -117,10 +212,22 @@
 				A95D601621B16B1A003244DF /* StartViewController.swift */,
 				A95D601821B16B3C003244DF /* LogInViewController.swift */,
 				A95D601A21B16B58003244DF /* SignUpViewController.swift */,
-				A95D601C21B16B6C003244DF /* HomeViewController.swift */,
 			);
 			path = Authentication;
 			sourceTree = "<group>";
+		};
+		A9BCE6B721C95B1C00F92F67 /* ExpenseTracker */ = {
+			isa = PBXGroup;
+			children = (
+				A9BCE6B821C95B1C00F92F67 /* ExpenseEntry.swift */,
+				4570566721FE44FE0030403B /* ExpenseTrackerViewController.swift */,
+				4570566921FE5D360030403B /* ExpenseTrackerTableViewCell.swift */,
+				45A59ADC21FF968D00449163 /* ShowExpenseViewController.swift */,
+				45A59ADE21FF96AA00449163 /* EditExpenseViewController.swift */,
+			);
+			name = ExpenseTracker;
+			path = HouseBuddy/ExpenseTracker;
+			sourceTree = SOURCE_ROOT;
 		};
 /* End PBXGroup section */
 
@@ -134,6 +241,7 @@
 				A945BB9D21A7095D00A4E39B /* Frameworks */,
 				A945BB9E21A7095D00A4E39B /* Resources */,
 				D0A79FCB6A9A1022CF31193A /* [CP] Embed Pods Frameworks */,
+				4D8D0CE9CC0BBFDCA56A07DB /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -156,6 +264,7 @@
 				TargetAttributes = {
 					A945BB9F21A7095D00A4E39B = {
 						CreatedOnToolsVersion = 9.3;
+						LastSwiftMigration = 1010;
 					};
 				};
 			};
@@ -192,6 +301,30 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		4D8D0CE9CC0BBFDCA56A07DB /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-HouseBuddy/Pods-HouseBuddy-resources.sh",
+				"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseFirestore/gRPCCertificates-Firestore.bundle",
+				"${PODS_ROOT}/GoogleSignIn/Resources/GoogleSignIn.bundle",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/gRPCCertificates-Firestore.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleSignIn.bundle",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-HouseBuddy/Pods-HouseBuddy-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		CAB739DCCBF8A260551E67B7 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -218,22 +351,38 @@
 			inputFileListPaths = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-HouseBuddy/Pods-HouseBuddy-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-HouseBuddy/Pods-HouseBuddy-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/BEMCheckBox/BEMCheckBox.framework",
+				"${BUILT_PRODUCTS_DIR}/BoringSSL/openssl.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
+				"${BUILT_PRODUCTS_DIR}/KYDrawerController/KYDrawerController.framework",
+				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
+				"${BUILT_PRODUCTS_DIR}/gRPC-C++/grpcpp.framework",
+				"${BUILT_PRODUCTS_DIR}/gRPC-Core/grpc.framework",
+				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 			);
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/BEMCheckBox.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/openssl.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/KYDrawerController.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/grpcpp.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/grpc.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-HouseBuddy/Pods-HouseBuddy-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-HouseBuddy/Pods-HouseBuddy-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -243,12 +392,34 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E1AA262B22149519007BEC20 /* InviteToHouseholdViewController.swift in Sources */,
+				45A59ADF21FF96AA00449163 /* EditExpenseViewController.swift in Sources */,
+				56962CC521B43F2000E17880 /* TaskTableViewCell.swift in Sources */,
+				A949AD7921C40FCA009EC68F /* ShoppingListTableViewCell.swift in Sources */,
+				5692DACF21C7EF8C005A1A9E /* AddTaskViewController.swift in Sources */,
+				E1AA262D2221B864007BEC20 /* DrawerViewController.swift in Sources */,
+				4570566A21FE5D360030403B /* ExpenseTrackerTableViewCell.swift in Sources */,
+				4598884421FBB1CC00E4176B /* ShowShoppingItemViewController.swift in Sources */,
+				5684910F21E65BC4005C80E2 /* AppDelegate.swift in Sources */,
 				A95D601B21B16B58003244DF /* SignUpViewController.swift in Sources */,
+				E1AA26292214878B007BEC20 /* CreateHouseholdViewController.swift in Sources */,
+				A949AD7B21C42CEF009EC68F /* EditShoppingItemViewController.swift in Sources */,
+				A9BCE6B921C95B1C00F92F67 /* ExpenseEntry.swift in Sources */,
+				E1075569220DE5C600251879 /* HomeLoadingViewController.swift in Sources */,
 				A95D601921B16B3C003244DF /* LogInViewController.swift in Sources */,
-				A945BBA621A7095D00A4E39B /* ViewController.swift in Sources */,
-				A945BBA421A7095D00A4E39B /* AppDelegate.swift in Sources */,
+				45A59ADD21FF968D00449163 /* ShowExpenseViewController.swift in Sources */,
 				A95D601721B16B1A003244DF /* StartViewController.swift in Sources */,
+				A949AD7721C40A68009EC68F /* ShoppingListTableViewController.swift in Sources */,
+				E1AA26252211D14B007BEC20 /* JoinHouseholdViewController.swift in Sources */,
+				56962CC721B441C000E17880 /* TaskTableViewController.swift in Sources */,
+				4570566821FE44FE0030403B /* ExpenseTrackerViewController.swift in Sources */,
+				E107556B220DFBAF00251879 /* NoHouseholdViewController.swift in Sources */,
+				56F1426121C3F453001E909A /* FireStoreConstants.swift in Sources */,
+				5692DACD21C7E168005A1A9E /* ShowTaskViewController.swift in Sources */,
+				56962CC321B4314700E17880 /* Task.swift in Sources */,
+				A949AD7521C403F2009EC68F /* ShoppingItem.swift in Sources */,
 				A95D601D21B16B6C003244DF /* HomeViewController.swift in Sources */,
+				E1075563220DD57400251879 /* StorageKeys.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -390,7 +561,7 @@
 		};
 		A945BBB321A7095D00A4E39B /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A99EC1F4D7AAD8B1A013CF56 /* Pods-HouseBuddy.debug.xcconfig */;
+			baseConfigurationReference = 8B5D948D5352EB4483B404BF /* Pods-HouseBuddy.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -402,14 +573,14 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.rug.albert.HouseBuddy;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
 		A945BBB421A7095D00A4E39B /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 6EDE2D62A15B3990DB5AB051 /* Pods-HouseBuddy.release.xcconfig */;
+			baseConfigurationReference = BCF2B527740BA83A43EFA3B3 /* Pods-HouseBuddy.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -421,7 +592,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.rug.albert.HouseBuddy;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;

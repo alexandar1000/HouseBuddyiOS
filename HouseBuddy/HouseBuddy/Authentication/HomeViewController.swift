@@ -8,6 +8,7 @@
 
 import UIKit
 import FirebaseAuth
+import GoogleSignIn
 
 class HomeViewController: UIViewController {
     
@@ -23,6 +24,7 @@ class HomeViewController: UIViewController {
     @IBAction func logOutAction(_ sender: Any) {
       do {
         try Auth.auth().signOut()
+				GIDSignIn.sharedInstance().signOut()
       }
 			catch let signOutError as NSError {
         print ("Error signing out: %@", signOutError)
@@ -32,4 +34,14 @@ class HomeViewController: UIViewController {
       let initial = storyboard.instantiateInitialViewController()
       UIApplication.shared.keyWindow?.rootViewController = initial
     }
+	
+	override func viewWillAppear(_ animated: Bool) {
+		super.viewWillAppear(animated)
+		self.navigationController?.setNavigationBarHidden(true, animated: animated)
+	}
+	
+	override func viewWillDisappear(_ animated: Bool) {
+		super.viewWillDisappear(animated)
+		self.navigationController?.setNavigationBarHidden(false, animated: animated)
+	}
 }

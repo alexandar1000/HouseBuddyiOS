@@ -16,7 +16,7 @@ class JoinHouseholdViewController: UIViewController, UITextFieldDelegate {
 	
     @IBOutlet weak var invitationCodeField: UITextField!
 	
-	// MARK: Attributes
+	// MARK: Fields
 	
 	let db = Firestore.firestore()
     

@@ -16,12 +16,14 @@ class NoHouseholdViewController: UIViewController {
 	
     override func viewDidLoad() {
         super.viewDidLoad()
-		self.navigationController?.setNavigationBarHidden(false, animated: false)
     }
 	
 	override func viewWillDisappear(_ animated: Bool) {
 		super.viewWillDisappear(animated)
+		self.navigationController?.setNavigationBarHidden(false, animated: animated)
 	}
+	
+	// MARK: Actions
     
     @IBAction func signOut(_ sender: Any) {
 		do {
@@ -33,9 +35,8 @@ class NoHouseholdViewController: UIViewController {
 		} catch let signOutError as NSError {
 		print ("Error signing out: %@", signOutError)
 		}
-	
-		let storyboard = UIStoryboard(name: "Main", bundle: nil)
-		let initial = storyboard.instantiateInitialViewController()
-		UIApplication.shared.keyWindow?.rootViewController = initial
+		
+		// Go to start screen
+		performSegue(withIdentifier: "logOut", sender: self)
     }
 }

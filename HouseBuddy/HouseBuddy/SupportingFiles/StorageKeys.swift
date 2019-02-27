@@ -15,4 +15,5 @@ struct StorageKeys {
 	static let LastName = "last_name"
 	static let HouseholdPath = "household_path";
 	static let InviteCode = "invite_code"
+	static let HouseholdName = "household_name"
 }

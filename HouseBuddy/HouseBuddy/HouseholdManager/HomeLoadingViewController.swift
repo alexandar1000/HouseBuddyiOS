@@ -13,7 +13,7 @@ import FirebaseFirestore
 
 class HomeLoadingViewController: UIViewController {
     
-    // MARK: Attributes
+    // MARK: Fields
 	
 	let db = Firestore.firestore()
 	var userRef: DocumentReference?
@@ -30,8 +30,10 @@ class HomeLoadingViewController: UIViewController {
         super.viewDidLoad()
 
 		let settings = db.settings
-		settings.areTimestampsInSnapshotsEnabled = true
-		db.settings = settings
+		if !settings.areTimestampsInSnapshotsEnabled {
+			settings.areTimestampsInSnapshotsEnabled = true
+			db.settings = settings
+		}
     }
 	
 	override func viewDidAppear(_ animated: Bool) {

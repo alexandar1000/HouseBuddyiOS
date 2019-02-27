@@ -7,133 +7,112 @@
 //
 
 import UIKit
-import FirebaseAuth
-import GoogleSignIn
 import Firebase
 import FirebaseFirestore
 
-class HomeViewController: UIViewController {
+class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
-	//MARK: Fields
+	//MARK: Outlets
 	
-	@IBOutlet weak var userNameLbl: UILabel!
-	@IBOutlet weak var signOutBtn: UIButton!
+    @IBOutlet weak var householdNameLabel: UILabel!
+    @IBOutlet weak var memberTableView: UITableView!
+    
+	// MARK: Fields
 	
 	let db = Firestore.firestore()
+	var householdRef: DocumentReference?
+	var memberListener: ListenerRegistration?
+	
+	var memberNames = [String]()
+	
+	let appDel = UIApplication.shared.delegate as! AppDelegate
 
 	// MARK: Lifecycle methods
 	
 	override func viewWillAppear(_ animated: Bool) {
-		self.navigationController?.setNavigationBarHidden(true, animated: animated)
+		self.navigationController?.setNavigationBarHidden(false, animated: animated)
+		
+		// Remove unneeded cell seperators
+		memberTableView.tableFooterView = UIView()
+		
+		attachMemberListener()
 	}
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
+		
+		// Enable swipe to show drawer
+		appDel.drawerController.screenEdgePanGestureEnabled = true
+		
+		let householdPath = UserDefaults.standard.string(forKey: StorageKeys.HouseholdPath)
+		householdRef = db.document(householdPath!)
+		
+		let householdName = UserDefaults.standard.string(forKey: StorageKeys.HouseholdName) ?? ""
+		if householdName.isEmpty {
+			fetchHouseholdName()
+		} else {
+			householdNameLabel.text = householdName
+		}
+	}
+	
+	override func viewWillDisappear(_ animated: Bool) {
+		memberListener?.remove()
+	}
+	
+	// MARK: Private methods
+	
+	func fetchHouseholdName() {
+		householdRef!.getDocument() { (document, err) in
+			if let err = err {
+				print("Failed to retrieve household name: \(err)")
+			} else if document != nil && document!.exists {
+				let householdName = document!.get(FireStoreConstants.FieldName) as! String
+				
+				UserDefaults.standard.set(householdName, forKey: StorageKeys.HouseholdName)
+				self.householdNameLabel.text = householdName
+			}
+		}
+	}
+	
+	func attachMemberListener() {
+		memberListener = db.collection(FireStoreConstants.CollectionPathUsers).whereField(FireStoreConstants.FieldHousehold, isEqualTo: householdRef!).addSnapshotListener() { (querySnapshot, error) in
+			guard let documents = querySnapshot?.documents else {
+				print("Error fetching documents: \(error!)")
+				return
+			}
+			
+			self.memberNames.removeAll()
+			for document in documents {
+				let firstName = document.get(FireStoreConstants.FieldFirstName) as! String
+				let lastName = document.get(FireStoreConstants.FieldLastName) as! String
+				
+				self.memberNames.append(firstName + " " + lastName)
+			}
+			
+			self.memberTableView.reloadData()
+		}
+	}
+	
+	// MARK: UITableViewController
+	
+	func numberOfSections(in tableView: UITableView) -> Int {
+		return 1
+	}
+	
+	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+		return memberNames.count
+	}
+	
+	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+		let cell = tableView.dequeueReusableCell(withIdentifier: "memberCell") as! UITableViewCell
+		cell.textLabel?.text = memberNames[indexPath.item]
+		cell.textLabel?.font = cell.textLabel?.font.withSize(15.0)
+		return cell
 	}
 	
 	// MARK: Actions
-	
-    @IBAction func leaveHousehold(_ sender: Any) {
-		let alert = UIAlertController(title: "Leave household", message: "Are you sure you want to leave this household?", preferredStyle: .alert)
-		
-		alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { action in
-			// Initialize FireStore references
-			let userId = UserDefaults.standard.string(forKey: StorageKeys.UserId)
-			let userRef = self.db.collection(FireStoreConstants.CollectionPathUsers).document(userId!)
-			let householdPath = UserDefaults.standard.string(forKey: StorageKeys.HouseholdPath)
-			let householdRef = self.db.document(householdPath!)
-			
-			// Delete user from household's members
-			householdRef.collection(FireStoreConstants.CollectionPathMembers).document(userId!).delete() { err in
-				if let err = err {
-					print("Error deleting user from household: \(err)")
-				}
-			}
-			
-			// Delete household reference from user
-			userRef.updateData([
-				FireStoreConstants.FieldHousehold: FieldValue.delete()
-			]) { err in
-				if let err = err {
-					print("Error deleting household from user: \(err)")
-				}
-			}
-			
-			// Delete household if it's empty
-			householdRef.collection(FireStoreConstants.CollectionPathMembers).getDocuments() { (querySnapshot, err) in
-				if let err = err {
-					print("Failed to retrieve household \(err)")
-				} else {
-					// Household has no more members, check if there is still an invite code
-					if querySnapshot != nil && querySnapshot!.isEmpty {
-						householdRef.getDocument() { (document, err) in
-							if let document = document {
-								if document.exists {
-									if let inviteCode = document.get(FireStoreConstants.FieldInviteCode) as? String {
-										// Delete household's invite code if it exists
-										self.db.collection(FireStoreConstants.CollectionPathInvites).document(inviteCode).delete() { err in
-											if let err = err {
-												print("Failed to delete household invite code: \(err)")
-											}
-										}
-									}
-								}
-							}
-						}
-						
-						// Delete all household collections (by deleting all documents in the collections)
-						for collectionPath in FireStoreConstants.HouseholdCollectionPaths {
-							householdRef.collection(collectionPath).getDocuments() { (querySnapshot, err) in
-								if let err = err {
-									print("Failed to retrieve collection \(collectionPath): \(err)")
-								} else {
-									for document in querySnapshot!.documents {
-										document.reference.delete() { err in
-											if let err = err {
-												print("Failed to delete document in \(collectionPath): \(err)")
-											}
-										}
-									}
-								}
-							}
-						}
-
-						// Delete household
-						householdRef.delete() { err in
-							if let err = err {
-								print("Failed to delete empty household: \(err)")
-							}
-						}
-					}
-				}
-			}
-			
-			// Reset stored household path
-			UserDefaults.standard.set("", forKey: StorageKeys.HouseholdPath)
-			
-			// Go to no household view
-			let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "noHouseholdVC") as! NoHouseholdViewController
-			self.navigationController?.pushViewController(vc, animated: true)
-		}))
-		
-		alert.addAction(UIAlertAction(title: "No", style: .cancel, handler: nil))
-		
-		self.present(alert, animated: true)
-	}
-	
-	@IBAction func logOutAction(_ sender: Any) {
-		do {
-			try Auth.auth().signOut()
-			GIDSignIn.sharedInstance().signOut()
-			
-			// Reset stored household path
-			UserDefaults.standard.set("", forKey: StorageKeys.HouseholdPath)
-		} catch let signOutError as NSError {
-			print ("Error signing out: %@", signOutError)
-		}
-		
-		let storyboard = UIStoryboard(name: "Main", bundle: nil)
-		let initial = storyboard.instantiateInitialViewController()
-		UIApplication.shared.keyWindow?.rootViewController = initial
-	}
+    
+    @IBAction func toggleDrawer(_ sender: Any) {
+		appDel.drawerController.setDrawerState(.opened, animated: true)
+    }
 }

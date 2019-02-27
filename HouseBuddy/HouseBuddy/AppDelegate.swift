@@ -9,12 +9,16 @@
 import UIKit
 import Firebase
 import GoogleSignIn
+import KYDrawerController
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
 
     var window: UIWindow?
 	var currentUser: User?
+	
+	// Initialize menu drawer controller
+	let drawerController = KYDrawerController.init(drawerDirection: .left, drawerWidth: 300)
 
 	func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
 		// Override point for customization after application launch.
@@ -22,6 +26,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
 		
 		GIDSignIn.sharedInstance().clientID = FirebaseApp.app()?.options.clientID
 		GIDSignIn.sharedInstance().delegate = self
+		
+		// Configure drawer controller
+		let storyboard = UIStoryboard.init(name: "Main", bundle: Bundle.main)
+		
+		let homeVC = storyboard.instantiateViewController(withIdentifier: "Start")
+		let navigation: UINavigationController = UINavigationController(rootViewController: homeVC)
+		let drawerVC = storyboard.instantiateViewController(withIdentifier: "Drawer")
+		
+		self.drawerController.mainViewController = navigation
+		self.drawerController.drawerViewController = drawerVC
+		
+		// Disable drawer swipe from side by default
+		self.drawerController.screenEdgePanGestureEnabled = false
+		
+		self.window?.rootViewController = self.drawerController
+		self.window?.makeKeyAndVisible()
+		
 		return true
 	}	
 	

@@ -75,13 +75,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
 			
 			self.currentUser = Auth.auth().currentUser
 
-			let firstName: String = user.profile.givenName
-			let lastName: String = user.profile.familyName
-			let userEmail: String = user.profile.email
+			let firstName: String = user.profile.givenName ?? ""
+			let lastName: String = user.profile.familyName ?? ""
+			let userEmail: String = user.profile.email ?? ""
 			
 			// Access the storyboard and fetch an instance of the view controller
 			let storyboard = UIStoryboard(name: "Main", bundle: nil);
-			let viewController: HomeLoadingViewController = storyboard.instantiateViewController(withIdentifier: "HomeLoading") as! HomeLoadingViewController;
+			let viewController: HomeLoadingViewController = storyboard.instantiateViewController(withIdentifier: "HomeLoading") as! HomeLoadingViewController
 			
 			// Send the data to the HomeLoadingViewController
 			viewController.userName = firstName
@@ -89,8 +89,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
 			viewController.userEmail = userEmail
 			
 			// Then push that view controller onto the navigation stack
-			let rootViewController = self.window!.rootViewController as! UINavigationController;
-			rootViewController.pushViewController(viewController, animated: true);
+			let rootViewController = self.drawerController.mainViewController as! UINavigationController
+			rootViewController.pushViewController(viewController, animated: true)
 		}
 	}
 	

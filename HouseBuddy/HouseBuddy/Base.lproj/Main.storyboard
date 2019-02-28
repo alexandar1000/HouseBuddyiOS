@@ -558,16 +558,16 @@
             </objects>
             <point key="canvasLocation" x="2519" y="34"/>
         </scene>
-        <!--View Controller-->
+        <!--Drawer Parent View Controller-->
         <scene sceneID="4G5-gf-xLu">
             <objects>
-                <viewController storyboardIdentifier="Drawer" id="1tp-hn-4OP" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Drawer" id="1tp-hn-4OP" customClass="DrawerParentViewController" customModule="HouseBuddy" customModuleProvider="target" sceneMemberID="viewController">
                     <containerView key="view" opaque="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="JVz-mW-Sdv">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                         <edgeInsets key="layoutMargins" top="0.0" left="20" bottom="0.0" right="20"/>
                         <connections>
-                            <segue destination="RhL-nd-rSh" kind="embed" id="ttx-mJ-wmQ"/>
+                            <segue destination="RhL-nd-rSh" kind="embed" identifier="embedSegue" id="ttx-mJ-wmQ"/>
                         </connections>
                     </containerView>
                     <navigationItem key="navigationItem" id="LTM-aG-Rxj"/>

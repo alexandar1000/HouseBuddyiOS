@@ -49,32 +49,38 @@ class DrawerViewController: UITableViewController {
 	}
 	
 	func setupDrawerUserInfo() {
-		var firstName = UserDefaults.standard.string(forKey: StorageKeys.FirstName)
-		var lastName = UserDefaults.standard.string(forKey: StorageKeys.LastName)
+		let firstName = UserDefaults.standard.string(forKey: StorageKeys.FirstName) ?? ""
+		let lastName = UserDefaults.standard.string(forKey: StorageKeys.LastName) ?? ""
 		
 		if let user = Auth.auth().currentUser {
 			// Set email label
 			emailLabel.text = user.email
-			if firstName != nil && lastName != nil {
+			
+			if !firstName.isEmpty && !lastName.isEmpty {
 				// Set name label
-				nameLabel.text = firstName! + " " + lastName!
+				nameLabel.text = firstName + " " + lastName
 			} else {
 				if user.displayName != nil && !user.displayName!.isEmpty {
 					// User account bound display name
 					nameLabel.text = user.displayName
 				} else {
-					// Get name from database
-					db.collection(FireStoreConstants.CollectionPathUsers).document(user.uid).getDocument() { (documentSnapshot, err) in
-						if let err = err {
-							print("Failed to retrieve user: \(err)")
-						} else {
-							firstName = documentSnapshot?.get(FireStoreConstants.FieldFirstName) as? String
-							lastName = documentSnapshot?.get(FireStoreConstants.FieldLastName) as? String
-							
-							self.nameLabel.text = firstName! + " " + lastName!
-						}
-					}
+					fetchUserInfo(forUser: user)
 				}
+			}
+		}
+	}
+	
+	func fetchUserInfo(forUser user: User) {
+		// Get name from database
+		db.collection(FireStoreConstants.CollectionPathUsers).document(user.uid).getDocument() { (documentSnapshot, err) in
+			if let err = err {
+				print("Failed to retrieve user: \(err)")
+			} else {
+				let firstName = documentSnapshot?.get(FireStoreConstants.FieldFirstName) as? String ?? ""
+				let lastName = documentSnapshot?.get(FireStoreConstants.FieldLastName) as? String ?? ""
+				
+				self.emailLabel.text = user.email
+				self.nameLabel.text = firstName + " " + lastName
 			}
 		}
 	}

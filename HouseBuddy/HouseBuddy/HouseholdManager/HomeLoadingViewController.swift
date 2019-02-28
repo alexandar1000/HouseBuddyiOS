@@ -132,6 +132,14 @@ class HomeLoadingViewController: UIViewController {
 						}
 					}
 				}
+				
+				// Refresh user info in drawer
+				if let user = Auth.auth().currentUser {
+					let appDel = UIApplication.shared.delegate as! AppDelegate
+					let drawerParentVC = appDel.drawerController.drawerViewController as! DrawerParentViewController
+					let drawerVC = drawerParentVC.getDrawerViewController()
+					drawerVC.fetchUserInfo(forUser: user)
+				}
 			}
 		}
 	}

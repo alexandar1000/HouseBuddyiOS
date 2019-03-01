@@ -16,7 +16,8 @@ class EditExpenseViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var titleInput: UITextField!
     @IBOutlet weak var descriptionInput: UITextField!
     
-    
+	@IBOutlet weak var doneButton: UIBarButtonItem!
+	
     //MARK: - Fields
     private var datePicker: UIDatePicker?
     private var df: DateFormatter = DateFormatter()
@@ -55,6 +56,8 @@ class EditExpenseViewController: UIViewController, UITextFieldDelegate {
 		} else {
 			dateInput.text = df.string(from: Date.init())
 		}
+		
+		updateSaveButtonState()
     }
     
     @objc func datePickerChanged(_ sender: UIDatePicker) {
@@ -106,6 +109,30 @@ class EditExpenseViewController: UIViewController, UITextFieldDelegate {
 			textField.resignFirstResponder()
 		}
 		return true
+	}
+	
+	private func updateSaveButtonState() {
+		// Disable the Save button if the title and price field are empty.
+		let name = titleInput.text ?? ""
+		let price = priceInput.text ?? ""
+		doneButton.isEnabled = !name.isEmpty && !price.isEmpty
+	}
+	
+	func textFieldDidEndEditing(_ textField: UITextField) {
+		updateSaveButtonState()
+		
+		switch textField {
+		case dateInput:
+			dateInput.text = textField.text
+		case priceInput:
+			priceInput.text = textField.text
+		case descriptionInput:
+			descriptionInput.text = textField.text
+		case titleInput:
+			titleInput.text = textField.text
+		default:
+			break
+		}
 	}
 	
 	@objc func dismissPicker() {

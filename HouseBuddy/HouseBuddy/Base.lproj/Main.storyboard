@@ -891,7 +891,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="H0u-05-7ei">
-                                <rect key="frame" x="0.0" y="269" width="375" height="338"/>
+                                <rect key="frame" x="0.0" y="313" width="375" height="294"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="expenseTrackerCell" id="4s6-D7-5ff" customClass="ExpenseTrackerTableViewCell" customModule="HouseBuddy" customModuleProvider="target">
@@ -954,6 +954,7 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
                         <outlet property="tableView" destination="H0u-05-7ei" id="FtG-Yy-u5f"/>
                     </connections>
@@ -977,19 +978,19 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="48T-MM-QvP">
-                                <rect key="frame" x="64" y="158" width="247" height="21"/>
+                                <rect key="frame" x="64" y="202" width="247" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TbX-dP-ro3">
-                                <rect key="frame" x="64" y="199" width="247" height="20.5"/>
+                                <rect key="frame" x="64" y="243" width="247" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TvR-bY-iwV">
-                                <rect key="frame" x="130" y="112" width="114" height="21"/>
+                                <rect key="frame" x="130" y="156" width="114" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -1029,7 +1030,7 @@
             </objects>
             <point key="canvasLocation" x="5716" y="457.42128935532236"/>
         </scene>
-        <!--Edit Expenese-->
+        <!--Title-->
         <scene sceneID="OJm-7Z-jCA">
             <objects>
                 <viewController id="uWT-4q-qHG" customClass="EditExpenseViewController" customModule="HouseBuddy" customModuleProvider="target" sceneMemberID="viewController">
@@ -1038,7 +1039,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="VRz-Sv-F5D">
-                                <rect key="frame" x="259" y="44" width="100" height="30"/>
+                                <rect key="frame" x="259" y="88" width="100" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="100" id="pR3-aK-MBn"/>
                                 </constraints>
@@ -1047,19 +1048,19 @@
                                 <textInputTraits key="textInputTraits" returnKeyType="next"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Price" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Plj-eO-4j0">
-                                <rect key="frame" x="131" y="112" width="113" height="30"/>
+                                <rect key="frame" x="131" y="156" width="113" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardType="decimalPad" returnKeyType="next"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Expense" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="U2E-rf-l40">
-                                <rect key="frame" x="64" y="167" width="247" height="30"/>
+                                <rect key="frame" x="64" y="211" width="247" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences" autocorrectionType="yes" spellCheckingType="yes" returnKeyType="next"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Expense Description" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4Uf-FA-WFq">
-                                <rect key="frame" x="64" y="217" width="247" height="30"/>
+                                <rect key="frame" x="64" y="261" width="247" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences" autocorrectionType="yes" spellCheckingType="yes" returnKeyType="done"/>
@@ -1081,16 +1082,17 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="1xL-bP-Ti4"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Edit Expenese" id="CAa-D9-MlN">
-                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="SAR-at-YUm">
+                    <navigationItem key="navigationItem" title="Title" id="HcF-TK-OYO">
+                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="KNc-m9-pN3">
                             <connections>
-                                <segue destination="nCv-2F-Kfn" kind="unwind" unwindAction="unwindToExpenseTrackerWithSender:" id="onE-Va-660"/>
+                                <segue destination="nCv-2F-Kfn" kind="unwind" unwindAction="unwindToExpenseTrackerWithSender:" id="lz2-G2-Fxr"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="dateInput" destination="VRz-Sv-F5D" id="C6r-ns-wPg"/>
                         <outlet property="descriptionInput" destination="4Uf-FA-WFq" id="7pB-Ng-bad"/>
+                        <outlet property="doneButton" destination="KNc-m9-pN3" id="nWi-X7-Gfu"/>
                         <outlet property="priceInput" destination="Plj-eO-4j0" id="E71-dm-LEH"/>
                         <outlet property="titleInput" destination="U2E-rf-l40" id="e8M-gf-bgX"/>
                     </connections>
@@ -1108,7 +1110,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WwX-y8-15c">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WwX-y8-15c">
                                 <rect key="frame" x="16" y="87" width="343" height="42"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -1148,18 +1150,8 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jVW-vN-ceL">
-                                <rect key="frame" x="50" y="160" width="250" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="250" id="sdr-JW-7Fk"/>
-                                </constraints>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences" returnKeyType="done"/>
-                            </textField>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QRV-9H-ma8" customClass="BEMCheckBox">
-                                <rect key="frame" x="152" y="335" width="70" height="70"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QRV-9H-ma8" customClass="BEMCheckBox">
+                                <rect key="frame" x="153" y="335" width="69" height="70"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="lineWidth">
@@ -1173,13 +1165,22 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jVW-vN-ceL">
+                                <rect key="frame" x="50" y="160" width="275" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences" returnKeyType="done"/>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="Bvg-mD-7zB" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="iua-FE-wQg" secondAttribute="trailing" symbolic="YES" id="7QR-uY-5Ez"/>
-                            <constraint firstItem="jVW-vN-ceL" firstAttribute="leading" secondItem="Bvg-mD-7zB" secondAttribute="leading" constant="50" id="KgG-VM-Lsz"/>
+                            <constraint firstItem="QRV-9H-ma8" firstAttribute="centerX" secondItem="Bvg-mD-7zB" secondAttribute="centerX" id="9gc-wM-XQg"/>
                             <constraint firstItem="iua-FE-wQg" firstAttribute="top" secondItem="Bvg-mD-7zB" secondAttribute="top" constant="65" id="efc-be-4tC"/>
+                            <constraint firstItem="Bvg-mD-7zB" firstAttribute="trailing" secondItem="jVW-vN-ceL" secondAttribute="trailing" constant="50" id="u2x-Lg-ko2"/>
                             <constraint firstItem="iua-FE-wQg" firstAttribute="leading" secondItem="Bvg-mD-7zB" secondAttribute="leading" constant="50" id="ubq-TX-XHL"/>
+                            <constraint firstItem="QRV-9H-ma8" firstAttribute="top" secondItem="jVW-vN-ceL" secondAttribute="bottom" constant="145" id="vEM-Lc-vJb"/>
+                            <constraint firstItem="jVW-vN-ceL" firstAttribute="leading" secondItem="Bvg-mD-7zB" secondAttribute="leading" constant="50" id="wff-Yr-lKM"/>
                             <constraint firstItem="jVW-vN-ceL" firstAttribute="top" secondItem="iua-FE-wQg" secondAttribute="bottom" constant="10" id="xDJ-YX-Q1Y"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Bvg-mD-7zB"/>
@@ -1192,7 +1193,7 @@
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="done" id="fe7-k4-3nX">
                             <connections>
-                                <action selector="doneButtonTapped:" destination="4f8-lW-wxa" id="fAl-qo-Fi1"/>
+                                <action selector="doneButtonTapped:" destination="4f8-lW-wxa" id="5bh-Tx-hcr"/>
                                 <segue destination="0O6-zc-dyY" kind="unwind" unwindAction="unwindToShoppingListWithSender:" id="LHN-tY-KDo"/>
                             </connections>
                         </barButtonItem>
@@ -1385,7 +1386,7 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="19x-lM-fuA"/>
-        <segue reference="Ayc-Np-4w4"/>
+        <segue reference="0Pw-qv-Yqg"/>
         <segue reference="ohn-uS-gz9"/>
         <segue reference="9r4-mn-kTm"/>
         <segue reference="sAv-ld-CKi"/>

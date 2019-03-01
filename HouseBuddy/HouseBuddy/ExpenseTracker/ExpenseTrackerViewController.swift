@@ -96,6 +96,7 @@ class ExpenseTrackerViewController: UIViewController, UITableViewDataSource, UIT
 									self.tableView.reloadData()
 								}
 							} else {
+								self.activityIndicatorView.stopAnimating()
 								print("Document does not exist")
 							}
 						}

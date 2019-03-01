@@ -21,19 +21,31 @@ class ShoppingListTableViewController: UITableViewController {
 	private var shoppingListRef: CollectionReference?
 	var activityIndicatorView: UIActivityIndicatorView!
 	
+	lazy var refreshCommand: UIRefreshControl = {
+		let refreshControl = UIRefreshControl()
+		refreshControl.addTarget(self, action:
+			#selector(ShoppingListTableViewController.handleRefresh(_:)),
+								 for: UIControl.Event.valueChanged)
+		refreshControl.tintColor = UIColor.blue
+		
+		return refreshControl
+	}()
+	
 	//MARK: - View Handling
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
-		let settings = db.settings
-		settings.areTimestampsInSnapshotsEnabled = true
-		db.settings = settings
+		tableView.refreshControl = refreshCommand
+		
+		self.tableView.addSubview(self.refreshCommand)
 	}
 	
 	override func viewWillAppear(_ animated: Bool) {
 		// Hide the NavBar on appearing
 		self.navigationController?.setNavigationBarHidden(false, animated: animated)
 		super.viewWillAppear(animated)
+		
+		self.becomeFirstResponder()
 		
 		if (shoppingItems.isEmpty) {
 			activityIndicatorView = UIActivityIndicatorView(style: .gray)
@@ -49,12 +61,28 @@ class ShoppingListTableViewController: UITableViewController {
 		// Show the NavBar on disappearing
 		self.navigationController?.setNavigationBarHidden(false, animated: animated)
 		super.viewWillDisappear(animated)
+		self.resignFirstResponder()
+	}
+	
+	@objc func handleRefresh(_ refreshControl: UIRefreshControl) {
+		let alert = UIAlertController(title: "Remove bought items", message: "Are you sure you want to remove all bought items? This cannot be undone.", preferredStyle: UIAlertController.Style.alert)
+		
+		refreshCommand.endRefreshing()
+		self.tableView.reloadData()
+		
+		alert.addAction(UIAlertAction(title: "Yes", style: UIAlertAction.Style.default, handler: { (action) in
+			alert.dismiss(animated: true, completion: nil)
+			self.removeBoughtItems()
+			}))
+		
+		alert.addAction(UIAlertAction(title: "No", style: UIAlertAction.Style.default, handler: { (action) in
+			alert.dismiss(animated: true, completion: nil)
+		}))
+		self.present(alert, animated: true, completion: nil)
 	}
 	
 	// MARK: - Firestore functions
 	fileprivate func handleDBData() {
-		
-		// TODO: Retrieving household id should be moved to HouseHoldManager class where it's put in the device storage..
 		if let user = Auth.auth().currentUser {
 			let userId = user.uid
 			let userRef = db.collection(FireStoreConstants.CollectionPathUsers).document(userId)
@@ -85,6 +113,7 @@ class ShoppingListTableViewController: UITableViewController {
 									self.tableView.reloadData()
 								}
 							} else {
+								self.activityIndicatorView.stopAnimating()
 								print("Document does not exist")
 							}
 						}
@@ -94,6 +123,45 @@ class ShoppingListTableViewController: UITableViewController {
 		} else {
 			print("No user signed in.")
 		}
+	}
+	
+	func removeBoughtItems() -> Void {
+		if let user = Auth.auth().currentUser {
+			let userId = user.uid
+			let userRef = db.collection(FireStoreConstants.CollectionPathUsers).document(userId)
+			userRef.getDocument { (document, error) in
+				if let document = document, document.exists {
+					let householdRef = document.get(FireStoreConstants.FieldHousehold) as! DocumentReference
+					self.shoppingListRef = householdRef.collection(FireStoreConstants.CollectionPathShoppingList)
+					
+					self.shoppingListRef!.getDocuments() { (querySnapshot, err) in
+						if let err = err {
+							print("Error getting shopping list documents: \(err)")
+						} else {
+							for document in querySnapshot!.documents {
+								let bought: Bool = document.get("bought") as! Bool
+								let name: String = document.get("item") as! String
+								
+								if (bought) {
+									self.shoppingListRef?.document(document.documentID).delete() { err in
+										if let err = err {
+											print("Error removing document \(name): \(err)")
+										} else {
+											print("\(name) successfully removed!")
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		} else {
+			print("No user signed in.")
+		}
+		
+		self.tableView.reloadData()
+		refreshCommand.endRefreshing()
 	}
 	
 	deinit {
@@ -159,6 +227,7 @@ class ShoppingListTableViewController: UITableViewController {
 			self.shoppingItems[indexPath.row].bought = currentState
 			self.tableView.cellForRow(at: indexPath)?.backgroundColor = (currentState ? UIColor.green : UIColor.white)
 			
+			
 			self.shoppingListRef!.document(selectedTask.itemID!).updateData([
 				"bought": currentState
 			]) { err in
@@ -178,6 +247,11 @@ class ShoppingListTableViewController: UITableViewController {
 		
 	}
 	
+	override func motionEnded(_ motion: UIEvent.EventSubtype, with event: UIEvent?) {
+		if motion == .motionShake {
+			print("Shake it baby, shake it")
+		}
+	}
 	
 	// MARK: - Navigation
 	//Used for Unwind Segues

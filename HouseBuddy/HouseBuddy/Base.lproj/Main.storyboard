@@ -822,16 +822,16 @@
             </objects>
             <point key="canvasLocation" x="3456.8000000000002" y="859.52023988005999"/>
         </scene>
-        <!--Table View Controller-->
+        <!--Title-->
         <scene sceneID="7RI-IU-JHs">
             <objects>
-                <tableViewController id="VPo-Ij-TRY" sceneMemberID="viewController">
+                <tableViewController id="VPo-Ij-TRY" customClass="ShowBalanceTableViewController" customModule="HouseBuddy" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="Mnh-EY-AQg">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="uje-ZG-uFJ">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="balanceCell" id="uje-ZG-uFJ" customClass="ShowBalanceTableViewCell" customModule="HouseBuddy" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="uje-ZG-uFJ" id="1cm-Ia-C36">
@@ -861,6 +861,10 @@
                                         <constraint firstItem="uAV-18-bP5" firstAttribute="bottom" secondItem="1cm-Ia-C36" secondAttribute="bottomMargin" id="plj-kX-URL"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="balanceLbl" destination="Dhf-6T-KF0" id="pqK-cm-5a6"/>
+                                    <outlet property="nameLbl" destination="uAV-18-bP5" id="W87-I8-GyB"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -868,6 +872,7 @@
                             <outlet property="delegate" destination="VPo-Ij-TRY" id="zML-eP-Uul"/>
                         </connections>
                     </tableView>
+                    <navigationItem key="navigationItem" title="Title" id="2Ig-y8-gpH"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6W6-AB-BeW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1012,18 +1017,19 @@
                         <viewLayoutGuide key="safeArea" id="3ni-uI-tPY"/>
                     </view>
                     <toolbarItems>
-                        <barButtonItem title="Show Balance" width="233" id="lj2-N9-Lnm">
+                        <barButtonItem width="20" style="plain" systemItem="fixedSpace" id="wgi-vM-rNI"/>
+                        <barButtonItem title="Show Balance" id="lj2-N9-Lnm">
                             <connections>
                                 <segue destination="VPo-Ij-TRY" kind="show" identifier="showBalanceSegue" id="hU5-Pg-wqu"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem width="42" style="plain" systemItem="fixedSpace" id="8mf-ox-mTy"/>
-                        <barButtonItem width="42" style="plain" systemItem="fixedSpace" id="xk8-Vc-tJI"/>
-                        <barButtonItem title="Settle Balance" width="176" id="AFu-Ai-F36">
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="MIQ-20-a8w"/>
+                        <barButtonItem title="Settle Balance" id="AFu-Ai-F36">
                             <connections>
                                 <segue destination="VPo-Ij-TRY" kind="show" identifier="settleBalanceSegue" id="IL7-ds-dYu"/>
                             </connections>
                         </barButtonItem>
+                        <barButtonItem width="20" style="plain" systemItem="fixedSpace" id="m4M-xH-hcA"/>
                     </toolbarItems>
                     <navigationItem key="navigationItem" title="Expense Tracker" id="xDf-cl-MB6">
                         <barButtonItem key="leftBarButtonItem" title="Menu" id="vn9-ZI-jl0">
@@ -1482,7 +1488,7 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="19x-lM-fuA"/>
-        <segue reference="0Pw-qv-Yqg"/>
+        <segue reference="Ayc-Np-4w4"/>
         <segue reference="ohn-uS-gz9"/>
         <segue reference="hU5-Pg-wqu"/>
         <segue reference="9r4-mn-kTm"/>

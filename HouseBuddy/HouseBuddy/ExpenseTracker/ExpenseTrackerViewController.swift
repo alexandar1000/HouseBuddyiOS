@@ -23,6 +23,7 @@ class ExpenseTrackerViewController: UIViewController, UITableViewDataSource, UIT
 	var df: DateFormatter = DateFormatter()
 	var activityIndicatorView: UIActivityIndicatorView!
 	@IBOutlet weak var expenseLbl: UILabel!
+	private var usersBalance: Double = 0
 	
 	override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,20 +40,12 @@ class ExpenseTrackerViewController: UIViewController, UITableViewDataSource, UIT
 		tableView.dataSource = self
         tableView.delegate = self
 		
-		let userId: String = UserDefaults.standard.string(forKey: StorageKeys.UserId) ?? ""
-		
-		let userRef = db.collection(FireStoreConstants.CollectionPathUsers).document(userId)
-		
-		userRef.getDocument { (document, error) in
-			if let document = document, document.exists {
-				let price: Double = document.get("balance") as! Double
-				self.expenseLbl.text = "\(price)"
-			} else {
-				self.expenseLbl.text = "Error"
-				print("Document does not exist")
-			}
-		}
     }
+	
+	override func viewDidAppear(_ animated: Bool) {
+		super.viewDidAppear(animated)
+		refreshBallance()
+	}
 	
 	override func viewWillAppear(_ animated: Bool) {
 		// Hide the NavBar on appearing
@@ -67,6 +60,7 @@ class ExpenseTrackerViewController: UIViewController, UITableViewDataSource, UIT
 			
 		}
 		
+		refreshBallance()
 		handleDBData()
 	}
 	
@@ -75,6 +69,22 @@ class ExpenseTrackerViewController: UIViewController, UITableViewDataSource, UIT
 		self.navigationController?.setNavigationBarHidden(false, animated: animated)
 		self.navigationController?.setToolbarHidden(true, animated: animated)
 		super.viewWillDisappear(animated)
+	}
+	
+	func refreshBallance() -> Void {
+		let userId: String = UserDefaults.standard.string(forKey: StorageKeys.UserId) ?? ""
+		
+		let userRef = db.collection(FireStoreConstants.CollectionPathUsers).document(userId)
+		
+		userRef.getDocument { (document, error) in
+			if let document = document, document.exists {
+				self.usersBalance = document.get("balance") as! Double
+				self.expenseLbl.text = "\(self.usersBalance)"
+				
+			} else {
+				print("Document does not exist")
+			}
+		}
 	}
 	
 	// MARK: - Firestore functions
@@ -265,10 +275,17 @@ class ExpenseTrackerViewController: UIViewController, UITableViewDataSource, UIT
 			os_log("Adding a new expense.", log: OSLog.default, type: .debug)
 			
 		case "settleBalanceSegue":
-			os_log("Settling Balance.", log: OSLog.default, type: .debug)
+			guard let settleBalanceTableViewController = segue.destination as? ShowBalanceTableViewController else {
+				fatalError("Unexpected destination: \(segue.destination)")
+			}
+			settleBalanceTableViewController.isSettling = true
+			settleBalanceTableViewController.navigationItem.title = "Settle Balance"
 			
 		case "showBalanceSegue":
-			os_log("Showing Balance.", log: OSLog.default, type: .debug)
+			guard let showBalanceTableViewController = segue.destination as? ShowBalanceTableViewController else {
+				fatalError("Unexpected destination: \(segue.destination)")
+			}
+			showBalanceTableViewController.navigationItem.title = "Current Balance"
 			
 		default:
 			fatalError("Unexpected Segue Identifier; \(segue.identifier ?? "No segue defined")")
@@ -310,16 +327,7 @@ class ExpenseTrackerViewController: UIViewController, UITableViewDataSource, UIT
 				if (oldPrice != expense.price) {
 					// Regulate the costs between users
 					var owningUser: String = ""
-					let expenseRef = db.document(householdPath).collection(FireStoreConstants.CollectionPathExpenseTracker).document(expense.expenseId ?? "")
-					
-					expenseRef.getDocument { (document, error) in
-						if let document = document, document.exists {
-							owningUser = document.get("userId") as! String
-						} else {
-							print("Document does not exist")
-						}
-					}
-					
+					owningUser = expense.userId
 					
 					let membersRef = db.document(householdPath).collection(FireStoreConstants.CollectionPathMembers)
 					membersRef.getDocuments() { (querySnapshot, err) in
@@ -450,7 +458,8 @@ class ExpenseTrackerViewController: UIViewController, UITableViewDataSource, UIT
 			}
 		}
 	}
-    
+	
+	
     // MARK: Actions
     
     @IBAction func menuAction(_ sender: Any) {

@@ -272,7 +272,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Cdn-jk-mtY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2556" y="-1551"/>
+            <point key="canvasLocation" x="2564" y="-1439"/>
         </scene>
         <!--New household-->
         <scene sceneID="MMd-0y-phW">
@@ -324,7 +324,7 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="qlM-cE-atN">
                                 <rect key="frame" x="8" y="309.5" width="359" height="48.5"/>
                                 <subviews>
-                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="Du8-NO-iSN">
+                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="Du8-NO-iSN">
                                         <rect key="frame" x="0.0" y="0.0" width="359" height="20"/>
                                     </activityIndicatorView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loading user data..." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qs1-Eu-aO6">
@@ -1384,6 +1384,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
+        <segue reference="aKi-Nj-N3m"/>
         <segue reference="19x-lM-fuA"/>
         <segue reference="Ayc-Np-4w4"/>
         <segue reference="Q6g-g5-kOY"/>

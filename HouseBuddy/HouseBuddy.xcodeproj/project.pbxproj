@@ -141,8 +141,6 @@
 				E1AA26242211D14B007BEC20 /* JoinHouseholdViewController.swift */,
 				E1AA26282214878B007BEC20 /* CreateHouseholdViewController.swift */,
 				E1AA262A22149519007BEC20 /* InviteToHouseholdViewController.swift */,
-				E1AA262C2221B864007BEC20 /* DrawerViewController.swift */,
-				E109CFEA22280E96004F54C9 /* DrawerParentViewController.swift */,
 			);
 			path = HouseholdManager;
 			sourceTree = "<group>";
@@ -175,6 +173,7 @@
 				5684910E21E65BC4005C80E2 /* AppDelegate.swift */,
 				A945BBA721A7095D00A4E39B /* Main.storyboard */,
 				56F1425F21C3ECC4001E909A /* HouseholdManager */,
+				E10EFFE5222B1E50003CA6BB /* MenuDrawer */,
 				A95D602021B178AF003244DF /* Authentication */,
 				56962CC121B4312000E17880 /* TodoList */,
 				A949AD7321C403C0009EC68F /* ShoppingList */,
@@ -231,6 +230,15 @@
 			name = ExpenseTracker;
 			path = HouseBuddy/ExpenseTracker;
 			sourceTree = SOURCE_ROOT;
+		};
+		E10EFFE5222B1E50003CA6BB /* MenuDrawer */ = {
+			isa = PBXGroup;
+			children = (
+				E1AA262C2221B864007BEC20 /* DrawerViewController.swift */,
+				E109CFEA22280E96004F54C9 /* DrawerParentViewController.swift */,
+			);
+			path = MenuDrawer;
+			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 

@@ -88,9 +88,10 @@ class EditExpenseViewController: UIViewController, UITextFieldDelegate {
         let convertedPrice: Double = price.doubleValue
 		
 		if let entry = expense {
-			expense = ExpenseEntry(name: name, description: description, price: convertedPrice, date: convertedDate, expenseId: entry.expenseId ?? "")
+			expense = ExpenseEntry(name: name, description: description, price: convertedPrice, date: convertedDate, expenseId: entry.expenseId ?? "", userId: entry.userId)
 		} else {
-			expense = ExpenseEntry(name: name, description: description, price: convertedPrice, date: convertedDate)
+			let userId: String = UserDefaults.standard.string(forKey: StorageKeys.UserId) ?? ""
+			expense = ExpenseEntry(name: name, description: description, price: convertedPrice, date: convertedDate, userId: userId)
 		}
     }
 	

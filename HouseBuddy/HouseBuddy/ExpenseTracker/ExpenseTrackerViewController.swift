@@ -22,8 +22,9 @@ class ExpenseTrackerViewController: UIViewController, UITableViewDataSource, UIT
 	private var expensesRef: CollectionReference?
 	var df: DateFormatter = DateFormatter()
 	var activityIndicatorView: UIActivityIndicatorView!
+	@IBOutlet weak var expenseLbl: UILabel!
 	
-    override func viewDidLoad() {
+	override func viewDidLoad() {
         super.viewDidLoad()
 		
 		df.dateFormat = "dd.MM.yyyy"
@@ -37,11 +38,26 @@ class ExpenseTrackerViewController: UIViewController, UITableViewDataSource, UIT
 		
 		tableView.dataSource = self
         tableView.delegate = self
+		
+		let userId: String = UserDefaults.standard.string(forKey: StorageKeys.UserId) ?? ""
+		
+		let userRef = db.collection(FireStoreConstants.CollectionPathUsers).document(userId)
+		
+		userRef.getDocument { (document, error) in
+			if let document = document, document.exists {
+				let price: Double = document.get("balance") as! Double
+				self.expenseLbl.text = "\(price)"
+			} else {
+				self.expenseLbl.text = "Error"
+				print("Document does not exist")
+			}
+		}
     }
 	
 	override func viewWillAppear(_ animated: Bool) {
 		// Hide the NavBar on appearing
 		self.navigationController?.setNavigationBarHidden(false, animated: animated)
+		self.navigationController?.setToolbarHidden(false, animated: animated)
 		super.viewWillAppear(animated)
 		
 		if (expenses.isEmpty) {
@@ -57,6 +73,7 @@ class ExpenseTrackerViewController: UIViewController, UITableViewDataSource, UIT
 	override func viewWillDisappear(_ animated: Bool) {
 		// Show the NavBar on disappearing
 		self.navigationController?.setNavigationBarHidden(false, animated: animated)
+		self.navigationController?.setToolbarHidden(true, animated: animated)
 		super.viewWillDisappear(animated)
 	}
 	
@@ -89,7 +106,8 @@ class ExpenseTrackerViewController: UIViewController, UITableViewDataSource, UIT
 										let price: Double = Double(document.get("price") as! String) ?? 0
 										let description: String = document.get("description") as! String
 										let date: Date = self.df.date(from: document.get("date") as! String)!
-										self.expenses.append(ExpenseEntry(name: name, description: description, price: price, date: date, expenseId: document.documentID))
+										let expenseUser: String = document.get("userId") as! String
+										self.expenses.append(ExpenseEntry(name: name, description: description, price: price, date: date, expenseId: document.documentID, userId: expenseUser))
 										print("\(document.documentID) => \(document.data())")
 									}
 									self.activityIndicatorView.stopAnimating()
@@ -147,7 +165,66 @@ class ExpenseTrackerViewController: UIViewController, UITableViewDataSource, UIT
             
             expenses.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
-            
+			
+			var nrOfMembers: Int = 0
+			var balanceChange: Double = 0
+			let userId: String = UserDefaults.standard.string(forKey: StorageKeys.UserId) ?? ""
+			let householdPath: String = UserDefaults.standard.string(forKey: StorageKeys.HouseholdPath) ?? ""
+			var owningUser: String = ""
+			
+			let membersRef = db.document(householdPath).collection(FireStoreConstants.CollectionPathMembers)
+			membersRef.getDocuments() { (querySnapshot, err) in
+				if let err = err {
+					print("Error getting documents: \(err)")
+				} else {
+					nrOfMembers = querySnapshot!.documents.count
+					balanceChange = selectedExpense.price / Double(nrOfMembers)
+					var balance: Double = 0
+					
+					owningUser = selectedExpense.userId
+						
+					for document in querySnapshot!.documents {
+						// Add to person who had the expense (you), subtract for all others
+						let checkedUser: String = (document.get("user_reference") as! DocumentReference).documentID
+						// Get the balance
+						let userRef = self.db.collection(FireStoreConstants.CollectionPathUsers).document(checkedUser)
+						userRef.getDocument { (document, error) in
+							if let document = document, document.exists {
+								balance = document.get("balance") as! Double
+								if owningUser == checkedUser {
+									userRef.updateData([
+										"balance": balance - balanceChange
+									]) { err in
+										if let err = err {
+											print("Error updating document: \(err)")
+										} else {
+											print("Document successfully updated")
+										}
+									}
+									if userId == checkedUser {
+										self.expenseLbl.text = "\(balance - balanceChange)"
+									}
+								} else {
+									userRef.updateData([
+										"balance": balance + balanceChange
+									]) { err in
+										if let err = err {
+											print("Error updating document: \(err)")
+										} else {
+											print("Document successfully updated")
+										}
+									}
+									if userId == checkedUser {
+										self.expenseLbl.text = "\(balance + balanceChange)"
+									}
+								}
+							} else {
+								print("Document does not exist")
+							}
+						}
+					}
+				}
+			}
             expensesRef!.document(selectedExpense.expenseId!).delete() { err in
                 if let err = err {
                     print("Error removing document: \(err)")
@@ -187,6 +264,12 @@ class ExpenseTrackerViewController: UIViewController, UITableViewDataSource, UIT
 		case "createExpenseSegue":
 			os_log("Adding a new expense.", log: OSLog.default, type: .debug)
 			
+		case "settleBalanceSegue":
+			os_log("Settling Balance.", log: OSLog.default, type: .debug)
+			
+		case "showBalanceSegue":
+			os_log("Showing Balance.", log: OSLog.default, type: .debug)
+			
 		default:
 			fatalError("Unexpected Segue Identifier; \(segue.identifier ?? "No segue defined")")
 		}
@@ -196,9 +279,16 @@ class ExpenseTrackerViewController: UIViewController, UITableViewDataSource, UIT
 	@IBAction func unwindToExpenseTracker(sender: UIStoryboardSegue) {
 		if let sourceViewController = sender.source as? EditExpenseViewController, let expense = sourceViewController.expense {
 			
+			var nrOfMembers: Int = 0
+			var balanceChange: Double = 0
+			let userId: String = UserDefaults.standard.string(forKey: StorageKeys.UserId) ?? ""
+			let householdPath: String = UserDefaults.standard.string(forKey: StorageKeys.HouseholdPath) ?? ""
+			
 			if let selectedIndexPath = tableView.indexPathForSelectedRow {
 				
-				// Update an existing meal.
+				let oldPrice = expenses[selectedIndexPath.row].price
+				
+				// Update an existin meal.
 				expenses[selectedIndexPath.row] = expense
 				tableView.reloadRows(at: [selectedIndexPath], with: .none)
 				
@@ -207,6 +297,7 @@ class ExpenseTrackerViewController: UIViewController, UITableViewDataSource, UIT
 					"price": String(expense.price),
 					"description": expense.description,
 					"date": df.string(from: expense.date),
+					"userId": UserDefaults.standard.string(forKey: StorageKeys.UserId) ?? "",
 					"last_modified": FieldValue.serverTimestamp()
 				]) { err in
 					if let err = err {
@@ -215,9 +306,76 @@ class ExpenseTrackerViewController: UIViewController, UITableViewDataSource, UIT
 						print("Document successfully updated")
 					}
 				}
+				
+				if (oldPrice != expense.price) {
+					// Regulate the costs between users
+					var owningUser: String = ""
+					let expenseRef = db.document(householdPath).collection(FireStoreConstants.CollectionPathExpenseTracker).document(expense.expenseId ?? "")
+					
+					expenseRef.getDocument { (document, error) in
+						if let document = document, document.exists {
+							owningUser = document.get("userId") as! String
+						} else {
+							print("Document does not exist")
+						}
+					}
+					
+					
+					let membersRef = db.document(householdPath).collection(FireStoreConstants.CollectionPathMembers)
+					membersRef.getDocuments() { (querySnapshot, err) in
+						if let err = err {
+							print("Error getting documents: \(err)")
+						} else {
+							nrOfMembers = querySnapshot!.documents.count
+							balanceChange = (expense.price - oldPrice) / Double(nrOfMembers)
+							var balance: Double = 0
+							
+							for document in querySnapshot!.documents {
+								// Add to person who had the expense (you), subtract for all others
+								let checkedUser: String = document.documentID
+								// Get the balance
+								let userRef = self.db.collection(FireStoreConstants.CollectionPathUsers).document(checkedUser)
+								userRef.getDocument { (document, error) in
+									if let document = document, document.exists {
+										balance = document.get("balance") as! Double
+										if owningUser == checkedUser {
+											userRef.updateData([
+												"balance": balance + balanceChange
+											]) { err in
+												if let err = err {
+													print("Error updating document: \(err)")
+												} else {
+													print("Document successfully updated")
+												}
+											}
+											if userId == checkedUser {
+												self.expenseLbl.text = "\(balance + balanceChange)"
+											}
+										} else {
+											userRef.updateData([
+												"balance": balance - balanceChange
+											]) { err in
+												if let err = err {
+													print("Error updating document: \(err)")
+												} else {
+													print("Document successfully updated")
+												}
+											}
+											if userId == checkedUser {
+												self.expenseLbl.text = "\(balance - balanceChange)"
+											}
+										}
+									} else {
+										print("Document does not exist")
+									}
+								}
+							}
+						}
+					}
+				}
 			} else {
 				
-				// Add a new shoppingItem.
+				// Add a new expense.
 				let newIndexPath = IndexPath(row: expenses.count, section: 0)
 				
 				var ref: DocumentReference? = nil
@@ -226,6 +384,7 @@ class ExpenseTrackerViewController: UIViewController, UITableViewDataSource, UIT
 					"price": String(expense.price),
 					"description": expense.description,
 					"date": df.string(from: expense.date),
+					"userId": UserDefaults.standard.string(forKey: StorageKeys.UserId) ?? "",
 					"last_modified": FieldValue.serverTimestamp()
 				]) { err in
 					if let err = err {
@@ -234,6 +393,56 @@ class ExpenseTrackerViewController: UIViewController, UITableViewDataSource, UIT
 						print("Document added with ID: \(ref!.documentID)")
 					}
 				}
+				
+				// Regulate the costs between users
+				let membersRef = db.document(householdPath).collection(FireStoreConstants.CollectionPathMembers)
+				membersRef.getDocuments() { (querySnapshot, err) in
+					if let err = err {
+						print("Error getting documents: \(err)")
+					} else {
+						nrOfMembers = querySnapshot!.documents.count
+						balanceChange = expense.price / Double(nrOfMembers)
+						var balance: Double = 0
+						
+						for document in querySnapshot!.documents {
+							// Add to person who had the expense (you), subtract for all others
+							let userRef: String = (document.get("user_reference") as! DocumentReference).path
+							
+							// Get the balance
+							self.db.document(userRef).getDocument { (document, error) in
+								if let document = document, document.exists {
+									balance = document.get("balance") as! Double
+									
+									if  userRef == "users/\(userId)" {
+										self.db.document(userRef).updateData([
+											"balance": balance + balanceChange
+										]) { err in
+											if let err = err {
+												print("Error updating document: \(err)")
+											} else {
+												print("Document successfully updated")
+											}
+										}
+										self.expenseLbl.text = "\(balance + balanceChange)"
+									} else {
+										self.db.document(userRef).updateData([
+											"balance": balance - balanceChange
+										]) { err in
+											if let err = err {
+												print("Error updating document: \(err)")
+											} else {
+												print("Document successfully updated")
+											}
+										}
+									}
+								} else {
+									print("Document does not exist")
+								}
+							}
+						}
+					}
+				}
+				
 				expense.expenseId = ref!.documentID
 				
 				expenses.append(expense)

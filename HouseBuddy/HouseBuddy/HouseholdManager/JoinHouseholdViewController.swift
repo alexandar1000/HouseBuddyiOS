@@ -93,6 +93,18 @@ class JoinHouseholdViewController: UIViewController, UITextFieldDelegate {
 							}
 						}
 						
+						let userBalance: [String: Any] = [
+							FireStoreConstants.FieldCurrentUserBalance: 0.0
+						]
+						
+						self.db.collection(FireStoreConstants.CollectionPathUsers).document(userId).updateData(userBalance) { err in
+							if let err = err {
+								print("Error updating document: \(err)")
+							} else {
+								print("Document successfully updated")
+							}
+						}
+						
 						// Store household and go to household manager home
 						UserDefaults.standard.set(householdRef.path, forKey: StorageKeys.HouseholdPath)
 						self.performSegue(withIdentifier: "joinHousehold", sender: self)

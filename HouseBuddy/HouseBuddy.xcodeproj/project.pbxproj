@@ -120,7 +120,7 @@
 			name = "Recovered References";
 			sourceTree = "<group>";
 		};
-		56962CC121B4312000E17880 /* Todolist */ = {
+		56962CC121B4312000E17880 /* TodoList */ = {
 			isa = PBXGroup;
 			children = (
 				56962CC221B4314700E17880 /* Task.swift */,
@@ -129,7 +129,7 @@
 				5692DACE21C7EF8C005A1A9E /* AddTaskViewController.swift */,
 				5692DACC21C7E168005A1A9E /* ShowTaskViewController.swift */,
 			);
-			path = Todolist;
+			path = TodoList;
 			sourceTree = "<group>";
 		};
 		56F1425F21C3ECC4001E909A /* HouseholdManager */ = {
@@ -176,7 +176,7 @@
 				A945BBA721A7095D00A4E39B /* Main.storyboard */,
 				56F1425F21C3ECC4001E909A /* HouseholdManager */,
 				A95D602021B178AF003244DF /* Authentication */,
-				56962CC121B4312000E17880 /* Todolist */,
+				56962CC121B4312000E17880 /* TodoList */,
 				A949AD7321C403C0009EC68F /* ShoppingList */,
 				A9BCE6B721C95B1C00F92F67 /* ExpenseTracker */,
 				A945BBB521A70B6D00A4E39B /* SupportingFiles */,

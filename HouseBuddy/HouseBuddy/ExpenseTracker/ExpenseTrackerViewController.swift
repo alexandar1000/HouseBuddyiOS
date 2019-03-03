@@ -25,6 +25,7 @@ class ExpenseTrackerViewController: UIViewController, UITableViewDataSource, UIT
 	@IBOutlet weak var expenseLbl: UILabel!
 	private var usersBalance: Double = 0
 	
+	//Mark: - View handling
 	override func viewDidLoad() {
         super.viewDidLoad()
 		
@@ -71,6 +72,7 @@ class ExpenseTrackerViewController: UIViewController, UITableViewDataSource, UIT
 		super.viewWillDisappear(animated)
 	}
 	
+	//Mark: Balance refreshing
 	func refreshBallance() -> Void {
 		let userId: String = UserDefaults.standard.string(forKey: StorageKeys.UserId) ?? ""
 		
@@ -250,7 +252,6 @@ class ExpenseTrackerViewController: UIViewController, UITableViewDataSource, UIT
 
 	
     // MARK: - Navigation
-	
 	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 		super.prepare(for: segue, sender: sender)
 		

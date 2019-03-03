@@ -20,7 +20,6 @@ class ShoppingListTableViewController: UITableViewController {
 	private var listener: ListenerRegistration?
 	private var shoppingListRef: CollectionReference?
 	var activityIndicatorView: UIActivityIndicatorView!
-	
 	lazy var refreshCommand: UIRefreshControl = {
 		let refreshControl = UIRefreshControl()
 		refreshControl.addTarget(self, action:
@@ -64,6 +63,7 @@ class ShoppingListTableViewController: UITableViewController {
 		self.resignFirstResponder()
 	}
 	
+	//MARK: - Refreshing of the data
 	@objc func handleRefresh(_ refreshControl: UIRefreshControl) {
 		let alert = UIAlertController(title: "Remove bought items", message: "Are you sure you want to remove all bought items? This cannot be undone.", preferredStyle: UIAlertController.Style.alert)
 		
@@ -331,7 +331,6 @@ class ShoppingListTableViewController: UITableViewController {
 	}
     
     // MARK: Actions
-    
     @IBAction func menuAction(_ sender: Any) {
         let appDel = UIApplication.shared.delegate as! AppDelegate
         appDel.drawerController.setDrawerState(.opened, animated: true)

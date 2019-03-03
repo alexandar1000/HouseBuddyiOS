@@ -28,12 +28,6 @@ class HomeLoadingViewController: UIViewController {
 	
     override func viewDidLoad() {
         super.viewDidLoad()
-
-		let settings = db.settings
-		if !settings.areTimestampsInSnapshotsEnabled {
-			settings.areTimestampsInSnapshotsEnabled = true
-			db.settings = settings
-		}
     }
 	
 	override func viewDidAppear(_ animated: Bool) {

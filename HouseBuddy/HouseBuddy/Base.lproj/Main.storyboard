@@ -219,7 +219,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VWu-7h-ayQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="801" y="-1042"/>
-            <point key="canvasLocation" x="878" y="-1431"/>
         </scene>
         <!--Join a household-->
         <scene sceneID="IXs-pV-VZH">
@@ -1131,8 +1130,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BtE-0S-DqP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5729" y="1310"/>
-            <point key="canvasLocation" x="4978" y="737"/>
+            <point key="canvasLocation" x="4977" y="717"/>
         </scene>
         <!--Title-->
         <scene sceneID="OJm-7Z-jCA">
@@ -1492,12 +1490,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="aKi-Nj-N3m"/>
         <segue reference="19x-lM-fuA"/>
-        <segue reference="Ayc-Np-4w4"/>
-        <segue reference="Q6g-g5-kOY"/>
-        <segue reference="9r4-mn-kTm"/>
-        <segue reference="sAv-ld-CKi"/>
         <segue reference="0Pw-qv-Yqg"/>
         <segue reference="Q6g-g5-kOY"/>
         <segue reference="hU5-Pg-wqu"/>

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class ShowExpenseViewController: UIViewController {
 
@@ -15,11 +16,14 @@ class ShowExpenseViewController: UIViewController {
 	@IBOutlet weak var priceLbl: UILabel!
 	@IBOutlet weak var nameLbl: UILabel!
 	@IBOutlet weak var descriptionLbl: UILabel!
+	@IBOutlet weak var expensesUser: UILabel!
 	
 	//MARK: - Fields
     var expense: ExpenseEntry? = nil
 	private var df: DateFormatter = DateFormatter()
+	let db = Firestore.firestore()
 	
+	// MARK: - View Handling
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -30,17 +34,24 @@ class ShowExpenseViewController: UIViewController {
             priceLbl.text = String(expense.price)
             nameLbl.text = expense.name
             descriptionLbl.text = expense.description
-        } else {
-            dateLbl.text = ""
-            priceLbl.text = ""
-            nameLbl.text = ""
-            descriptionLbl.text = ""
+			
+			let docRef = db.collection("users").document(expense.userId)
+			docRef.getDocument { (document, error) in
+				if let document = document, document.exists {
+					let firstName = document.get("first_name") as! String
+					let lastName = document.get("last_name") as! String
+					self.expensesUser.text = "\(firstName) \(lastName)"
+				} else {
+					print("Document does not exist")
+				}
+			}
+		} else {
+			self.dateLbl.text = ""
+			self.priceLbl.text = ""
+			self.nameLbl.text = ""
+			self.descriptionLbl.text = ""
         }
     }
-    
-    //MARK: - Methods
-    
-
     
     // MARK: - Navigation
 
@@ -66,10 +77,11 @@ class ShowExpenseViewController: UIViewController {
 				return
 			}
 			
+			
 			let convertedDate: Date = df.date(from: date) ?? Date.init()
 			let convertedPrice: Double = Double(price) ?? 0
 			
-			let entry = ExpenseEntry(name: name, description: description, price: convertedPrice, date: convertedDate, expenseId: expense?.expenseId ?? "")
+			let entry = ExpenseEntry(name: name, description: description, price: convertedPrice, date: convertedDate, expenseId: expense?.expenseId ?? "", userId: expense?.userId ?? "")
 			editExpenseViewController.expense = entry
 
 		default:

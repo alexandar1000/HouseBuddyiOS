@@ -26,7 +26,6 @@ class EditShoppingItemViewController: UIViewController, UITextFieldDelegate, BEM
 
 		self.itemName.delegate = self
 		self.boughtCheckBox.delegate = self
-		
 		// Set up the ShoppingItem if editing an existing ShoppingItem
 		if let shoppingItem = shoppingItem {
 			navigationItem.title = "Edit Shopping Item"
@@ -34,6 +33,8 @@ class EditShoppingItemViewController: UIViewController, UITextFieldDelegate, BEM
 			completeness = shoppingItem.bought
 			self.boughtCheckBox.on = completeness
 		}
+		
+		updateSaveButtonState()
     }
 	
 	//MARK: - Actions
@@ -58,6 +59,12 @@ class EditShoppingItemViewController: UIViewController, UITextFieldDelegate, BEM
 		self.completeness = boughtCheckBox.on
 	}
 	
+	
+	private func updateSaveButtonState() {
+		// Disable the Save button if the name field is empty.
+		let text = itemName.text ?? ""
+		doneButton.isEnabled = !text.isEmpty
+	}
 	
     // MARK: - Navigation
 	
@@ -91,5 +98,16 @@ class EditShoppingItemViewController: UIViewController, UITextFieldDelegate, BEM
 	func textFieldShouldReturn(_ textField: UITextField) -> Bool {
 		self.view.endEditing(true)
 		return false
+	}
+	
+	func textFieldDidEndEditing(_ textField: UITextField) {
+		updateSaveButtonState()
+		
+		switch textField {
+		case itemName:
+			itemName.text = itemName.text
+		default:
+			break
+		}
 	}
 }

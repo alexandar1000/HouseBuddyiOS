@@ -28,12 +28,6 @@ class HomeLoadingViewController: UIViewController {
 	
     override func viewDidLoad() {
         super.viewDidLoad()
-
-		let settings = db.settings
-		if !settings.areTimestampsInSnapshotsEnabled {
-			settings.areTimestampsInSnapshotsEnabled = true
-			db.settings = settings
-		}
     }
 	
 	override func viewDidAppear(_ animated: Bool) {
@@ -131,6 +125,14 @@ class HomeLoadingViewController: UIViewController {
 							// User is logged in without being registered, show registration form for email, first name and last name
 						}
 					}
+				}
+				
+				// Refresh user info in drawer
+				if let user = Auth.auth().currentUser {
+					let appDel = UIApplication.shared.delegate as! AppDelegate
+					let drawerParentVC = appDel.drawerController.drawerViewController as! DrawerParentViewController
+					let drawerVC = drawerParentVC.getDrawerViewController()
+					drawerVC.fetchUserInfo(forUser: user)
 				}
 			}
 		}

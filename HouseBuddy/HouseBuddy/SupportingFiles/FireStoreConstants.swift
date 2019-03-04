@@ -27,4 +27,5 @@ struct FireStoreConstants {
 	static let FieldName = "name"
 	static let FieldFirstName = "first_name"
 	static let FieldLastName = "last_name"
+	static let FieldCurrentUserBalance = "balance"
 }

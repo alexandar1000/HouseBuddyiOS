@@ -14,6 +14,7 @@ class ExpenseEntry {
 	var price: Double
 	var date: Date
 	var expenseId: String?
+	var userId: String
 	
 	init() {
 		self.name = "Expense"
@@ -21,6 +22,7 @@ class ExpenseEntry {
 		self.price = 0.0
 		self.date = Date()
 		self.expenseId = ""
+		self.userId = ""
 	}
 	
 	init(name: String, description: String, price: Double, date: Date) {
@@ -29,6 +31,7 @@ class ExpenseEntry {
 		self.price = price
 		self.date = date
 		self.expenseId = ""
+		self.userId = ""
 	}
 	
 	init(name: String, description: String, price: Double, date: Date, expenseId: String) {
@@ -37,6 +40,24 @@ class ExpenseEntry {
 		self.price = price
 		self.date = date
 		self.expenseId = expenseId
+		self.userId = ""
+	}
+	
+	init(name: String, description: String, price: Double, date: Date, userId: String) {
+		self.name = name
+		self.description = description
+		self.price = price
+		self.date = date
+		self.userId = userId
+	}
+	
+	init(name: String, description: String, price: Double, date: Date, expenseId: String, userId: String) {
+		self.name = name
+		self.description = description
+		self.price = price
+		self.date = date
+		self.expenseId = expenseId
+		self.userId = userId
 	}
 
 }

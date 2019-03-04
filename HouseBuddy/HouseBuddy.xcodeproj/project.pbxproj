@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4511BDE9222A141F00DA2EF5 /* ShowBalanceTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4511BDE8222A141F00DA2EF5 /* ShowBalanceTableViewController.swift */; };
+		4511BDEB222A175700DA2EF5 /* ShowBalanceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4511BDEA222A175700DA2EF5 /* ShowBalanceTableViewCell.swift */; };
 		4570566821FE44FE0030403B /* ExpenseTrackerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4570566721FE44FE0030403B /* ExpenseTrackerViewController.swift */; };
 		4570566A21FE5D360030403B /* ExpenseTrackerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4570566921FE5D360030403B /* ExpenseTrackerTableViewCell.swift */; };
 		4598884421FBB1CC00E4176B /* ShowShoppingItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4598884321FBB1CC00E4176B /* ShowShoppingItemViewController.swift */; };
@@ -44,6 +46,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4511BDE8222A141F00DA2EF5 /* ShowBalanceTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowBalanceTableViewController.swift; sourceTree = "<group>"; };
+		4511BDEA222A175700DA2EF5 /* ShowBalanceTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowBalanceTableViewCell.swift; sourceTree = "<group>"; };
 		4570566721FE44FE0030403B /* ExpenseTrackerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseTrackerViewController.swift; sourceTree = "<group>"; };
 		4570566921FE5D360030403B /* ExpenseTrackerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseTrackerTableViewCell.swift; sourceTree = "<group>"; };
 		4598884321FBB1CC00E4176B /* ShowShoppingItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowShoppingItemViewController.swift; sourceTree = "<group>"; };
@@ -226,6 +230,8 @@
 				4570566921FE5D360030403B /* ExpenseTrackerTableViewCell.swift */,
 				45A59ADC21FF968D00449163 /* ShowExpenseViewController.swift */,
 				45A59ADE21FF96AA00449163 /* EditExpenseViewController.swift */,
+				4511BDE8222A141F00DA2EF5 /* ShowBalanceTableViewController.swift */,
+				4511BDEA222A175700DA2EF5 /* ShowBalanceTableViewCell.swift */,
 			);
 			name = ExpenseTracker;
 			path = HouseBuddy/ExpenseTracker;
@@ -320,7 +326,7 @@
 			inputFileListPaths = (
 			);
 			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-HouseBuddy/Pods-HouseBuddy-resources.sh",
+				"${SRCROOT}/Pods/Target Support Files/Pods-HouseBuddy/Pods-HouseBuddy-resources.sh",
 				"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseFirestore/gRPCCertificates-Firestore.bundle",
 				"${PODS_ROOT}/GoogleSignIn/Resources/GoogleSignIn.bundle",
 			);
@@ -333,7 +339,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-HouseBuddy/Pods-HouseBuddy-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-HouseBuddy/Pods-HouseBuddy-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		CAB739DCCBF8A260551E67B7 /* [CP] Check Pods Manifest.lock */ = {
@@ -362,7 +368,7 @@
 			inputFileListPaths = (
 			);
 			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-HouseBuddy/Pods-HouseBuddy-frameworks.sh",
+				"${SRCROOT}/Pods/Target Support Files/Pods-HouseBuddy/Pods-HouseBuddy-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/BEMCheckBox/BEMCheckBox.framework",
 				"${BUILT_PRODUCTS_DIR}/BoringSSL/openssl.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
@@ -393,7 +399,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-HouseBuddy/Pods-HouseBuddy-frameworks.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-HouseBuddy/Pods-HouseBuddy-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -415,6 +421,7 @@
 				A95D601B21B16B58003244DF /* SignUpViewController.swift in Sources */,
 				E1AA26292214878B007BEC20 /* CreateHouseholdViewController.swift in Sources */,
 				A949AD7B21C42CEF009EC68F /* EditShoppingItemViewController.swift in Sources */,
+				4511BDEB222A175700DA2EF5 /* ShowBalanceTableViewCell.swift in Sources */,
 				A9BCE6B921C95B1C00F92F67 /* ExpenseEntry.swift in Sources */,
 				E1075569220DE5C600251879 /* HomeLoadingViewController.swift in Sources */,
 				A95D601921B16B3C003244DF /* LogInViewController.swift in Sources */,
@@ -425,6 +432,7 @@
 				E1AA26252211D14B007BEC20 /* JoinHouseholdViewController.swift in Sources */,
 				56962CC721B441C000E17880 /* TaskTableViewController.swift in Sources */,
 				4570566821FE44FE0030403B /* ExpenseTrackerViewController.swift in Sources */,
+				4511BDE9222A141F00DA2EF5 /* ShowBalanceTableViewController.swift in Sources */,
 				E107556B220DFBAF00251879 /* NoHouseholdViewController.swift in Sources */,
 				56F1426121C3F453001E909A /* FireStoreConstants.swift in Sources */,
 				5692DACD21C7E168005A1A9E /* ShowTaskViewController.swift in Sources */,
